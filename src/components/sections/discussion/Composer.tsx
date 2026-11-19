@@ -38,7 +38,7 @@ export function Composer({
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-[linear-gradient(180deg,rgba(167,116,255,0.12),transparent)]"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-[linear-gradient(180deg,rgba(255,43,43,0.12),transparent)]"
       />
       <div className="flex items-center gap-3">
         <span className="bg-brand-gradient shrink-0 rounded-full p-[1.5px]">
@@ -51,7 +51,7 @@ export function Composer({
           />
         </span>
         <div className="flex flex-col items-start gap-px">
-          <h3 className="font-display text-[26px] leading-none text-white">
+          <h3 className="font-display text-[21px] leading-none text-white">
             Ask our editors
           </h3>
           <p className="text-[12px] text-[#8e8e8e]">
@@ -97,7 +97,7 @@ export function Composer({
           if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) submit(e);
         }}
         placeholder="Ask about an order, a brief, file formats or pricing…"
-        className="h-[104px] w-full resize-none rounded-[14px] border border-white/10 bg-black/40 px-4 py-3.5 text-[14px] leading-[1.55] text-white outline-none transition-[border-color,background-color,box-shadow] duration-200 placeholder:text-white/40 hover:border-white/20 focus:border-brand-pink/70 focus:shadow-[0_0_0_4px_rgba(167,116,255,0.12)]"
+        className="h-[104px] w-full resize-none rounded-[14px] border border-white/10 bg-black/40 px-4 py-3.5 text-[14px] leading-[1.55] text-white outline-none transition-[border-color,background-color,box-shadow] duration-200 placeholder:text-white/40 hover:border-white/20 focus:border-brand-pink/70 focus:shadow-[0_0_0_4px_rgba(255,43,43,0.12)]"
       />
 
       <div className="flex w-full items-center gap-2">

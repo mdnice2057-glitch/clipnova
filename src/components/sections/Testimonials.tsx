@@ -34,10 +34,10 @@ function ScoreCard() {
       </span>
       <div className="flex flex-col items-start gap-3">
         <p className="flex items-baseline gap-2 font-display whitespace-nowrap">
-          <span className="text-brand text-[112px] leading-[0.85] md:text-[132px]">
+          <span className="text-brand text-[90px] leading-[0.85] md:text-[106px]">
             4.9
           </span>
-          <span className="text-[32px] leading-none text-muted">/ 5</span>
+          <span className="text-[26px] leading-none text-muted">/ 5</span>
         </p>
         <Stars count={5} size={20} gap={4} />
         <p className="text-sm leading-[normal] text-muted">Based on 2,148 verified reviews</p>
@@ -90,7 +90,7 @@ function DistributionCard() {
             key={c.label}
             className="flex flex-auto flex-col items-start gap-1 rounded-2xl border border-white/[0.07] bg-white/[0.03] px-3 py-2.5"
           >
-            <span className="text-brand font-display text-[26px] leading-none">{c.value}</span>
+            <span className="text-brand font-display text-[21px] leading-none">{c.value}</span>
             <span className="text-[11px] leading-[normal] whitespace-nowrap text-muted">
               {c.label}
             </span>

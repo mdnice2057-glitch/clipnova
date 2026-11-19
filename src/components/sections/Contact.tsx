@@ -92,14 +92,14 @@ export function Contact() {
                         />
                       </span>
                     </span>
-                    <h3 className="font-display text-[25px] leading-[normal] text-white uppercase">
+                    <h3 className="font-display text-[20px] leading-[normal] text-white ">
                       {c.title}
                     </h3>
                     <span className="w-full text-[16px] font-semibold break-words text-white">
                       {c.value}
                     </span>
                     <span className="text-[13px] text-muted">{c.note}</span>
-                    <span className="mt-auto flex items-center gap-1.5 pt-2 text-[14px] font-semibold text-[#d6c2ff]">
+                    <span className="mt-auto flex items-center gap-1.5 pt-2 text-[14px] font-semibold text-[#ff9a9a]">
                       {c.action}
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img

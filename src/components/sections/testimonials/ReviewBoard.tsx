@@ -18,11 +18,11 @@ function TestimonialCard({ review, order }: { review: Review; order: number }) {
       <div className="flex w-full items-start justify-between gap-3">
         <span
           aria-hidden
-          className="text-brand -mb-3 block h-10 font-display text-[76px] leading-[0.9] select-none"
+          className="text-brand -mb-3 block h-10 font-display text-[61px] leading-[0.9] select-none"
         >
           “
         </span>
-        <span className="rounded-full border border-[rgba(214,194,255,0.22)] bg-[rgba(214,194,255,0.08)] px-3 py-[5px] text-[12px] leading-[normal] font-semibold whitespace-nowrap text-[#d6c2ff]">
+        <span className="rounded-full border border-[rgba(255,154,154,0.22)] bg-[rgba(255,154,154,0.08)] px-3 py-[5px] text-[12px] leading-[normal] font-semibold whitespace-nowrap text-[#ff9a9a]">
           {review.metric}
         </span>
       </div>
@@ -129,7 +129,7 @@ function SortMenu({
                   setOpen(false);
                 }}
                 className={`w-full rounded-xl px-3 py-2 text-left text-[13px] font-medium whitespace-nowrap transition-colors hover:bg-white/[0.06] ${
-                  option === value ? "bg-white/[0.04] text-[#d6c2ff]" : "text-muted hover:text-white"
+                  option === value ? "bg-white/[0.04] text-[#ff9a9a]" : "text-muted hover:text-white"
                 }`}
               >
                 {option}

@@ -80,7 +80,7 @@ export function MessageForm() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/ui/chip-check.svg" alt="" width={14} height={14} className="size-7" />
         </span>
-        <h3 className="font-display text-[40px] leading-none text-white uppercase">Message sent</h3>
+        <h3 className="font-display text-[32px] leading-none text-white ">Message sent</h3>
         <p className="max-w-[400px] text-[16px] leading-[1.55] text-muted">
           Thanks, {values.name.trim().split(" ")[0]}! We’ll reply to{" "}
           <span className="text-white">{values.email.trim()}</span> within 15 minutes during office
@@ -109,7 +109,7 @@ export function MessageForm() {
     >
       {topLine}
       <div className="flex w-full flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-white/[0.07] pb-5">
-        <h3 className="font-display text-[34px] leading-[normal] text-white uppercase">
+        <h3 className="font-display text-[27px] leading-[normal] text-white ">
           Send us a message
         </h3>
         <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[12px] font-medium text-muted">

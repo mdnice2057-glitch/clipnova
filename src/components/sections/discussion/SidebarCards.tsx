@@ -25,7 +25,7 @@ export function CommunityStats() {
                 className="animate-pulse-dot size-[7px]"
               />
             )}
-            <span className="text-brand font-display text-[36px] leading-none whitespace-nowrap">
+            <span className="text-brand font-display text-[29px] leading-none whitespace-nowrap">
               {s.value}
             </span>
           </div>
@@ -51,7 +51,7 @@ export function TrendingTopics({
   return (
     <div className="card flex flex-col items-start gap-1.5 p-[22px]">
       <div className="flex w-full items-center justify-between pb-2 whitespace-nowrap">
-        <h3 className="font-display text-[24px] leading-none text-white">
+        <h3 className="font-display text-[19px] leading-none text-white">
           Trending topics
         </h3>
         <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium text-[#8e8e8e]">
@@ -69,7 +69,7 @@ export function TrendingTopics({
                 onClick={() => onSelect(i, t.tag)}
                 className={`relative flex w-full items-center gap-3 overflow-hidden rounded-xl border px-3 py-2.5 text-left transition-[background-color,border-color] duration-200 ${
                   on
-                    ? "border-[rgba(214,194,255,0.22)] bg-[linear-gradient(100deg,rgba(214,194,255,0.1),rgba(124,77,255,0.04))]"
+                    ? "border-[rgba(255,154,154,0.22)] bg-[linear-gradient(100deg,rgba(255,154,154,0.1),rgba(209,15,15,0.04))]"
                     : "border-transparent hover:bg-white/[0.04]"
                 }`}
               >
@@ -80,7 +80,7 @@ export function TrendingTopics({
                   />
                 )}
                 <span
-                  className={`w-5 shrink-0 text-center font-display text-[22px] leading-none whitespace-nowrap ${on ? "text-brand" : "text-[#6b6b6b]"}`}
+                  className={`w-5 shrink-0 text-center font-display text-[18px] leading-none whitespace-nowrap ${on ? "text-brand" : "text-[#6b6b6b]"}`}
                 >
                   {i + 1}
                 </span>
@@ -129,12 +129,12 @@ export function TopEditors() {
   return (
     <div className="card flex flex-col items-start gap-3 p-[22px]">
       <div className="flex w-full items-center justify-between pb-1 whitespace-nowrap">
-        <h3 className="font-display text-[24px] leading-none text-white">
+        <h3 className="font-display text-[19px] leading-none text-white">
           Top editors this week
         </h3>
         <a
           href="#client-hub"
-          className="group inline-flex items-center gap-1 text-[12px] font-semibold text-[#d6c2ff] hover:underline"
+          className="group inline-flex items-center gap-1 text-[12px] font-semibold text-[#ff9a9a] hover:underline"
         >
           View all
           <span
@@ -179,7 +179,7 @@ export function TopEditors() {
               </span>
             </span>
             <span className="flex shrink-0 flex-col items-end">
-              <span className="text-brand font-display text-[20px] leading-none">
+              <span className="text-brand font-display text-[16px] leading-none">
                 {e.answers}
               </span>
               <span className="text-[11px] whitespace-nowrap text-[#8e8e8e]">

@@ -129,7 +129,7 @@ export function OrderCard() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/ui/chip-check.svg" alt="" width={14} height={14} className="size-7" />
         </span>
-        <h3 className="font-display text-[44px] leading-none text-white uppercase">Order received</h3>
+        <h3 className="font-display text-[35px] leading-none text-white ">Order received</h3>
         <p className="max-w-[460px] text-[16px] leading-[1.55] text-muted">
           Thanks, {values.name.trim().split(" ")[0]}! We’ll send a fixed quote for your{" "}
           <span className="text-white">{values.service.toLowerCase()}</span> project ({values.budget}) to{" "}
@@ -149,7 +149,7 @@ export function OrderCard() {
       {topLine}
       {/* Card Head (24:639) */}
       <div className="flex w-full flex-wrap items-center justify-between gap-x-4 gap-y-3 border-b border-white/[0.07] pb-6">
-        <h3 className="font-display text-[34px] leading-[normal] text-white uppercase">New order</h3>
+        <h3 className="font-display text-[27px] leading-[normal] text-white ">New order</h3>
         <div className="flex items-center gap-2.5 rounded-full border border-[rgba(61,220,132,0.25)] bg-[rgba(61,220,132,0.07)] py-1.5 pr-3.5 pl-3">
           <span className="relative size-2 shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -237,7 +237,7 @@ export function OrderCard() {
       <DropZone files={files} onChange={setFiles} />
 
       {/* Submit (24:725) */}
-      <div className="flex w-full flex-col items-stretch gap-4 rounded-[20px] border border-white/[0.08] bg-[radial-gradient(120%_140%_at_50%_0%,rgba(167,116,255,0.12),transparent_60%),rgba(255,255,255,0.02)] p-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] sm:p-5">
+      <div className="flex w-full flex-col items-stretch gap-4 rounded-[20px] border border-white/[0.08] bg-[radial-gradient(120%_140%_at_50%_0%,rgba(255,43,43,0.12),transparent_60%),rgba(255,255,255,0.02)] p-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] sm:p-5">
         <dl className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[14px]">
           <div className="flex min-w-0 items-center gap-2">
             <dt className="text-muted">Service</dt>

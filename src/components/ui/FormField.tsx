@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef } from "react";
 
 const control =
-  "w-full rounded-[14px] border border-white/10 bg-white/[0.03] px-4 text-[15px] text-white placeholder:text-white/35 outline-none transition-[border-color,background-color,box-shadow] duration-200 hover:border-white/20 focus:border-brand-pink/70 focus:bg-white/[0.05] focus:shadow-[0_0_0_4px_rgba(167,116,255,0.12)]";
+  "w-full rounded-[14px] border border-white/10 bg-white/[0.03] px-4 text-[15px] text-white placeholder:text-white/35 outline-none transition-[border-color,background-color,box-shadow] duration-200 hover:border-white/20 focus:border-brand-pink/70 focus:bg-white/[0.05] focus:shadow-[0_0_0_4px_rgba(255,43,43,0.12)]";
 
 /** Figma: Form Field (24:580) — label + 52px input. */
 export function FormField({

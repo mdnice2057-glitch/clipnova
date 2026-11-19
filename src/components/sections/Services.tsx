@@ -65,7 +65,7 @@ const services: Service[] = [
 ];
 
 const arrowGradient =
-  "linear-gradient(124.8deg, rgb(167,116,255) 3.6%, rgb(124,77,255) 41.73%, rgb(205,184,255) 75.54%)";
+  "linear-gradient(124.8deg, rgb(255,110,110) 3.6%, rgb(255,43,43) 45%, rgb(184,10,10) 90%)";
 
 type Variant = "feature" | "default";
 
@@ -79,7 +79,7 @@ function NumberBadge({ number, large }: { number: string; large?: boolean }) {
       <span aria-hidden="true" className="bg-brand-gradient size-1.5 rounded-full" />
       <span
         className={`text-brand font-display leading-none tracking-[0.04em] ${
-          large ? "text-[20px]" : "text-[17px]"
+          large ? "text-[16px]" : "text-[14px]"
         }`}
       >
         {number}
@@ -130,7 +130,7 @@ function PriceRow({ service, large }: { service: Service; large?: boolean }) {
         </span>
         <span
           className={`text-brand font-display leading-none ${
-            large ? "text-[40px] md:text-[48px]" : "text-[34px]"
+            large ? "text-[32px] md:text-[38px]" : "text-[27px]"
           }`}
         >
           {service.price}
@@ -183,17 +183,17 @@ function ServiceCard({
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,11,0.45)_0%,rgba(10,10,11,0)_28%,rgba(10,10,11,0.55)_52%,rgba(10,10,11,0.94)_78%,#0b0b0d_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0)_28%,rgba(0,0,0,0.55)_52%,rgba(0,0,0,0.94)_78%,#000000_100%)]"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(90%_60%_at_0%_100%,rgba(167,116,255,0.22),transparent_60%),radial-gradient(70%_50%_at_100%_100%,rgba(124,77,255,0.16),transparent_60%)] opacity-70 transition-opacity duration-500 group-hover:opacity-100"
+          className="absolute inset-0 bg-[radial-gradient(90%_60%_at_0%_100%,rgba(255,43,43,0.22),transparent_60%),radial-gradient(70%_50%_at_100%_100%,rgba(209,15,15,0.16),transparent_60%)] opacity-70 transition-opacity duration-500 group-hover:opacity-100"
         />
         <NumberBadge number={service.number} large />
         <PlayBadge large />
 
         <div className="relative z-[1] flex flex-col items-start gap-4 p-6 pt-[220px] sm:p-8 sm:pt-[200px] md:p-10">
-          <h3 className="w-full max-w-[560px] font-display text-[40px] leading-[0.95] text-white uppercase sm:text-[52px] lg:text-[60px]">
+          <h3 className="w-full max-w-[560px] font-display text-[32px] leading-[0.95] text-white sm:text-[42px] lg:text-[48px]">
             {service.title}
           </h3>
           <p className="w-full max-w-[520px] text-base leading-[1.55] text-white/75 md:text-[17px]">
@@ -224,14 +224,14 @@ function ServiceCard({
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(135deg,rgba(167,116,255,0.25),rgba(124,77,255,0.18)_55%,transparent)] opacity-0 mix-blend-screen transition-opacity duration-500 group-hover:opacity-100"
+          className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,43,43,0.25),rgba(209,15,15,0.18)_55%,transparent)] opacity-0 mix-blend-screen transition-opacity duration-500 group-hover:opacity-100"
         />
         <NumberBadge number={service.number} />
         <PlayBadge />
       </div>
 
       <div className="relative z-[1] flex flex-1 flex-col items-start gap-3.5 px-6 pt-5 pb-6 md:px-7 md:pb-7">
-        <h3 className="w-full font-display text-[32px] leading-[1.02] text-white uppercase md:text-[34px]">
+        <h3 className="w-full font-display text-[26px] leading-[1.02] text-white md:text-[27px]">
           {service.title}
         </h3>
         <p className="w-full text-[15px] leading-[1.55] text-muted md:text-base">

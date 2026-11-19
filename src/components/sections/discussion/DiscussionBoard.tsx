@@ -114,7 +114,7 @@ export function DiscussionBoard() {
                 setQuery("");
                 setTab("Latest");
               }}
-              className="mt-2 text-[12px] font-semibold text-[#d6c2ff] hover:underline"
+              className="mt-2 text-[12px] font-semibold text-[#ff9a9a] hover:underline"
             >
               Clear filters
             </button>
@@ -134,7 +134,7 @@ export function DiscussionBoard() {
           onClick={loadMore}
           disabled={loading || !poolLeft}
           aria-busy={loading}
-          className="group flex items-center justify-center gap-2 rounded-[20px] border border-dashed border-white/15 bg-white/[0.015] py-4 transition-[background-color,border-color] duration-200 enabled:hover:border-[rgba(214,194,255,0.45)] enabled:hover:bg-[rgba(214,194,255,0.04)] disabled:cursor-default"
+          className="group flex items-center justify-center gap-2 rounded-[20px] border border-dashed border-white/15 bg-white/[0.015] py-4 transition-[background-color,border-color] duration-200 enabled:hover:border-[rgba(255,154,154,0.45)] enabled:hover:bg-[rgba(255,154,154,0.04)] disabled:cursor-default"
         >
           <span className="text-[14px] font-semibold whitespace-nowrap text-muted transition-colors group-enabled:group-hover:text-white">
             {loading

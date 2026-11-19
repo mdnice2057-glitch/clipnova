@@ -18,7 +18,7 @@ const reels: Reel[] = [
 const clients = [0, 1, 2, 3, 4].map((i) => `/assets/hero/client-${i}.png`);
 
 const tileBg =
-  "linear-gradient(141.52deg, rgb(201,168,255) 14.286%, rgb(160,123,255) 37.143%, rgb(124,85,245) 62.857%, rgb(93,59,224) 85.714%)";
+  "linear-gradient(141.52deg, rgb(255,120,120) 14.286%, rgb(255,58,58) 37.143%, rgb(214,16,16) 62.857%, rgb(150,8,8) 85.714%)";
 
 /** Glossy app-icon tile floating around the hero headline (Figma: Float Tile / *). */
 function FloatTile({
@@ -30,6 +30,7 @@ function FloatTile({
   iconInset,
   className = "",
   delay = "0s",
+  background = tileBg,
 }: {
   size: number;
   radius: number;
@@ -39,6 +40,7 @@ function FloatTile({
   iconInset: string;
   className?: string;
   delay?: string;
+  background?: string;
 }) {
   return (
     <div
@@ -53,7 +55,7 @@ function FloatTile({
     >
       <div
         className="relative flex items-center justify-center overflow-hidden border-[1.5px] border-white/45 shadow-[0_0_0_6px_rgba(255,255,255,0.04)]"
-        style={{ width: size, height: size, borderRadius: radius, backgroundImage: tileBg }}
+        style={{ width: size, height: size, borderRadius: radius, backgroundImage: background }}
       >
         <div className="absolute inset-x-[10%] top-[5%] h-[42%] rounded-[inherit] bg-gradient-to-b from-white/50 to-white/0" />
         <div className="relative" style={{ width: iconSize, height: iconSize }}>
@@ -82,7 +84,7 @@ export function Hero() {
             className="absolute inset-0"
             style={{
               backgroundImage:
-                "linear-gradient(90deg, rgb(30,63,134) 0%, rgb(47,99,198) 22%, rgb(79,103,201) 50%, rgb(148,121,207) 75%, rgb(141,115,196) 90%, rgb(74,61,110) 100%)",
+                "linear-gradient(90deg, rgb(10,10,10) 0%, rgb(26,26,26) 22%, rgb(38,38,38) 50%, rgb(30,30,30) 75%, rgb(18,18,18) 90%, rgb(8,8,8) 100%)",
             }}
           />
           <div
@@ -99,14 +101,14 @@ export function Hero() {
             className="absolute inset-0"
             style={{
               backgroundImage:
-                "linear-gradient(180deg, rgba(10,10,11,0.05) 0%, rgba(10,10,11,0.18) 22%, rgba(10,10,11,0.62) 42%, rgba(10,10,11,0.88) 58%, rgba(10,10,11,0.94) 75%, rgb(10,10,11) 100%)",
+                "linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.18) 22%, rgba(0,0,0,0.62) 42%, rgba(0,0,0,0.88) 58%, rgba(0,0,0,0.94) 75%, rgb(0,0,0) 100%)",
             }}
           />
           <div
             className="absolute inset-0"
             style={{
               backgroundImage:
-                "linear-gradient(90deg, rgba(10,10,11,0.55) 0%, rgba(10,10,11,0) 12%, rgba(10,10,11,0) 88%, rgba(10,10,11,0.55) 100%)",
+                "linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 12%, rgba(0,0,0,0) 88%, rgba(0,0,0,0.55) 100%)",
             }}
           />
         </div>
@@ -140,7 +142,7 @@ export function Hero() {
           <span className="max-sm:hidden">Now accepting new orders — first draft in 48 hours</span>
         </Tag>
 
-        <h1 className="text-chrome font-display text-[length:min(64px,calc((100vw_-_2.5rem)/6.2))] leading-[0.98] uppercase sm:text-[96px] lg:text-[143px]">
+        <h1 className="text-chrome font-display text-[length:min(52px,calc((100vw_-_2.5rem)/7.4))] leading-[0.98] sm:text-[77px] lg:text-[114px]">
           <span className="whitespace-nowrap">Every frame,</span>
           <br />
           <span className="whitespace-nowrap">perfectly crafted</span>

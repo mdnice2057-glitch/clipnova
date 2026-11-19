@@ -59,7 +59,7 @@ export function Toolbar({
         </div>
       </div>
       <span className="hidden h-px min-w-px flex-1 sm:block" />
-      <label className="flex w-full cursor-text items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] py-[11px] pr-2 pl-4 transition-[border-color,background-color,box-shadow] duration-200 hover:border-white/20 focus-within:border-brand-pink/70 focus-within:bg-white/[0.05] focus-within:shadow-[0_0_0_4px_rgba(167,116,255,0.12)] sm:w-auto">
+      <label className="flex w-full cursor-text items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] py-[11px] pr-2 pl-4 transition-[border-color,background-color,box-shadow] duration-200 hover:border-white/20 focus-within:border-brand-pink/70 focus-within:bg-white/[0.05] focus-within:shadow-[0_0_0_4px_rgba(255,43,43,0.12)] sm:w-auto">
         <img
           src={`${A}/icon-search.svg`}
           alt=""

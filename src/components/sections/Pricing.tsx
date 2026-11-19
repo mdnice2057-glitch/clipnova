@@ -74,13 +74,13 @@ function PricingCard({ plan }: { plan: Plan }) {
           className="pointer-events-none absolute inset-0 -z-10 rounded-[inherit]"
           style={{
             backgroundImage:
-              "radial-gradient(110% 55% at 50% 0%, rgba(167,116,255,0.2) 0%, rgba(124,77,255,0.08) 45%, transparent 75%)",
+              "radial-gradient(110% 55% at 50% 0%, rgba(255,43,43,0.2) 0%, rgba(209,15,15,0.08) 45%, transparent 75%)",
           }}
         />
       )}
 
       <div className="flex w-full items-center justify-between gap-3">
-        <h3 className="font-display text-[27px] leading-[normal] text-white uppercase">{plan.name}</h3>
+        <h3 className="font-display text-[22px] leading-[normal] text-white ">{plan.name}</h3>
         {featured && (
           <span className="bg-brand-gradient rounded-full px-3 py-1.5 text-xs leading-[normal] font-bold tracking-[0.48px] whitespace-nowrap text-white uppercase shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5)]">
             Most popular
@@ -92,10 +92,10 @@ function PricingCard({ plan }: { plan: Plan }) {
 
       <p className="flex flex-wrap items-baseline gap-x-2 whitespace-nowrap">
         <span
-          className={`font-display leading-none uppercase ${
+          className={`font-display leading-none ${
             featured
-              ? "text-brand text-[64px] xl:text-[76px]"
-              : "text-[52px] text-white xl:text-[60px]"
+              ? "text-brand text-[51px] xl:text-[61px]"
+              : "text-[42px] text-white xl:text-[48px]"
           }`}
         >
           {plan.price}
@@ -125,7 +125,7 @@ function PricingCard({ plan }: { plan: Plan }) {
               className={`flex size-[22px] shrink-0 items-center justify-center rounded-full ${
                 featured
                   ? "bg-brand-gradient"
-                  : "bg-[rgba(214,194,255,0.12)] shadow-[inset_0_0_0_1px_rgba(214,194,255,0.22)]"
+                  : "bg-[rgba(255,154,154,0.12)] shadow-[inset_0_0_0_1px_rgba(255,154,154,0.22)]"
               }`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}

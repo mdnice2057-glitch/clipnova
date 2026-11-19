@@ -65,7 +65,7 @@ function TopPick({ item }: { item: FeedItem }) {
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(80%_55%_at_0%_100%,rgba(167,116,255,0.24),transparent_65%),radial-gradient(60%_45%_at_100%_100%,rgba(124,77,255,0.18),transparent_65%)] opacity-80 transition-opacity duration-500 group-hover:opacity-100"
+        className="absolute inset-0 bg-[radial-gradient(80%_55%_at_0%_100%,rgba(255,43,43,0.24),transparent_65%),radial-gradient(60%_45%_at_100%_100%,rgba(209,15,15,0.18),transparent_65%)] opacity-80 transition-opacity duration-500 group-hover:opacity-100"
       />
 
       {/* Top pick chip */}
@@ -112,7 +112,7 @@ function TopPick({ item }: { item: FeedItem }) {
             </li>
           ))}
         </ul>
-        <h3 className="text-chrome font-display text-[38px] leading-[0.95] sm:text-[50px]">
+        <h3 className="text-chrome font-display text-[30px] leading-[0.95] sm:text-[40px]">
           {item.title}
         </h3>
         <p className="max-w-[520px] text-[15px] leading-[1.55] text-white/70">
@@ -147,7 +147,7 @@ function TopPick({ item }: { item: FeedItem }) {
             <span className="text-[11px] font-medium tracking-[0.06em] text-muted uppercase">
               From
             </span>
-            <span className="text-brand font-display text-[34px] leading-none">
+            <span className="text-brand font-display text-[27px] leading-none">
               {item.price}
             </span>
           </div>
@@ -201,7 +201,7 @@ function FeedTile({ item }: { item: FeedItem }) {
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-[linear-gradient(160deg,rgba(167,116,255,0.22),rgba(124,77,255,0.14)_50%,transparent_80%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        className="absolute inset-0 bg-[linear-gradient(160deg,rgba(255,43,43,0.22),rgba(209,15,15,0.14)_50%,transparent_80%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
       />
       <span
         className={`absolute top-3 left-3 rounded-full px-2.5 py-[5px] text-[10px] font-bold tracking-[0.8px] whitespace-nowrap text-white ${glass}`}
@@ -233,7 +233,7 @@ function FeedTile({ item }: { item: FeedItem }) {
             </span>
           </span>
           <span className="flex shrink-0 items-center gap-2">
-            <span className="text-brand font-display text-[24px] leading-none">
+            <span className="text-brand font-display text-[19px] leading-none">
               {item.price}
             </span>
             <span className="flex size-[30px] items-center justify-center rounded-full bg-white transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none">
@@ -264,7 +264,7 @@ function MoreTile({ filter, fill }: { filter: FeedFilter; fill: boolean }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/assets/feed/icon-sparkle.svg" alt="" width={16} height={16} />
       </span>
-      <span className="relative font-display text-[28px] leading-none text-white uppercase">
+      <span className="relative font-display text-[22px] leading-none text-white ">
         More {filter.toLowerCase()} coming
       </span>
       <span className="relative max-w-[300px] text-sm text-muted">

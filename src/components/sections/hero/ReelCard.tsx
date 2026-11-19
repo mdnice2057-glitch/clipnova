@@ -29,7 +29,7 @@ export function ReelCard({ reel }: { reel: Reel }) {
       />
       <div className="absolute -inset-x-px -top-px h-[120px] bg-gradient-to-b from-black/45 to-transparent" />
       <div className="absolute -inset-x-px -bottom-px h-[220px] bg-gradient-to-b from-transparent to-black/85" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(167,116,255,0.28)] via-[rgba(124,77,255,0.08)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,43,43,0.28)] via-[rgba(209,15,15,0.08)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
       <div aria-hidden className="absolute inset-x-3 top-3 h-[2px] overflow-hidden rounded-full bg-white/25">
         <div className="bg-brand-gradient h-full w-1/4 rounded-full transition-[width] duration-[2400ms] ease-linear group-hover:w-full motion-reduce:transition-none" />

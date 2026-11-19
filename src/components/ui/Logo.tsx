@@ -1,13 +1,12 @@
-/** Figma: Logo (2:34 / 7:593) — gradient mark + Bebas wordmark. */
+/** Brand logo — red play mark with the "jonshar Visuals" wordmark set in Urbanist. */
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <a href="#top" className={`flex items-center gap-2.5 ${className}`}>
-      <span className="bg-brand-gradient flex size-[34px] items-center justify-center rounded-[10px]">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/assets/ui/logo-mark.svg" alt="" width={18} height={18} />
-      </span>
-      <span className="font-display text-[25px] leading-none uppercase text-white">
-        Clipnova
+    <a href="#top" aria-label="Jonshar Visuals — home" className={`flex items-center gap-2.5 ${className}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/assets/brand/jonshar-mark.png" alt="" width={63} height={71} className="h-9 w-auto" />
+      <span aria-hidden className="flex items-baseline gap-1.5 leading-none whitespace-nowrap">
+        <span className="text-[26px] font-bold tracking-[-0.02em] text-white">jonshar</span>
+        <span className="text-[18px] font-medium tracking-[-0.01em] text-white/60">Visuals</span>
       </span>
     </a>
   );

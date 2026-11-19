@@ -54,7 +54,7 @@ export function PinnedThread() {
     <article className="card card-lit flex flex-col items-start gap-4 overflow-hidden px-4 py-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] sm:px-7 sm:py-7">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(136deg,rgba(167,116,255,0.14)_0%,rgba(124,77,255,0.04)_30%,transparent_55%)]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(136deg,rgba(255,43,43,0.14)_0%,rgba(209,15,15,0.04)_30%,transparent_55%)]"
       />
       {/* Pinned label */}
       <div className="flex w-full items-center gap-2">
@@ -100,7 +100,7 @@ export function PinnedThread() {
         </div>
       </div>
 
-      <h3 className="text-chrome font-display text-[28px] leading-none sm:text-[34px] md:whitespace-nowrap">
+      <h3 className="text-chrome font-display text-[22px] leading-none sm:text-[27px] md:whitespace-nowrap">
         {PINNED_TITLE}
       </h3>
 
@@ -114,7 +114,7 @@ export function PinnedThread() {
         <button
           type="button"
           aria-label="Play test_clip.mp4"
-          className="group relative h-[136px] w-full shrink-0 overflow-hidden rounded-2xl ring-1 ring-white/12 transition-shadow duration-300 hover:ring-[rgba(214,194,255,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink sm:w-[232px]"
+          className="group relative h-[136px] w-full shrink-0 overflow-hidden rounded-2xl ring-1 ring-white/12 transition-shadow duration-300 hover:ring-[rgba(255,154,154,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink sm:w-[232px]"
         >
           <img
             src={`${A}/attachment-thumb.jpg`}
@@ -148,13 +148,13 @@ export function PinnedThread() {
             onClick={() => toggle(r.emoji)}
             className={`flex shrink-0 items-center gap-1.5 rounded-full border py-[5px] pr-3 pl-2.5 whitespace-nowrap transition-[background-color,border-color,transform] duration-200 motion-safe:active:scale-95 ${
               r.active
-                ? "border-[rgba(214,194,255,0.45)] bg-[rgba(214,194,255,0.14)]"
+                ? "border-[rgba(255,154,154,0.45)] bg-[rgba(255,154,154,0.14)]"
                 : "border-white/10 bg-white/[0.04] hover:border-white/25 hover:bg-white/[0.07]"
             }`}
           >
             <span className="text-[13px] text-white">{r.emoji}</span>
             <span
-              className={`text-[12px] font-semibold ${r.active ? "text-[#d6c2ff]" : "text-muted"}`}
+              className={`text-[12px] font-semibold ${r.active ? "text-[#ff9a9a]" : "text-muted"}`}
             >
               {r.count}
             </span>
@@ -197,7 +197,7 @@ export function PinnedThread() {
       </div>
 
       {/* Editor reply */}
-      <div className="relative flex w-full items-start gap-3 overflow-hidden rounded-2xl border border-[rgba(214,194,255,0.22)] bg-[linear-gradient(100deg,rgba(214,194,255,0.09),rgba(124,77,255,0.04)_60%,rgba(255,255,255,0.01))] py-4 pr-[18px] pl-5">
+      <div className="relative flex w-full items-start gap-3 overflow-hidden rounded-2xl border border-[rgba(255,154,154,0.22)] bg-[linear-gradient(100deg,rgba(255,154,154,0.09),rgba(209,15,15,0.04)_60%,rgba(255,255,255,0.01))] py-4 pr-[18px] pl-5">
         <span aria-hidden className="bg-brand-gradient absolute inset-y-0 left-0 w-[3px]" />
         <span className="bg-brand-gradient shrink-0 rounded-full p-[1.5px]">
           <img
@@ -228,14 +228,14 @@ export function PinnedThread() {
               type="button"
               aria-pressed={editorLiked}
               onClick={() => setEditorLiked((v) => !v)}
-              className={`font-medium transition-colors ${editorLiked ? "text-[#d6c2ff]" : "text-muted hover:text-white"}`}
+              className={`font-medium transition-colors ${editorLiked ? "text-[#ff9a9a]" : "text-muted hover:text-white"}`}
             >
               👍 {18 + (editorLiked ? 1 : 0)}
             </button>
             <button
               type="button"
               onClick={() => inputRef.current?.focus()}
-              className="font-semibold text-[#d6c2ff] hover:underline"
+              className="font-semibold text-[#ff9a9a] hover:underline"
             >
               Reply
             </button>
@@ -276,7 +276,7 @@ export function PinnedThread() {
       {/* Reply input */}
       <form
         onSubmit={submit}
-        className="flex w-full items-center gap-2.5 rounded-full border border-white/10 bg-black/40 p-1.5 transition-[border-color,box-shadow] duration-200 hover:border-white/20 focus-within:border-brand-pink/70 focus-within:shadow-[0_0_0_4px_rgba(167,116,255,0.12)]"
+        className="flex w-full items-center gap-2.5 rounded-full border border-white/10 bg-black/40 p-1.5 transition-[border-color,box-shadow] duration-200 hover:border-white/20 focus-within:border-brand-pink/70 focus-within:shadow-[0_0_0_4px_rgba(255,43,43,0.12)]"
       >
         <img
           src={`${A}/avatar-me.png`}

@@ -24,7 +24,7 @@ export function OrderForm() {
         {/* Intro (24:597) */}
         <div className="flex w-full flex-col items-start gap-[22px] xl:w-[400px] xl:shrink-0">
           <Eyebrow>Order now</Eyebrow>
-          <h2 className="text-chrome font-display text-[64px] leading-[0.96] uppercase md:text-[94px]">
+          <h2 className="text-chrome font-display text-[51px] leading-[0.96] md:text-[75px]">
             Start your
             <br />
             order
@@ -46,7 +46,7 @@ export function OrderForm() {
               {steps.map((s, i) => (
                 <li key={s.title} className="group relative flex items-start gap-4">
                   <span className="icon-tile relative size-11 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5">
-                    <span className="text-brand font-display text-[22px] leading-none">
+                    <span className="text-brand font-display text-[18px] leading-none">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </span>
@@ -65,7 +65,7 @@ export function OrderForm() {
                 key={g.label}
                 className="flex items-center gap-2 rounded-full border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.015))] py-1.5 pr-3.5 pl-1.5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-md transition-colors duration-300 hover:border-brand-pink/40"
               >
-                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(167,116,255,0.28),rgba(124,77,255,0.14))] ring-1 ring-brand-pink/30">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,43,43,0.28),rgba(209,15,15,0.14))] ring-1 ring-brand-pink/30">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={g.icon} alt="" width={16} height={16} className="size-3.5" />
                 </span>

@@ -9,7 +9,7 @@ const STEPS: Step[] = [
     description: "Pick a service, share your brief and references, and confirm your package.",
     points: ["Choose a service & length", "Add references and notes", "Pay securely, no calls"],
     image: "/assets/feed/tile-vlog.jpg",
-    tint: "167,116,255",
+    tint: "255,43,43",
   },
   {
     title: "Upload footage",
@@ -18,7 +18,7 @@ const STEPS: Step[] = [
     description: "Send your raw clips, music and logos through a secure upload link — any format, any size.",
     points: ["4K, RAW, phone footage — all fine", "Resumable uploads up to 200 GB", "Files stay private & encrypted"],
     image: "/assets/services/cinematic-vlog.jpg",
-    tint: "124,77,255",
+    tint: "209,15,15",
   },
   {
     title: "We edit, you review",
@@ -27,7 +27,7 @@ const STEPS: Step[] = [
     description: "Your editor cuts the first draft. Leave timestamped notes and get revisions until it feels right.",
     points: ["Dedicated editor for your project", "Comment right on the frame", "Unlimited revisions"],
     image: "/assets/feed/tile-color.jpg",
-    tint: "169,140,255",
+    tint: "205,205,205",
   },
   {
     title: "Receive final files",
@@ -36,7 +36,7 @@ const STEPS: Step[] = [
     description: "Download your final cut in every format and aspect ratio you need, ready to post anywhere.",
     points: ["9:16, 16:9 and 1:1 exports", "Captions & thumbnails on request", "Project files kept for 90 days"],
     image: "/assets/services/wedding-film.jpg",
-    tint: "205,184,255",
+    tint: "255,255,255",
   },
 ];
 

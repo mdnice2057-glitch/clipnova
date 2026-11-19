@@ -50,7 +50,7 @@ function StarPicker({
           />
         </button>
       ))}
-      <span aria-hidden className="ml-1.5 w-[64px] text-xs font-semibold text-[#d6c2ff]">
+      <span aria-hidden className="ml-1.5 w-[64px] text-xs font-semibold text-[#ff9a9a]">
         {shown ? ratingLabels[shown - 1] : ""}
       </span>
     </div>
@@ -93,7 +93,7 @@ export function FeedbackForm() {
             className="size-[22px]"
           />
         </span>
-        <h3 className="font-display text-[27px] leading-[normal] text-white uppercase">Thanks for your feedback!</h3>
+        <h3 className="font-display text-[22px] leading-[normal] text-white ">Thanks for your feedback!</h3>
         <div className="flex items-center gap-1.5" aria-label={`${rating} out of 5 stars`}>
           {[1, 2, 3, 4, 5].map((n) => (
             // eslint-disable-next-line @next/next/no-img-element
@@ -118,7 +118,7 @@ export function FeedbackForm() {
         <button
           type="button"
           onClick={reset}
-          className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[#d6c2ff] underline-offset-4 hover:underline"
+          className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[#ff9a9a] underline-offset-4 hover:underline"
         >
           Write another review
           <span
@@ -135,7 +135,7 @@ export function FeedbackForm() {
   return (
     <form onSubmit={handleSubmit} noValidate className="flex w-full flex-col items-start gap-4">
       <div className="flex w-full flex-col items-start gap-1.5">
-        <h3 className="font-display text-[30px] leading-none text-white uppercase">Share your feedback</h3>
+        <h3 className="font-display text-[24px] leading-none text-white ">Share your feedback</h3>
         <p className="text-sm leading-[1.5] text-muted">
           Ordered from us? Rate your experience.
         </p>
@@ -155,7 +155,7 @@ export function FeedbackForm() {
         aria-invalid={!!error}
         aria-describedby={error ? "review-error" : undefined}
         placeholder="How was your order? Tell other clients about the quality, speed and communication…"
-        className="h-[104px] w-full resize-none rounded-[14px] border border-white/10 bg-white/[0.03] px-4 py-3.5 text-sm leading-[1.55] text-white outline-none transition-[border-color,background-color,box-shadow] duration-200 placeholder:text-white/35 hover:border-white/20 focus:border-brand-pink/70 focus:bg-white/[0.05] focus:shadow-[0_0_0_4px_rgba(167,116,255,0.12)] aria-[invalid=true]:border-[#ff8a8a]/60"
+        className="h-[104px] w-full resize-none rounded-[14px] border border-white/10 bg-white/[0.03] px-4 py-3.5 text-sm leading-[1.55] text-white outline-none transition-[border-color,background-color,box-shadow] duration-200 placeholder:text-white/35 hover:border-white/20 focus:border-brand-pink/70 focus:bg-white/[0.05] focus:shadow-[0_0_0_4px_rgba(255,43,43,0.12)] aria-[invalid=true]:border-[#ff8a8a]/60"
       />
       {error && (
         <p id="review-error" className="-mt-1 text-xs text-[#ff8a8a]">

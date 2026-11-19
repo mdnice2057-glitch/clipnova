@@ -17,7 +17,7 @@ export function SectionHeader({
       className={`mx-auto flex max-w-[900px] flex-col items-center gap-5 text-center ${className}`}
     >
       <Eyebrow>{eyebrow}</Eyebrow>
-      <h2 className="text-chrome font-display text-[52px] leading-none uppercase md:text-[76px]">
+      <h2 className="text-chrome font-display text-[42px] leading-none md:text-[61px]">
         {title}
       </h2>
       {subtitle && (
@@ -44,7 +44,7 @@ export function SectionTitle({
   return (
     <div className={`flex flex-col items-start gap-3.5 ${className}`}>
       <Eyebrow>{eyebrow}</Eyebrow>
-      <h2 className="text-chrome font-display text-[44px] leading-none uppercase md:text-[63px]">
+      <h2 className="text-chrome font-display text-[35px] leading-none md:text-[50px]">
         {title}
       </h2>
       {subtitle && (

@@ -15,7 +15,7 @@ export function ThreadCard({ thread }: { thread: Thread }) {
       <div
         className={`flex w-[52px] shrink-0 flex-col items-center gap-0.5 rounded-[14px] border py-1.5 transition-[background-color,border-color,box-shadow] duration-300 ${
           vote === 1
-            ? "border-[rgba(214,194,255,0.35)] bg-[rgba(214,194,255,0.08)]"
+            ? "border-[rgba(255,154,154,0.35)] bg-[rgba(255,154,154,0.08)]"
             : "border-white/[0.07] bg-white/[0.03]"
         }`}
       >
@@ -35,7 +35,7 @@ export function ThreadCard({ thread }: { thread: Thread }) {
           />
         </button>
         <span
-          className={`font-display text-[22px] whitespace-nowrap ${
+          className={`font-display text-[18px] whitespace-nowrap ${
             vote === 1
               ? "text-brand"
               : vote === -1
@@ -88,7 +88,7 @@ export function ThreadCard({ thread }: { thread: Thread }) {
         <h3 className="w-full text-[17px] leading-[1.35] font-semibold text-white sm:text-[18px]">
           <a
             href="#client-hub"
-            className="decoration-[#d6c2ff]/60 underline-offset-4 transition-colors hover:text-[#f8dcff] hover:underline"
+            className="decoration-[#ff9a9a]/60 underline-offset-4 transition-colors hover:text-[#f8dcff] hover:underline"
           >
             {thread.title}
           </a>
@@ -160,7 +160,7 @@ function StatusBadge({ status }: { status: Thread["status"] }) {
   }
   if (status === "hot") {
     return (
-      <span className="shrink-0 rounded-full border border-[rgba(214,194,255,0.35)] bg-[rgba(214,194,255,0.12)] py-1 pr-2.5 pl-[9px] text-[12px] font-semibold whitespace-nowrap text-[#d6c2ff]">
+      <span className="shrink-0 rounded-full border border-[rgba(255,154,154,0.35)] bg-[rgba(255,154,154,0.12)] py-1 pr-2.5 pl-[9px] text-[12px] font-semibold whitespace-nowrap text-[#ff9a9a]">
         🔥 Hot
       </span>
     );

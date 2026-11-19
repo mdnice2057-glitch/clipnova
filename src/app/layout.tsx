@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Inter } from "next/font/google";
+import { Urbanist } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const bebas = Bebas_Neue({
-  variable: "--font-bebas",
-  weight: "400",
+const urbanist = Urbanist({
+  variable: "--font-urbanist",
   subsets: ["latin"],
 });
 
@@ -26,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${bebas.variable} antialiased`}>
+      <body className={`${urbanist.variable} antialiased`}>
         {children}
       </body>
     </html>

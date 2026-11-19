@@ -64,7 +64,7 @@ function MonitorOverlay({ step }: { step: number }) {
       <div className={`${glass} w-[240px]`}>
         <div className="flex items-center justify-between text-[10px] font-semibold tracking-[0.12em] text-white/50 uppercase">
           <span>Uploading</span>
-          <span className="text-[#c4b0ff]">5 of 8</span>
+          <span className="text-[#ffb3b3]">5 of 8</span>
         </div>
         {[
           ["A001_sunrise.mov", "2.4 GB", "w-full"],
@@ -76,7 +76,7 @@ function MonitorOverlay({ step }: { step: number }) {
               <span className="text-white/50">{size}</span>
             </div>
             <div className="mt-1.5 h-1 overflow-hidden rounded-full bg-white/10">
-              <div className={`h-full rounded-full bg-[#7c4dff] ${bar}`} />
+              <div className={`h-full rounded-full bg-[#d10f0f] ${bar}`} />
             </div>
           </div>
         ))}
@@ -89,14 +89,14 @@ function MonitorOverlay({ step }: { step: number }) {
         <div className="flex items-center gap-2">
           <span className="bg-brand-gradient size-5 shrink-0 rounded-full" />
           <span className="text-[12px] font-semibold text-white">You</span>
-          <span className="ml-auto rounded-md bg-[#a98cff]/20 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-[#cbbaff]">
+          <span className="ml-auto rounded-md bg-[#ff5c5c]/20 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-[#cbbaff]">
             00:12
           </span>
         </div>
         <p className="mt-2 text-[12px] leading-[1.45] text-white/80">
           Warmer grade on this shot, and hold it a beat longer?
         </p>
-        <div className="mt-2.5 flex items-center gap-1.5 text-[10.5px] font-semibold text-[#cdb8ff]">
+        <div className="mt-2.5 flex items-center gap-1.5 text-[10.5px] font-semibold text-white/80">
           <svg viewBox="0 0 16 16" className="size-3" aria-hidden>
             <path d="M3.5 8.5l3 3 6-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -269,11 +269,11 @@ export function ProcessTimeline({ steps }: { steps: Step[] }) {
           <div key={active} className="animate-fade-up relative mt-5 flex flex-1 flex-col">
             <span
               aria-hidden
-              className="font-display text-[88px] leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.22)] sm:text-[110px]"
+              className="font-display text-[70px] leading-[0.8] text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.22)] sm:text-[88px]"
             >
               {String(active + 1).padStart(2, "0")}
             </span>
-            <h3 className="font-display mt-3 text-[40px] leading-none text-white uppercase sm:text-[46px]">
+            <h3 className="font-display mt-3 text-[32px] leading-none text-white sm:text-[37px]">
               {step.title}
             </h3>
             <span
