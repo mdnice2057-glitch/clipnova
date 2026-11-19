@@ -1,0 +1,31 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="55.9642" height="62" viewBox="0 0 55.9642 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon/tiktok" filter="url(#filter0_di_0_285)">
+<g clip-path="url(#clip0_0_285)">
+<path id="Vector" d="M28.9892 4.03833C31.5001 4 33.9917 4.01917 36.4834 4C36.6367 6.9325 37.6909 9.9225 39.8376 11.9925C41.9842 14.12 45.0126 15.0975 47.9642 15.4233V23.1475C45.2042 23.0517 42.4251 22.4767 39.9142 21.2883C38.8217 20.79 37.8059 20.1575 36.8092 19.5058C36.7901 25.1025 36.8284 30.6992 36.7709 36.2767C36.6176 38.96 35.7359 41.6242 34.1834 43.8283C31.6726 47.5083 27.3217 49.9042 22.8559 49.9808C20.1151 50.1342 17.3742 49.3867 15.0359 48.0067C11.1642 45.7258 8.44256 41.5475 8.04006 37.0625C8.00173 36.1042 7.98256 35.1458 8.02089 34.2067C8.36589 30.565 10.1676 27.0767 12.9659 24.7C16.1476 21.94 20.5942 20.6175 24.7534 21.4033C24.7917 24.24 24.6767 27.0767 24.6767 29.9133C22.7792 29.3 20.5559 29.4725 18.8884 30.6225C17.6809 31.4083 16.7609 32.6158 16.2817 33.9767C15.8792 34.9542 15.9942 36.0275 16.0134 37.0625C16.4734 40.2058 19.5017 42.8508 22.7217 42.5633C24.8684 42.5442 26.9192 41.2983 28.0309 39.4775C28.3951 38.845 28.7976 38.1933 28.8167 37.4458C29.0084 34.015 28.9317 30.6033 28.9509 27.1725C28.9701 19.4483 28.9317 11.7433 28.9892 4.03833Z" fill="url(#paint0_linear_0_285)"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_di_0_285" x="-3.01702" y="0" width="62" height="62" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="4"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.168627 0 0 0 0 0.176471 0 0 0 0 0.619608 0 0 0 0.4 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_285"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_285" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="-1" dy="-2"/>
+<feGaussianBlur stdDeviation="1.5"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.72549 0 0 0 0 0.658824 0 0 0 0 1 0 0 0 0.9 0"/>
+<feBlend mode="normal" in2="shape" result="effect2_innerShadow_0_285"/>
+</filter>
+<linearGradient id="paint0_linear_0_285" x1="27.9821" y1="4" x2="27.9821" y2="50.0006" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="#DCD3FF" stop-opacity="0.92"/>
+</linearGradient>
+<clipPath id="clip0_0_285">
+<rect width="46" height="46" fill="white" transform="translate(4.98298 4)"/>
+</clipPath>
+</defs>
+</svg>

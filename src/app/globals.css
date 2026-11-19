@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* Clipnova design tokens (from Figma variables) */
+@theme inline {
+  --color-base: #0a0a0b;
+  --color-surface: #141414;
+  --color-elevated: #1c1c1c;
+  --color-subtle: #2a2a2a;
+  --color-muted: #b6b6b6;
+  --color-brand-pink: #e46eff;
+  --color-brand-blue: #0091ff;
+  --color-brand-mint: #b4daab;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bebas), "Bebas Neue", Impact, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-base);
+  color: #fff;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@utility bg-brand-gradient {
+  background-image: linear-gradient(
+    90deg,
+    #e46eff 0%,
+    #0091ff 53%,
+    #b4daab 100%
+  );
+}
+
+/* Silver gradient display text used by every big Bebas heading */
+@utility text-chrome {
+  background-image: linear-gradient(180deg, #fff 0%, #fff 40%, #c9c9c9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--r, 0deg));
+  }
+  50% {
+    transform: translateY(-12px) rotate(var(--r, 0deg));
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.animate-marquee {
+  animation: marquee 50s linear infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float,
+  .animate-pulse-dot {
+    animation: none;
+  }
+}
+
+/* Keep anchored sections clear of the fixed navbar */
+section[id] {
+  scroll-margin-top: 100px;
+}

@@ -1,0 +1,183 @@
+import { Button } from "@/components/ui/Button";
+import { Stars } from "@/components/ui/Stars";
+import { Tag } from "@/components/ui/Tag";
+import { Navbar } from "./Navbar";
+import { ReelCard, type Reel } from "./hero/ReelCard";
+
+const reels: Reel[] = [
+  { image: "/assets/hero/reel-0.png", avatar: "/assets/hero/avatar-0.png", handle: "nadia.arif", caption: "Our mehendi film — delivered in 6 days ✨", stats: ["12K", "640", "210", "3.1K"] },
+  { image: "/assets/hero/reel-1.png", avatar: "/assets/hero/avatar-1.png", handle: "sara.travels", caption: "Sent raw clips, got this vlog back in 72 hrs 🌊", stats: ["837K", "25K", "15.5K", "100.5K"] },
+  { image: "/assets/hero/reel-2.jpg", avatar: "/assets/hero/avatar-2.png", handle: "rafi.weds", caption: "Clipnova edited our wedding film. We cried.", stats: ["105K", "12.5K", "5.2K", "24K"] },
+  { image: "/assets/hero/reel-3.png", avatar: "/assets/hero/avatar-3.png", handle: "brewhouse.co", caption: "Café launch reel — ordered Monday, live Wednesday ☕", stats: ["5,948", "46", "35", "10.6K"] },
+  { image: "/assets/hero/reel-4.png", avatar: "/assets/hero/avatar-4.png", handle: "marcus.travels", caption: "Sajek Valley vlog — edited & graded by Clipnova", stats: ["5,242", "102", "350", "10.6K"] },
+  { image: "/assets/hero/reel-5.png", avatar: "/assets/hero/avatar-5.png", handle: "mim.creates", caption: "I just film. They deliver 12 reels a month.", stats: ["937K", "25K", "15.5K", "100.5K"] },
+  { image: "/assets/hero/reel-6.png", avatar: "/assets/hero/avatar-6.png", handle: "dhaka.vlogs", caption: "Golden hour, color graded by Clipnova", stats: ["2,941", "88", "21", "4.2K"] },
+];
+
+const clients = [0, 1, 2, 3, 4].map((i) => `/assets/hero/client-${i}.png`);
+
+const tileBg =
+  "linear-gradient(141.52deg, rgb(242,180,255) 14.286%, rgb(169,140,255) 37.143%, rgb(111,135,255) 62.857%, rgb(84,104,238) 85.714%)";
+
+/** Glossy app-icon tile floating around the hero headline (Figma: Float Tile / *). */
+function FloatTile({
+  size,
+  radius,
+  rotate,
+  icon,
+  iconSize,
+  iconInset,
+  className = "",
+  delay = "0s",
+}: {
+  size: number;
+  radius: number;
+  rotate: number;
+  icon: string;
+  iconSize: number;
+  iconInset: string;
+  className?: string;
+  delay?: string;
+}) {
+  return (
+    <div
+      className={`animate-float flex items-center justify-center overflow-hidden border-[1.5px] border-white/40 shadow-[0_18px_40px_-6px_rgba(111,75,255,0.45)] ${className}`}
+      style={
+        {
+          width: size,
+          height: size,
+          borderRadius: radius,
+          backgroundImage: tileBg,
+          "--r": `${rotate}deg`,
+          transform: `rotate(${rotate}deg)`,
+          animationDelay: delay,
+        } as React.CSSProperties
+      }
+    >
+      <div className="relative" style={{ width: iconSize, height: iconSize }}>
+        <div className="absolute" style={{ inset: iconInset }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={icon} alt="" className="block size-full max-w-none" />
+        </div>
+      </div>
+      <div
+        className="pointer-events-none absolute inset-0 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.35),inset_4px_8px_14px_0_rgba(42,47,168,0.35),inset_-3px_-5px_10px_0_rgba(255,255,255,0.6)]"
+        style={{ borderRadius: "inherit" }}
+      />
+    </div>
+  );
+}
+
+/** Figma: Hero (2:30) — navbar, headline, CTAs, social proof and reel showcase. */
+export function Hero() {
+  return (
+    <section id="top" className="relative flex flex-col items-center pt-6 pb-16">
+      {/* Background: color wash → fluted glass → sheen → fade to base → edge vignette */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-[1409px]">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, rgb(30,63,134) 0%, rgb(47,99,198) 22%, rgb(79,103,201) 50%, rgb(148,121,207) 75%, rgb(141,115,196) 90%, rgb(74,61,110) 100%)",
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, rgba(255,255,255,0.07) 0, rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.12) 12%, rgba(0,0,0,0.02) 55%, rgba(255,255,255,0.05) 90%, rgba(255,255,255,0.13) 100%)",
+              backgroundSize: "96px 100%",
+              backgroundPosition: "center top",
+            }}
+          />
+          <div className="absolute inset-x-0 top-0 h-[260px] bg-gradient-to-b from-white/10 to-transparent" />
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "linear-gradient(180deg, rgba(10,10,11,0.05) 0%, rgba(10,10,11,0.18) 22%, rgba(10,10,11,0.62) 42%, rgba(10,10,11,0.88) 58%, rgba(10,10,11,0.94) 75%, rgb(10,10,11) 100%)",
+            }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "linear-gradient(90deg, rgba(10,10,11,0.55) 0%, rgba(10,10,11,0) 12%, rgba(10,10,11,0) 88%, rgba(10,10,11,0.55) 100%)",
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Floating platform tiles, positioned on the 1440 design canvas */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 mx-auto hidden h-[600px] max-w-[1440px] lg:block">
+        <div className="absolute top-[239.47px] left-[76px] flex size-[139.955px] items-center justify-center">
+          <FloatTile size={118} radius={30.68} rotate={-12} icon="/assets/hero/icon-shorts.svg" iconSize={58} iconInset="0 0 -12.34% 0" className="relative" />
+        </div>
+        <div className="absolute top-[397.5px] left-[1185.33px] flex size-[128.638px] items-center justify-center max-xl:left-auto max-xl:right-[40px]">
+          <FloatTile size={104} radius={27.04} rotate={16} icon="/assets/hero/icon-tiktok.svg" iconSize={46} iconInset="-8.7% -10.83% -26.09% -10.83%" className="relative" delay="-2s" />
+        </div>
+        <div className="absolute top-[166px] left-[1147.5px] flex size-[83.409px] items-center justify-center max-xl:left-auto max-xl:right-[120px]">
+          <FloatTile size={72} radius={20} rotate={10} icon="/assets/hero/icon-insta.svg" iconSize={32} iconInset="-5.42% -17.92% -30.42% -17.92%" className="relative opacity-85 blur-[2.5px]" delay="-4s" />
+        </div>
+      </div>
+
+      <Navbar />
+      <div aria-hidden className="h-[68px] shrink-0" />
+
+      {/* Hero content */}
+      <div className="relative flex flex-col items-center gap-7 px-4 pt-16 pb-20 text-center md:pt-24">
+        <Tag>Now accepting new orders — first draft in 48 hours</Tag>
+
+        <h1 className="text-chrome font-display text-[64px] leading-[0.98] uppercase drop-shadow-[0_8px_30px_rgba(0,0,0,0.35)] sm:text-[96px] lg:text-[143px]">
+          Every frame,
+          <br />
+          perfectly crafted
+        </h1>
+
+        <p className="max-w-[640px] text-lg leading-[1.55] text-muted md:text-xl">
+          Place an order, upload your raw footage, and our professional editors deliver a polished,
+          ready-to-publish video — SaaS promos, wedding films, vlogs, reels and post production.
+        </p>
+
+        <div className="flex flex-wrap items-start justify-center gap-3.5 pt-2">
+          <Button href="#order">Place an order</Button>
+          <Button variant="secondary" href="#work">
+            See our work
+          </Button>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+          <div className="flex items-start">
+            {clients.map((src, i) => (
+              <div key={src} className={`relative size-[38px] shrink-0 ${i < clients.length - 1 ? "-mr-2.5" : ""}`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={src} alt="" width={44} height={44} className="absolute -inset-[7.89%] block size-[115.78%] max-w-none" />
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col items-start gap-1">
+            <Stars />
+            <p className="text-sm font-medium text-muted">
+              4.9/5 from 2,148 clients · 12,480 videos delivered
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Showcase marquee */}
+      <div className="relative h-[470px] w-full overflow-hidden">
+        <div className="animate-marquee absolute top-5 left-[46px] flex w-max hover:[animation-play-state:paused]">
+          {[...reels, ...reels].map((reel, i) => (
+            <div key={`${reel.handle}-${i}`} className="pr-[42px]">
+              <ReelCard reel={reel} />
+            </div>
+          ))}
+        </div>
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[rgba(10,10,10,0.18)]" />
+        <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-[120px] bg-gradient-to-r from-[rgba(10,10,10,0.96)] via-[rgba(10,10,10,0.6)] via-45% to-transparent md:w-[340px]" />
+        <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-[120px] bg-gradient-to-l from-[rgba(10,10,10,0.96)] via-[rgba(10,10,10,0.6)] via-45% to-transparent md:w-[340px]" />
+      </div>
+    </section>
+  );
+}
