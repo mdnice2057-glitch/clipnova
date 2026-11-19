@@ -20,7 +20,7 @@ function StarPicker({
     <div
       role="radiogroup"
       aria-label="Your rating"
-      className="flex items-start gap-1"
+      className="flex items-center gap-1.5"
       onMouseLeave={() => setHover(0)}
     >
       {[1, 2, 3, 4, 5].map((n) => (
@@ -32,7 +32,7 @@ function StarPicker({
           aria-label={`${n} star${n > 1 ? "s" : ""} – ${ratingLabels[n - 1]}`}
           onClick={() => onChange(n)}
           onMouseEnter={() => setHover(n)}
-          className="size-[18px] shrink-0 transition-transform hover:scale-115 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink"
+          className="size-[22px] shrink-0 rounded-sm transition-transform duration-200 hover:scale-115 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -42,12 +42,17 @@ function StarPicker({
                 : "/assets/reviews/picker-star-empty.svg"
             }
             alt=""
-            width={18}
-            height={18}
-            className="size-[18px]"
+            width={22}
+            height={22}
+            className={`size-[22px] transition-[filter] duration-200 ${
+              n <= shown ? "drop-shadow-[0_0_6px_rgba(242,185,255,0.55)]" : ""
+            }`}
           />
         </button>
       ))}
+      <span aria-hidden className="ml-1.5 w-[64px] text-xs font-semibold text-[#f2b9ff]">
+        {shown ? ratingLabels[shown - 1] : ""}
+      </span>
     </div>
   );
 }
@@ -77,9 +82,19 @@ export function FeedbackForm() {
 
   if (submitted) {
     return (
-      <div className="flex w-full flex-col items-start gap-3" role="status" aria-live="polite">
+      <div className="flex w-full flex-col items-start gap-4" role="status" aria-live="polite">
+        <span aria-hidden className="icon-tile size-12">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/assets/reviews/shield-check.svg"
+            alt=""
+            width={22}
+            height={22}
+            className="size-[22px]"
+          />
+        </span>
         <h3 className="font-display text-[27px] leading-[normal] text-white uppercase">Thanks for your feedback!</h3>
-        <div className="flex items-center gap-1" aria-label={`${rating} out of 5 stars`}>
+        <div className="flex items-center gap-1.5" aria-label={`${rating} out of 5 stars`}>
           {[1, 2, 3, 4, 5].map((n) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -90,33 +105,42 @@ export function FeedbackForm() {
                   : "/assets/reviews/picker-star-empty.svg"
               }
               alt=""
-              width={18}
-              height={18}
-              className="size-[18px]"
+              width={20}
+              height={20}
+              className="size-5"
             />
           ))}
         </div>
-        <p className="text-sm leading-[1.5] text-muted">
+        <p className="max-w-[420px] text-sm leading-[1.6] text-muted">
           Your {rating}-star review was received. It will appear here once we match it to your
           completed order.
         </p>
         <button
           type="button"
           onClick={reset}
-          className="text-sm font-semibold text-[#f2b9ff] underline-offset-4 hover:underline"
+          className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[#f2b9ff] underline-offset-4 hover:underline"
         >
           Write another review
+          <span
+            aria-hidden
+            className="transition-transform duration-200 motion-safe:group-hover:translate-x-1"
+          >
+            →
+          </span>
         </button>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="flex w-full flex-col items-start gap-3">
-      <div className="flex w-full flex-wrap items-center justify-between gap-3">
-        <h3 className="font-display text-[27px] leading-[normal] text-white uppercase">Share your feedback</h3>
-        <StarPicker value={rating} onChange={setRating} />
+    <form onSubmit={handleSubmit} noValidate className="flex w-full flex-col items-start gap-4">
+      <div className="flex w-full flex-col items-start gap-1.5">
+        <h3 className="font-display text-[30px] leading-none text-white uppercase">Share your feedback</h3>
+        <p className="text-sm leading-[1.5] text-muted">
+          Ordered from us? Rate your experience.
+        </p>
       </div>
+      <StarPicker value={rating} onChange={setRating} />
 
       <label htmlFor="review-message" className="sr-only">
         Your review
@@ -131,7 +155,7 @@ export function FeedbackForm() {
         aria-invalid={!!error}
         aria-describedby={error ? "review-error" : undefined}
         placeholder="How was your order? Tell other clients about the quality, speed and communication…"
-        className="h-[76px] w-full resize-none rounded-[14px] border border-subtle bg-elevated px-3.5 py-3 text-sm leading-[1.5] text-white outline-none transition-colors placeholder:text-muted focus:border-brand-pink/70"
+        className="h-[104px] w-full resize-none rounded-[14px] border border-white/10 bg-white/[0.03] px-4 py-3.5 text-sm leading-[1.55] text-white shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)] outline-none transition-[border-color,background-color,box-shadow] duration-200 placeholder:text-white/35 hover:border-white/20 focus:border-brand-pink/70 focus:bg-white/[0.05] focus:shadow-[0_0_0_4px_rgba(228,110,255,0.12)] aria-[invalid=true]:border-[#ff8a8a]/60"
       />
       {error && (
         <p id="review-error" className="-mt-1 text-xs text-[#ff8a8a]">
@@ -139,7 +163,7 @@ export function FeedbackForm() {
         </p>
       )}
 
-      <div className="flex w-full flex-wrap items-center justify-between gap-3">
+      <div className="mt-auto flex w-full flex-wrap items-center justify-between gap-3">
         <p className="flex items-center gap-1.5 text-xs leading-[normal] text-muted">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img

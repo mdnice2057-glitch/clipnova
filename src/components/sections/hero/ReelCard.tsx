@@ -19,16 +19,28 @@ const actions = [
 /** Figma: Reel Card (35:996) — short-form preview with TikTok-style action rail. */
 export function ReelCard({ reel }: { reel: Reel }) {
   return (
-    <article className="group relative h-[338px] w-[190px] shrink-0 sm:h-[420px] sm:w-[236px] overflow-hidden rounded-[14px] border border-white/[0.08]">
+    <article className="card card-hover group relative h-[338px] w-[190px] shrink-0 overflow-hidden rounded-[18px] sm:h-[420px] sm:w-[236px]">
       <Image
         src={reel.image}
         alt=""
         fill
         sizes="(max-width: 639px) 190px, 236px"
-        className="object-cover transition-transform duration-500 group-hover:scale-105"
+        className="object-cover transition-transform duration-700 group-hover:scale-105"
       />
-      <div className="absolute -inset-x-px -top-px h-[120px] bg-gradient-to-b from-black/35 to-transparent" />
-      <div className="absolute -inset-x-px -bottom-px h-[220px] bg-gradient-to-b from-transparent to-black/80" />
+      <div className="absolute -inset-x-px -top-px h-[120px] bg-gradient-to-b from-black/45 to-transparent" />
+      <div className="absolute -inset-x-px -bottom-px h-[220px] bg-gradient-to-b from-transparent to-black/85" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(228,110,255,0.28)] via-[rgba(0,145,255,0.08)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+      <div aria-hidden className="absolute inset-x-3 top-3 h-[2px] overflow-hidden rounded-full bg-white/25">
+        <div className="bg-brand-gradient h-full w-1/4 rounded-full transition-[width] duration-[2400ms] ease-linear group-hover:w-full motion-reduce:transition-none" />
+      </div>
+
+      <div aria-hidden className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <span className="flex size-14 scale-75 items-center justify-center rounded-full bg-white/15 opacity-0 shadow-[0_12px_40px_-6px_rgba(228,110,255,0.7)] ring-1 ring-white/40 backdrop-blur-md transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/assets/feed/icon-play.svg" alt="" width={26} height={26} className="size-[26px] translate-x-px" />
+        </span>
+      </div>
 
       <div className="absolute right-[11.5px] bottom-10 flex flex-col items-center gap-3">
         {actions.map((a, i) => (

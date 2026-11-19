@@ -49,8 +49,12 @@ const socials = [
 /** Figma: Contact (29:956) — header, contact channels and message form. */
 export function Contact() {
   return (
-    <section id="contact" className="scroll-mt-20 pt-20 pb-20 leading-[normal] md:pt-[120px]">
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-12 px-4 md:px-6 xl:px-0">
+    <section
+      id="contact"
+      className="relative scroll-mt-20 overflow-x-clip pt-20 pb-20 leading-[normal] md:pt-[120px]"
+    >
+      <div aria-hidden className="bg-grid pointer-events-none absolute inset-x-0 top-0 h-[640px]" />
+      <div className="relative mx-auto flex w-full max-w-[1200px] flex-col items-center gap-12 px-4 md:px-6 xl:px-0">
         <SectionHeader
           eyebrow="Contact"
           title="Let’s talk about your project"
@@ -67,11 +71,26 @@ export function Contact() {
                   <a
                     href={c.href}
                     {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="group flex h-full flex-col items-start gap-3.5 rounded-[22px] border border-subtle bg-surface p-6 transition-colors hover:border-[rgba(242,185,255,0.35)] hover:bg-[#171717]"
+                    className="group card card-hover flex h-full flex-col items-start gap-3.5 rounded-[22px] p-6 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink"
                   >
-                    <span className="flex size-12 items-center justify-center rounded-[14px] border border-[rgba(242,185,255,0.25)] bg-[rgba(242,185,255,0.1)]">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={c.icon} alt="" width={22} height={22} className="size-[22px]" />
+                    <span className="flex w-full items-start justify-between gap-3">
+                      <span className="icon-tile size-12 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:-rotate-3">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={c.icon} alt="" width={22} height={22} className="size-[22px]" />
+                      </span>
+                      <span
+                        aria-hidden
+                        className="flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] opacity-60 transition-all duration-300 group-hover:border-brand-pink/40 group-hover:opacity-100"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src="/assets/contact/arrow-pink.svg"
+                          alt=""
+                          width={14}
+                          height={14}
+                          className="size-3.5 -rotate-45 transition-transform duration-300 group-hover:rotate-0"
+                        />
+                      </span>
                     </span>
                     <h3 className="font-display text-[25px] leading-[normal] text-white uppercase">
                       {c.title}
@@ -80,7 +99,7 @@ export function Contact() {
                       {c.value}
                     </span>
                     <span className="text-[13px] text-muted">{c.note}</span>
-                    <span className="flex items-center gap-1.5 pt-1 text-[14px] font-semibold text-[#f2b9ff]">
+                    <span className="mt-auto flex items-center gap-1.5 pt-2 text-[14px] font-semibold text-[#f2b9ff]">
                       {c.action}
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
@@ -88,7 +107,7 @@ export function Contact() {
                         alt=""
                         width={14}
                         height={14}
-                        className="size-3.5 transition-transform group-hover:translate-x-0.5"
+                        className="size-3.5 transition-transform duration-300 group-hover:translate-x-1"
                       />
                     </span>
                   </a>
@@ -97,15 +116,18 @@ export function Contact() {
             </ul>
 
             {/* Social (29:1029) */}
-            <div className="flex w-full flex-wrap items-center justify-between gap-3 rounded-[22px] border border-subtle bg-surface py-4 pr-4 pl-6">
-              <p className="text-[15px] font-semibold text-white">Follow our latest work</p>
+            <div className="card flex w-full flex-wrap items-center justify-between gap-3 rounded-[22px] py-4 pr-4 pl-6">
+              <p className="flex items-center gap-2.5 text-[15px] font-semibold text-white">
+                <span aria-hidden className="bg-brand-gradient size-1.5 rounded-full shadow-[0_0_10px_2px_rgba(228,110,255,0.5)]" />
+                Follow our latest work
+              </p>
               <ul className="flex items-center gap-2">
                 {socials.map((s) => (
                   <li key={s.label}>
                     <a
                       href="#"
                       aria-label={s.label}
-                      className="flex size-10 items-center justify-center rounded-xl border border-subtle bg-elevated transition-colors hover:border-white/25 hover:bg-[#242424]"
+                      className="flex size-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] transition-[transform,border-color,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-brand-pink/50 hover:bg-white/[0.07] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink"
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={s.icon} alt="" width={18} height={18} className="size-[18px]" />

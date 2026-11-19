@@ -17,10 +17,10 @@ export function ChoiceChip({
       type="button"
       aria-pressed={selected}
       onClick={onClick}
-      className={`inline-flex shrink-0 items-center gap-2 rounded-full py-2.5 pr-[18px] pl-4 text-sm leading-[1.21] font-semibold whitespace-nowrap text-white transition-colors ${
+      className={`inline-flex shrink-0 items-center gap-2 rounded-full py-2.5 pr-[18px] pl-4 text-sm leading-[1.21] font-semibold whitespace-nowrap text-white transition-[background-color,border-color,color,box-shadow] duration-200 ${
         selected
-          ? "bg-brand-gradient drop-shadow-[0_6px_10px_rgba(228,110,255,0.3)]"
-          : "border border-subtle bg-elevated hover:border-white/25"
+          ? "bg-brand-gradient shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5),0_8px_20px_-6px_rgba(228,110,255,0.5)]"
+          : "border border-white/10 bg-white/[0.04] text-white/80 hover:border-white/25 hover:bg-white/[0.08] hover:text-white"
       } ${className}`}
     >
       {selected && (

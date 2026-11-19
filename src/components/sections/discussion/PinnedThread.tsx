@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { useRef, useState, type FormEvent } from "react";
-import { A, pinnedSurface } from "./data";
+import { A } from "./data";
 
 type Reaction = { emoji: string; count: number; active: boolean };
 
@@ -51,13 +51,18 @@ export function PinnedThread() {
   };
 
   return (
-    <article
-      className="flex flex-col items-start gap-4 overflow-hidden rounded-[22px] border-[1.2px] border-transparent px-4 py-[22px] sm:px-6"
-      style={pinnedSurface}
-    >
+    <article className="card card-lit flex flex-col items-start gap-4 overflow-hidden px-4 py-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_30px_70px_-30px_rgba(228,110,255,0.35)] sm:px-7 sm:py-7">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(136deg,rgba(228,110,255,0.14)_0%,rgba(0,145,255,0.04)_30%,transparent_55%)]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-28 -left-20 -z-10 size-[320px] rounded-full bg-[radial-gradient(circle,rgba(228,110,255,0.22),transparent_70%)] blur-2xl"
+      />
       {/* Pinned label */}
       <div className="flex w-full items-center gap-2">
-        <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-brand-gradient py-[5px] pr-3 pl-2.5">
+        <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-brand-gradient py-[5px] pr-3 pl-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_8px_20px_-6px_rgba(228,110,255,0.6)]">
           <img
             src={`${A}/icon-pin.svg`}
             alt=""
@@ -70,7 +75,7 @@ export function PinnedThread() {
           </span>
         </span>
         <span className="h-px min-w-px flex-1" />
-        <span className="text-[12px] whitespace-nowrap text-[#8e8e8e]">
+        <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[12px] whitespace-nowrap text-muted">
           1,284 views
         </span>
       </div>
@@ -82,14 +87,14 @@ export function PinnedThread() {
           alt=""
           width={36}
           height={36}
-          className="size-9 shrink-0 rounded-full"
+          className="size-9 shrink-0 rounded-full ring-2 ring-white/10"
         />
         <div className="flex flex-col items-start gap-px">
           <div className="flex items-center gap-2">
             <span className="text-[15px] font-semibold whitespace-nowrap text-white">
               Daniel Okafor
             </span>
-            <span className="rounded-full border border-subtle bg-elevated px-2.5 py-1 text-[11px] font-medium text-muted">
+            <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium text-muted">
               Client
             </span>
           </div>
@@ -113,24 +118,24 @@ export function PinnedThread() {
         <button
           type="button"
           aria-label="Play test_clip.mp4"
-          className="group relative h-[124px] w-full shrink-0 overflow-hidden rounded-[14px] sm:w-[220px]"
+          className="group relative h-[136px] w-full shrink-0 overflow-hidden rounded-2xl shadow-[0_16px_36px_-16px_rgba(0,0,0,0.8)] ring-1 ring-white/12 transition-shadow duration-300 hover:ring-[rgba(242,185,255,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink sm:w-[232px]"
         >
           <img
             src={`${A}/attachment-thumb.jpg`}
             alt="Test clip preview: SaaS screen recording"
-            className="absolute inset-0 size-full max-w-none rounded-[14px] object-cover transition-transform duration-300 group-hover:scale-105"
+            className="absolute inset-0 size-full max-w-none object-cover transition-transform duration-700 motion-safe:group-hover:scale-105"
           />
-          <span className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/75" />
-          <span className="absolute top-[34px] left-1/2 flex size-9 -translate-x-1/2 items-center justify-center rounded-full bg-white/20 backdrop-blur-[5px] transition-colors group-hover:bg-white/30">
+          <span className="absolute inset-0 bg-gradient-to-b from-black/5 via-black/25 to-black/80" />
+          <span className="absolute top-1/2 left-1/2 flex size-11 -translate-x-1/2 -translate-y-[60%] items-center justify-center rounded-full border border-white/30 bg-white/15 shadow-[0_8px_24px_-6px_rgba(228,110,255,0.6)] backdrop-blur-md transition-[background-color,transform] duration-300 group-hover:bg-white/25 motion-safe:group-hover:scale-110">
             <img
               src={`${A}/icon-play.svg`}
               alt=""
               width={14}
               height={14}
-              className="size-3.5"
+              className="size-3.5 translate-x-px"
             />
           </span>
-          <span className="absolute top-[102px] left-2.5 text-[11px] font-medium whitespace-nowrap text-white">
+          <span className="absolute bottom-2.5 left-3 text-[11px] font-medium whitespace-nowrap text-white">
             test_clip.mp4 · 0:48
           </span>
         </button>
@@ -145,10 +150,10 @@ export function PinnedThread() {
             aria-pressed={r.active}
             aria-label={`React ${r.emoji}`}
             onClick={() => toggle(r.emoji)}
-            className={`flex shrink-0 items-center gap-1.5 rounded-full border py-[5px] pr-3 pl-2.5 whitespace-nowrap transition-colors ${
+            className={`flex shrink-0 items-center gap-1.5 rounded-full border py-[5px] pr-3 pl-2.5 whitespace-nowrap transition-[background-color,border-color,transform] duration-200 motion-safe:active:scale-95 ${
               r.active
-                ? "border-[rgba(242,185,255,0.4)] bg-[rgba(242,185,255,0.14)]"
-                : "border-subtle bg-elevated hover:border-white/25"
+                ? "border-[rgba(242,185,255,0.45)] bg-[rgba(242,185,255,0.14)] shadow-[0_0_16px_-6px_rgba(228,110,255,0.7)]"
+                : "border-white/10 bg-white/[0.04] hover:border-white/25 hover:bg-white/[0.07]"
             }`}
           >
             <span className="text-[13px] text-white">{r.emoji}</span>
@@ -163,7 +168,7 @@ export function PinnedThread() {
           type="button"
           aria-label="Add reaction"
           onClick={addReaction}
-          className="flex size-[30px] shrink-0 items-center justify-center rounded-full border border-subtle bg-elevated transition-colors hover:border-white/25"
+          className="flex size-[30px] shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] transition-colors hover:border-white/25 hover:bg-white/[0.07]"
         >
           <img
             src={`${A}/icon-emoji-add.svg`}
@@ -196,18 +201,21 @@ export function PinnedThread() {
       </div>
 
       {/* Editor reply */}
-      <div className="flex w-full items-start gap-3 rounded-2xl border border-[rgba(242,185,255,0.25)] bg-[rgba(242,185,255,0.06)] py-3.5 pr-[18px] pl-4">
-        <img
-          src={`${A}/avatar-rafi-reply.png`}
-          alt=""
-          width={32}
-          height={32}
-          className="size-8 shrink-0 rounded-full"
-        />
+      <div className="relative flex w-full items-start gap-3 overflow-hidden rounded-2xl border border-[rgba(242,185,255,0.22)] bg-[linear-gradient(100deg,rgba(242,185,255,0.09),rgba(0,145,255,0.04)_60%,rgba(255,255,255,0.01))] py-4 pr-[18px] pl-5">
+        <span aria-hidden className="bg-brand-gradient absolute inset-y-0 left-0 w-[3px]" />
+        <span className="bg-brand-gradient shrink-0 rounded-full p-[1.5px]">
+          <img
+            src={`${A}/avatar-rafi-reply.png`}
+            alt=""
+            width={32}
+            height={32}
+            className="block size-8 rounded-full border-2 border-[#151517]"
+          />
+        </span>
         <div className="flex min-w-0 flex-1 flex-col items-start gap-1.5">
           <div className="flex items-center gap-2">
             <span className="text-[14px] font-semibold text-white">Rafi</span>
-            <span className="rounded-full bg-brand-gradient px-2.5 py-1 text-[10px] font-bold text-white">
+            <span className="rounded-full bg-brand-gradient px-2.5 py-1 text-[10px] font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]">
               Editor
             </span>
             <span className="text-[12px] whitespace-nowrap text-[#8e8e8e]">
@@ -243,7 +251,7 @@ export function PinnedThread() {
       {replies.map((text, i) => (
         <div
           key={i}
-          className="flex w-full items-start gap-3 rounded-2xl border border-subtle bg-white/[0.02] py-3.5 pr-[18px] pl-4"
+          className="flex w-full items-start gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.03] py-3.5 pr-[18px] pl-4"
         >
           <img
             src={`${A}/avatar-me.png`}
@@ -255,7 +263,7 @@ export function PinnedThread() {
           <div className="flex min-w-0 flex-1 flex-col items-start gap-1.5">
             <div className="flex items-center gap-2">
               <span className="text-[14px] font-semibold text-white">You</span>
-              <span className="rounded-full border border-subtle bg-elevated px-2.5 py-1 text-[10px] font-medium text-muted">
+              <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[10px] font-medium text-muted">
                 Client
               </span>
               <span className="text-[12px] whitespace-nowrap text-[#8e8e8e]">
@@ -272,7 +280,7 @@ export function PinnedThread() {
       {/* Reply input */}
       <form
         onSubmit={submit}
-        className="flex w-full items-center gap-2.5 rounded-full border border-subtle bg-[#0a0a0a] p-1.5 transition-colors focus-within:border-white/25"
+        className="flex w-full items-center gap-2.5 rounded-full border border-white/10 bg-black/40 p-1.5 shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)] transition-[border-color,box-shadow] duration-200 hover:border-white/20 focus-within:border-brand-pink/70 focus-within:shadow-[0_0_0_4px_rgba(228,110,255,0.12)]"
       >
         <img
           src={`${A}/avatar-me.png`}
@@ -291,13 +299,13 @@ export function PinnedThread() {
           onChange={(e) => setDraft(e.target.value)}
           placeholder="Write a reply…"
           autoComplete="off"
-          className="min-w-0 flex-1 bg-transparent text-[14px] text-white outline-none placeholder:text-[#8e8e8e]"
+          className="min-w-0 flex-1 bg-transparent text-[14px] text-white outline-none placeholder:text-white/40"
         />
         <button
           type="submit"
           aria-label="Send reply"
           disabled={!draft.trim()}
-          className="flex size-[34px] shrink-0 items-center justify-center rounded-full bg-brand-gradient transition-[filter,transform] hover:brightness-110 active:scale-95 disabled:cursor-default"
+          className="flex size-[34px] shrink-0 items-center justify-center rounded-full bg-brand-gradient shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_6px_16px_-4px_rgba(228,110,255,0.6)] transition-[filter,transform,opacity] hover:brightness-110 active:scale-95 disabled:cursor-default disabled:opacity-60 disabled:shadow-none"
         >
           <img
             src={`${A}/icon-send.svg`}

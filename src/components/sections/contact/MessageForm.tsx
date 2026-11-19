@@ -64,7 +64,8 @@ export function MessageForm() {
   }
 
   const card =
-    "flex w-full min-w-0 flex-col gap-5 rounded-[28px] border border-[rgba(228,110,255,0.22)] bg-surface p-5 sm:p-8 xl:w-[584px] xl:shrink-0";
+    "card flex w-full min-w-0 flex-col gap-5 rounded-[28px] p-5 sm:p-8 xl:w-[584px] xl:shrink-0";
+  const topLine = <span aria-hidden className="glow-line absolute inset-x-12 top-0 opacity-80" />;
 
   if (status === "done") {
     return (
@@ -74,7 +75,8 @@ export function MessageForm() {
         aria-live="polite"
         className={`${card} scroll-mt-24 items-center justify-center py-16 text-center`}
       >
-        <span className="bg-brand-gradient flex size-16 items-center justify-center rounded-full drop-shadow-[0_10px_18px_rgba(228,110,255,0.32)]">
+        {topLine}
+        <span className="bg-brand-gradient flex size-16 items-center justify-center rounded-full shadow-[0_0_0_8px_rgba(228,110,255,0.1),0_0_0_16px_rgba(228,110,255,0.05),0_14px_30px_-6px_rgba(228,110,255,0.55)]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/ui/chip-check.svg" alt="" width={14} height={14} className="size-7" />
         </span>
@@ -105,9 +107,15 @@ export function MessageForm() {
       aria-label="Send us a message"
       className={`${card} scroll-mt-24`}
     >
-      <h3 className="font-display text-[31px] leading-[normal] text-white uppercase">
-        Send us a message
-      </h3>
+      {topLine}
+      <div className="flex w-full flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-white/[0.07] pb-5">
+        <h3 className="font-display text-[34px] leading-[normal] text-white uppercase">
+          Send us a message
+        </h3>
+        <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[12px] font-medium text-muted">
+          Reply in ~15 min
+        </span>
+      </div>
 
       <div className="flex w-full flex-col gap-4 sm:flex-row">
         <Field id="contact-name" error={errors.name}>
@@ -145,7 +153,7 @@ export function MessageForm() {
         {status === "sending" ? "Sending…" : "Send message"}
       </Button>
 
-      <p className="flex items-center gap-1.5 text-[13px] text-muted">
+      <p className="flex items-center justify-center gap-1.5 text-[13px] text-muted">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/assets/contact/icon-lock.svg" alt="" width={13} height={13} className="size-[13px]" />
         We never share your details.

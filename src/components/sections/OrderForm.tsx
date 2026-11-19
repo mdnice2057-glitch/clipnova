@@ -16,7 +16,10 @@ const guarantees = [
 /** Figma: Order Form (24:595) — intro column + order card. */
 export function OrderForm() {
   return (
-    <section id="order" className="scroll-mt-20 pt-20 pb-10 leading-[normal] md:pt-[120px]">
+    <section
+      id="order"
+      className="relative scroll-mt-20 overflow-x-clip pt-20 pb-10 leading-[normal] md:pt-[120px]"
+    >
       <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-12 px-4 md:px-6 xl:flex-row xl:items-start xl:gap-14 xl:px-0">
         {/* Intro (24:597) */}
         <div className="flex w-full flex-col items-start gap-[22px] xl:w-[400px] xl:shrink-0">
@@ -31,32 +34,42 @@ export function OrderForm() {
             payment until you approve.
           </p>
 
-          <div className="flex flex-col items-start gap-4 pt-3">
-            <h3 className="text-[15px] font-semibold text-white">What happens next</h3>
-            <ol className="flex flex-col gap-4">
+          <div className="flex flex-col items-start gap-5 pt-4">
+            <h3 className="text-[13px] font-semibold tracking-[0.14em] text-white/70 uppercase">
+              What happens next
+            </h3>
+            <ol className="relative flex flex-col gap-6">
+              <span
+                aria-hidden
+                className="absolute top-6 bottom-6 left-[21.5px] w-px bg-linear-to-b from-brand-pink/80 via-brand-blue/60 to-brand-mint/50"
+              />
               {steps.map((s, i) => (
-                <li key={s.title} className="flex items-start gap-3.5">
-                  <span className="font-display flex size-9 shrink-0 items-center justify-center rounded-xl border border-[rgba(242,185,255,0.3)] bg-[rgba(242,185,255,0.1)] text-[18px] text-[#f2b9ff]">
-                    {i + 1}
+                <li key={s.title} className="group relative flex items-start gap-4">
+                  <span className="icon-tile relative size-11 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5">
+                    <span className="text-brand font-display text-[22px] leading-none">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                   </span>
-                  <span className="flex flex-col gap-0.5">
-                    <span className="text-[15px] font-semibold text-white">{s.title}</span>
-                    <span className="text-[14px] text-muted">{s.text}</span>
+                  <span className="flex flex-col gap-1 pt-0.5">
+                    <span className="text-[16px] font-semibold text-white">{s.title}</span>
+                    <span className="text-[14px] leading-[1.5] text-muted">{s.text}</span>
                   </span>
                 </li>
               ))}
             </ol>
           </div>
 
-          <ul className="flex w-full flex-wrap items-start gap-2.5 pt-2">
+          <ul className="flex w-full flex-wrap items-start gap-2.5 pt-3">
             {guarantees.map((g) => (
               <li
                 key={g.label}
-                className="flex items-center gap-2 rounded-full border border-subtle bg-surface py-2 pr-3.5 pl-3"
+                className="flex items-center gap-2 rounded-full border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.015))] py-1.5 pr-3.5 pl-1.5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_8px_20px_-12px_rgba(0,0,0,0.8)] backdrop-blur-md transition-colors duration-300 hover:border-brand-pink/40"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={g.icon} alt="" width={16} height={16} className="size-4" />
-                <span className="text-[13px] font-medium whitespace-nowrap text-muted">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(228,110,255,0.28),rgba(0,145,255,0.14))] ring-1 ring-brand-pink/30">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={g.icon} alt="" width={16} height={16} className="size-3.5" />
+                </span>
+                <span className="text-[13px] font-medium whitespace-nowrap text-white/85">
                   {g.label}
                 </span>
               </li>
@@ -65,7 +78,13 @@ export function OrderForm() {
         </div>
 
         {/* Order Card (24:638) */}
-        <OrderCard />
+        <div className="relative w-full min-w-0 xl:w-[744px] xl:shrink-0">
+          <div
+            aria-hidden
+            className="glow-blob top-[12%] left-1/2 h-[70%] w-[85%] -translate-x-1/2"
+          />
+          <OrderCard />
+        </div>
       </div>
     </section>
   );

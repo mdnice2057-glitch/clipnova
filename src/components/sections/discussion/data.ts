@@ -182,15 +182,3 @@ export const composerTypes: { kind: ThreadKind; label: string; topic: string }[]
 
 export const tabs = ["Latest", "Popular", "Unanswered", "My orders"] as const;
 export type Tab = (typeof tabs)[number];
-
-/** Gradient-stroked card surfaces (Pinned Thread 41:1091, Composer 41:1268). */
-const strokeGradient =
-  "linear-gradient(to bottom right, rgba(228,110,255,0.85) 0%, rgba(0,145,255,0.28) 36%, rgba(180,218,171,0.7) 73%) border-box";
-
-export const pinnedSurface = {
-  background: `linear-gradient(136.03deg, rgba(228,110,255,0.1) 0%, #141414 32.143%, #141414 71.429%) padding-box, linear-gradient(#0a0a0b, #0a0a0b) padding-box, ${strokeGradient}`,
-};
-
-export const composerSurface = {
-  background: `linear-gradient(180deg, rgba(228,110,255,0.1) 0%, #141414 50%, #141414 100%) padding-box, linear-gradient(#0a0a0b, #0a0a0b) padding-box, ${strokeGradient}`,
-};

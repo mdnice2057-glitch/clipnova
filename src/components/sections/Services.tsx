@@ -11,7 +11,7 @@ type Service = {
   image: string;
 };
 
-const featured: Service[] = [
+const services: Service[] = [
   {
     number: "01",
     title: "SaaS Promotional Videos",
@@ -32,9 +32,6 @@ const featured: Service[] = [
     price: "$349",
     image: "/assets/services/wedding-film.jpg",
   },
-];
-
-const more: Service[] = [
   {
     number: "03",
     title: "Cinematic Vlog Editing",
@@ -70,83 +67,178 @@ const more: Service[] = [
 const arrowGradient =
   "linear-gradient(124.8deg, rgb(228,110,255) 3.6%, rgb(0,145,255) 41.73%, rgb(180,218,171) 75.54%)";
 
+type Variant = "feature" | "default";
+
+const glass = "border border-white/[0.16] bg-black/40 backdrop-blur-[8px]";
+
+function NumberBadge({ number, large }: { number: string; large?: boolean }) {
+  return (
+    <span
+      className={`absolute top-4 left-4 z-[2] flex items-center gap-2 rounded-full py-1.5 pr-3.5 pl-2 sm:top-5 sm:left-5 ${glass}`}
+    >
+      <span aria-hidden="true" className="bg-brand-gradient size-1.5 rounded-full" />
+      <span
+        className={`text-brand font-display leading-none tracking-[0.04em] ${
+          large ? "text-[20px]" : "text-[17px]"
+        }`}
+      >
+        {number}
+      </span>
+    </span>
+  );
+}
+
+function PlayBadge({ large }: { large?: boolean }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`absolute top-4 right-4 z-[2] flex items-center justify-center rounded-full border border-white/30 bg-white/[0.14] shadow-[0_8px_30px_-6px_rgba(0,0,0,0.6)] backdrop-blur-[8px] transition-[transform,background-color] duration-300 group-hover:scale-110 group-hover:bg-white/25 motion-reduce:transition-none motion-reduce:group-hover:scale-100 sm:top-5 sm:right-5 ${
+        large ? "size-[64px] md:size-[72px]" : "size-[52px]"
+      }`}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/assets/services/play.svg" alt="" width={20} height={20} className={large ? "size-6" : "size-5"} />
+    </span>
+  );
+}
+
+function Tags({ tags, onImage }: { tags: Service["tags"]; onImage?: boolean }) {
+  return (
+    <ul className="flex w-full flex-wrap gap-2">
+      {tags.map((tag) => (
+        <li
+          key={tag}
+          className={`rounded-full px-3 py-1.5 text-[13px] leading-[1.21] font-medium whitespace-nowrap ${
+            onImage
+              ? "border border-white/[0.14] bg-white/[0.06] text-white/90 backdrop-blur-[8px]"
+              : "border border-white/[0.08] bg-white/[0.04] text-muted"
+          }`}
+        >
+          {tag}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function PriceRow({ service, large }: { service: Service; large?: boolean }) {
+  return (
+    <div className="mt-auto flex w-full items-end justify-between gap-4 border-t border-white/[0.08] pt-5">
+      <p className="flex flex-col gap-1 leading-none whitespace-nowrap">
+        <span className="text-xs font-medium tracking-[0.06em] text-muted uppercase">
+          {service.priceLabel}
+        </span>
+        <span
+          className={`text-brand font-display leading-none ${
+            large ? "text-[40px] md:text-[48px]" : "text-[34px]"
+          }`}
+        >
+          {service.price}
+        </span>
+      </p>
+      <a
+        href="#order"
+        aria-label={`Order ${service.title}`}
+        className={`relative flex shrink-0 items-center justify-center rounded-full shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5),0_10px_28px_-8px_rgba(228,110,255,0.6)] transition-[transform,filter,box-shadow] duration-300 hover:scale-105 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink motion-reduce:transition-none ${
+          large ? "size-14" : "size-12"
+        }`}
+        style={{ backgroundImage: arrowGradient }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/assets/services/arrow-up-right.svg"
+          alt=""
+          width={18}
+          height={18}
+          className={`transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none ${
+            large ? "size-5" : "size-[18px]"
+          }`}
+        />
+      </a>
+    </div>
+  );
+}
+
 /** Figma: Service Card (20:673) — Size=Large (20:648) / Size=Default (20:495). */
 function ServiceCard({
   service,
-  size,
+  variant,
+  className = "",
 }: {
   service: Service;
-  size: "large" | "default";
+  variant: Variant;
+  className?: string;
 }) {
-  return (
-    <li className="group flex flex-col overflow-hidden rounded-[28px] border border-subtle bg-surface transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-[#3a3a3a]">
-      <div
-        className={`relative w-full shrink-0 overflow-hidden ${
-          size === "large" ? "h-[240px] md:h-[320px]" : "h-[230px]"
-        }`}
+  if (variant === "feature") {
+    return (
+      <li
+        className={`group card card-hover flex min-h-[540px] flex-col justify-end overflow-hidden rounded-[28px] sm:min-h-[520px] lg:min-h-[560px] ${className}`}
       >
         <Image
           src={service.image}
           alt={service.title}
           fill
-          sizes={
-            size === "large"
-              ? "(min-width: 1024px) 592px, 100vw"
-              : "(min-width: 1024px) 389px, (min-width: 640px) 50vw, 100vw"
-          }
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes="(min-width: 1024px) 790px, 100vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
         />
-        <div className="absolute inset-y-0 left-0 -right-0.5 bg-[linear-gradient(180deg,rgba(0,0,0,0.35)_0%,rgba(0,0,0,0)_45%,rgba(18,18,20,0.95)_100%)]" />
-        <span className="absolute top-[18px] left-[18px] rounded-full border border-white/[0.18] bg-black/45 px-3 py-1.5 font-display text-[17px] leading-[1.2] text-white backdrop-blur-[6px]">
-          {service.number}
-        </span>
-        <span
+        <div
           aria-hidden="true"
-          className="absolute top-[18px] right-4 flex size-[58px] items-center justify-center rounded-full border border-white/35 bg-white/16 backdrop-blur-[8px] transition-transform duration-300 group-hover:scale-110"
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/services/play.svg" alt="" width={20} height={20} className="size-5" />
-        </span>
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,11,0.45)_0%,rgba(10,10,11,0)_28%,rgba(10,10,11,0.55)_52%,rgba(10,10,11,0.94)_78%,#0b0b0d_100%)]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[radial-gradient(90%_60%_at_0%_100%,rgba(228,110,255,0.22),transparent_60%),radial-gradient(70%_50%_at_100%_100%,rgba(0,145,255,0.16),transparent_60%)] opacity-70 transition-opacity duration-500 group-hover:opacity-100"
+        />
+        <NumberBadge number={service.number} large />
+        <PlayBadge large />
+
+        <div className="relative z-[1] flex flex-col items-start gap-4 p-6 pt-[220px] sm:p-8 sm:pt-[200px] md:p-10">
+          <h3 className="w-full max-w-[560px] font-display text-[40px] leading-[0.95] text-white uppercase sm:text-[52px] lg:text-[60px]">
+            {service.title}
+          </h3>
+          <p className="w-full max-w-[520px] text-base leading-[1.55] text-white/75 md:text-[17px]">
+            {service.description}
+          </p>
+          <Tags tags={service.tags} onImage />
+          <PriceRow service={service} large />
+        </div>
+      </li>
+    );
+  }
+
+  return (
+    <li
+      className={`group card card-hover flex flex-col overflow-hidden rounded-[28px] ${className}`}
+    >
+      <div className="relative h-[220px] w-full shrink-0 overflow-hidden md:h-[230px]">
+        <Image
+          src={service.image}
+          alt={service.title}
+          fill
+          sizes="(min-width: 1024px) 389px, (min-width: 640px) 50vw, 100vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.35)_0%,rgba(0,0,0,0)_40%,rgba(15,15,17,0.85)_88%,#121214_100%)]"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[linear-gradient(135deg,rgba(228,110,255,0.25),rgba(0,145,255,0.18)_55%,transparent)] opacity-0 mix-blend-screen transition-opacity duration-500 group-hover:opacity-100"
+        />
+        <NumberBadge number={service.number} />
+        <PlayBadge />
       </div>
 
-      <div className="flex flex-1 flex-col items-start gap-3.5 px-6 pt-6 pb-7 md:px-7">
-        <h3 className="w-full font-display text-[32px] leading-[1.05] text-white uppercase md:text-[36px]">
+      <div className="relative z-[1] flex flex-1 flex-col items-start gap-3.5 px-6 pt-5 pb-6 md:px-7 md:pb-7">
+        <h3 className="w-full font-display text-[32px] leading-[1.02] text-white uppercase md:text-[34px]">
           {service.title}
         </h3>
-        <p className="w-full text-base leading-[1.55] text-muted">
+        <p className="w-full text-[15px] leading-[1.55] text-muted md:text-base">
           {service.description}
         </p>
-        <ul className="flex w-full flex-wrap gap-2">
-          {service.tags.map((tag) => (
-            <li
-              key={tag}
-              className="rounded-full border border-subtle bg-elevated px-3 py-1.5 text-[13px] leading-[1.21] font-medium whitespace-nowrap text-muted"
-            >
-              {tag}
-            </li>
-          ))}
-        </ul>
-        <div className="mt-auto flex w-full items-center justify-between border-t border-subtle pt-4">
-          <p className="flex items-baseline gap-1.5 leading-[1.21] whitespace-nowrap">
-            <span className="text-sm text-muted">{service.priceLabel}</span>
-            <span className="font-display text-[27px] text-white">{service.price}</span>
-          </p>
-          <a
-            href="#order"
-            aria-label={`Order ${service.title}`}
-            className="flex size-11 shrink-0 items-center justify-center rounded-full transition-[transform,filter] duration-200 hover:scale-110 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink"
-            style={{ backgroundImage: arrowGradient }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/services/arrow-up-right.svg"
-              alt=""
-              width={18}
-              height={18}
-              className="size-[18px]"
-            />
-          </a>
-        </div>
+        <Tags tags={service.tags} />
+        <PriceRow service={service} />
       </div>
     </li>
   );
@@ -154,26 +246,29 @@ function ServiceCard({
 
 /** Figma: Services (4:244) */
 export function Services() {
+  const [feature, ...rest] = services;
+
   return (
-    <section id="services" className="pt-[72px] pb-20 md:pt-[100px] md:pb-[120px]">
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-10 px-4 md:gap-14 md:px-6 xl:px-0">
+    <section
+      id="services"
+      className="relative overflow-x-clip pt-[72px] pb-20 md:pt-[100px] md:pb-[120px]"
+    >
+      <div
+        aria-hidden="true"
+        className="glow-blob top-[38%] left-[8%] size-[420px] opacity-20 md:size-[640px]"
+      />
+      <div className="relative mx-auto flex w-full max-w-[1200px] flex-col gap-10 px-4 md:gap-14 md:px-6 xl:px-0">
         <SectionHeader
           eyebrow="Services"
           title="What we edit"
           subtitle="Five services, one dedicated editing team. Order a single video or a full campaign — we deliver ready-to-publish files."
         />
-        <div className="flex flex-col gap-4">
-          <ul className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-            {featured.map((service) => (
-              <ServiceCard key={service.number} service={service} size="large" />
-            ))}
-          </ul>
-          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {more.map((service) => (
-              <ServiceCard key={service.number} service={service} size="default" />
-            ))}
-          </ul>
-        </div>
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3">
+          <ServiceCard service={feature} variant="feature" className="sm:col-span-2" />
+          {rest.map((service) => (
+            <ServiceCard key={service.number} service={service} variant="default" />
+          ))}
+        </ul>
       </div>
     </section>
   );

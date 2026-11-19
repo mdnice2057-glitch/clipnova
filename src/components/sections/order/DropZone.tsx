@@ -22,6 +22,11 @@ export function formatBytes(bytes: number) {
   return `${v.toFixed(v < 10 ? 1 : 0)} ${units[u]}`;
 }
 
+function extOf(name: string) {
+  const i = name.lastIndexOf(".");
+  return i > 0 ? name.slice(i + 1, i + 5) : "vid";
+}
+
 /** Figma: Drop Zone (24:717) — drag & drop or click-to-browse footage uploader. */
 export function DropZone({
   files,
@@ -31,6 +36,7 @@ export function DropZone({
   onChange: (files: File[]) => void;
 }) {
   const inputId = useId();
+  const gradId = `dz-${inputId.replace(/[^a-zA-Z0-9_-]/g, "")}`;
   const inputRef = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
   const [notice, setNotice] = useState("");
@@ -78,27 +84,67 @@ export function DropZone({
           if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setDragging(false);
         }}
         onDrop={onDrop}
-        className={`flex w-full cursor-pointer items-center gap-3.5 rounded-2xl border-[1.5px] border-dashed px-5 py-[18px] transition-colors focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-brand-pink ${
+        className={`group relative flex w-full cursor-pointer items-center gap-4 rounded-2xl px-4 py-5 transition-[background-color,box-shadow] duration-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-brand-pink sm:px-5 ${
           dragging
-            ? "border-[#f2b9ff] bg-[rgba(242,185,255,0.1)]"
-            : "border-[rgba(242,185,255,0.45)] bg-[rgba(242,185,255,0.04)] hover:bg-[rgba(242,185,255,0.07)]"
+            ? "bg-[rgba(228,110,255,0.1)] shadow-[0_0_40px_-10px_rgba(228,110,255,0.55)]"
+            : "bg-[radial-gradient(100%_140%_at_0%_50%,rgba(228,110,255,0.07),transparent_60%),rgba(255,255,255,0.015)] hover:bg-[rgba(228,110,255,0.06)]"
         }`}
       >
-        <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-[rgba(242,185,255,0.12)]">
+        <svg
+          aria-hidden
+          className="pointer-events-none absolute inset-0 size-full overflow-visible"
+        >
+          <defs>
+            <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#e46eff" />
+              <stop offset="55%" stopColor="#0091ff" />
+              <stop offset="100%" stopColor="#b4daab" />
+            </linearGradient>
+          </defs>
+          <rect
+            width="100%"
+            height="100%"
+            rx="16"
+            fill="none"
+            stroke={`url(#${gradId})`}
+            strokeWidth="1.5"
+            strokeDasharray={dragging ? "10 5" : "7 6"}
+            className={`transition-opacity duration-300 ${
+              dragging ? "opacity-100" : "opacity-55 group-hover:opacity-100"
+            }`}
+          />
+        </svg>
+        <span className="icon-tile size-12 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/order/icon-upload.svg" alt="" width={20} height={20} className="size-5" />
+          <img
+            src="/assets/order/icon-upload.svg"
+            alt=""
+            width={20}
+            height={20}
+            className={`size-5 transition-transform duration-300 ${dragging ? "-translate-y-0.5" : ""}`}
+          />
         </span>
-        <span className="flex min-w-0 flex-col gap-0.5">
+        <span className="flex min-w-0 flex-1 flex-col gap-1">
           <span className="text-[15px] font-semibold text-white">
             {dragging ? (
               "Drop files to upload"
             ) : (
               <>
-                Drag &amp; drop footage or <span className="text-[#f2b9ff]">browse</span> files
+                Drag &amp; drop footage or{" "}
+                <span className="text-[#f2b9ff] underline decoration-[#f2b9ff]/40 underline-offset-4 transition-colors group-hover:decoration-[#f2b9ff]">
+                  browse
+                </span>{" "}
+                files
               </>
             )}
           </span>
           <span className="text-[13px] text-muted">MP4, MOV, RAW · up to 5 GB per file</span>
+        </span>
+        <span
+          aria-hidden
+          className="shrink-0 rounded-full border border-white/12 bg-white/[0.04] px-4 py-2 text-[13px] font-semibold text-white transition-colors duration-300 group-hover:border-brand-pink/50 group-hover:bg-white/[0.08] max-sm:hidden"
+        >
+          Browse
         </span>
         <input
           ref={inputRef}
@@ -125,9 +171,16 @@ export function DropZone({
           {files.map((f) => (
             <li
               key={`${f.name}-${f.size}`}
-              className="flex items-center justify-between gap-3 rounded-xl border border-subtle bg-elevated py-2.5 pr-2.5 pl-4"
+              className="flex items-center justify-between gap-3 rounded-xl border border-white/[0.08] bg-white/[0.03] py-2 pr-2 pl-2 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]"
             >
-              <span className="min-w-0 truncate text-[14px] text-white">{f.name}</span>
+              <span className="flex min-w-0 items-center gap-3">
+                <span className="flex h-8 min-w-11 shrink-0 items-center justify-center rounded-lg bg-[rgba(228,110,255,0.1)] px-1.5 ring-1 ring-brand-pink/25">
+                  <span className="text-brand font-display text-[15px] leading-none uppercase">
+                    {extOf(f.name)}
+                  </span>
+                </span>
+                <span className="min-w-0 truncate text-[14px] text-white">{f.name}</span>
+              </span>
               <span className="flex shrink-0 items-center gap-3">
                 <span className="text-[13px] text-muted">{formatBytes(f.size)}</span>
                 <button

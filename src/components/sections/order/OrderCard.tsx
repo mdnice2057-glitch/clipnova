@@ -118,12 +118,14 @@ export function OrderCard() {
   }
 
   const card =
-    "flex w-full min-w-0 flex-col gap-6 rounded-[28px] border border-[rgba(228,110,255,0.22)] bg-surface p-5 shadow-[0_30px_80px_0_rgba(228,110,255,0.08)] sm:p-9 xl:w-[744px] xl:shrink-0";
+    "card flex w-full min-w-0 flex-col gap-7 rounded-[28px] p-5 sm:p-9 xl:w-[744px] xl:shrink-0";
+  const topLine = <span aria-hidden className="glow-line absolute inset-x-12 top-0 opacity-80" />;
 
   if (status === "done") {
     return (
       <div className={`${card} items-center py-16 text-center sm:py-20`} role="status" aria-live="polite">
-        <span className="bg-brand-gradient flex size-16 items-center justify-center rounded-full drop-shadow-[0_10px_18px_rgba(228,110,255,0.32)]">
+        {topLine}
+        <span className="bg-brand-gradient flex size-16 items-center justify-center rounded-full shadow-[0_0_0_8px_rgba(228,110,255,0.1),0_0_0_16px_rgba(228,110,255,0.05),0_14px_30px_-6px_rgba(228,110,255,0.55)]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/ui/chip-check.svg" alt="" width={14} height={14} className="size-7" />
         </span>
@@ -144,10 +146,11 @@ export function OrderCard() {
 
   return (
     <form noValidate onSubmit={onSubmit} className={card} aria-label="New order">
+      {topLine}
       {/* Card Head (24:639) */}
-      <div className="flex w-full flex-wrap items-center justify-between gap-x-4 gap-y-2">
-        <h3 className="font-display text-[31px] leading-[normal] text-white uppercase">New order</h3>
-        <div className="flex items-center gap-2">
+      <div className="flex w-full flex-wrap items-center justify-between gap-x-4 gap-y-3 border-b border-white/[0.07] pb-6">
+        <h3 className="font-display text-[34px] leading-[normal] text-white uppercase">New order</h3>
+        <div className="flex items-center gap-2.5 rounded-full border border-[rgba(61,220,132,0.25)] bg-[rgba(61,220,132,0.07)] py-1.5 pr-3.5 pl-3">
           <span className="relative size-2 shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -158,7 +161,7 @@ export function OrderCard() {
               className="animate-pulse-dot absolute -inset-full size-[300%] max-w-none"
             />
           </span>
-          <span className="text-[13px] text-muted">Editors online · replies in ~15 min</span>
+          <span className="text-[13px] text-white/80">Editors online · replies in ~15 min</span>
         </div>
       </div>
 
@@ -234,15 +237,40 @@ export function OrderCard() {
       <DropZone files={files} onChange={setFiles} />
 
       {/* Submit (24:725) */}
-      <div className="flex w-full flex-col items-center gap-3">
+      <div className="flex w-full flex-col items-stretch gap-4 rounded-[20px] border border-white/[0.08] bg-[radial-gradient(120%_140%_at_50%_0%,rgba(228,110,255,0.12),transparent_60%),rgba(255,255,255,0.02)] p-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] sm:p-5">
+        <dl className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[14px]">
+          <div className="flex min-w-0 items-center gap-2">
+            <dt className="text-muted">Service</dt>
+            <dd className="font-semibold text-white">{values.service}</dd>
+          </div>
+          <div className="flex min-w-0 items-center gap-2">
+            <dt className="text-muted">Budget</dt>
+            <dd className="text-brand font-semibold">{values.budget}</dd>
+          </div>
+          {files.length > 0 && (
+            <div className="flex min-w-0 items-center gap-2">
+              <dt className="text-muted">Files</dt>
+              <dd className="font-semibold text-white">{files.length}</dd>
+            </div>
+          )}
+        </dl>
         <Button
           type="submit"
           disabled={status === "sending"}
-          className="w-full !py-[18px] leading-[normal] !whitespace-normal disabled:cursor-wait disabled:opacity-80"
+          className="w-full !py-[18px] leading-[normal] disabled:cursor-wait disabled:opacity-80"
         >
-          {status === "sending" ? "Sending your order…" : "Place order — get a free quote"}
+          {status === "sending" ? (
+            "Sending your order…"
+          ) : (
+            <>
+              <span className="sm:hidden">Get my free quote</span>
+              <span className="max-sm:hidden">Place order — get a free quote</span>
+            </>
+          )}
         </Button>
-        <p className="text-center text-[13px] text-muted">
+        <p className="flex items-center justify-center gap-2 text-center text-[13px] text-muted">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/assets/order/icon-lock.svg" alt="" width={14} height={14} className="size-3.5 shrink-0" />
           No payment now. You only pay after approving the quote.
         </p>
       </div>

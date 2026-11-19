@@ -41,29 +41,35 @@ function FloatTile({
 }) {
   return (
     <div
-      className={`animate-float flex items-center justify-center overflow-hidden border-[1.5px] border-white/40 shadow-[0_18px_40px_-6px_rgba(111,75,255,0.45)] ${className}`}
+      className={`animate-float ${className}`}
       style={
         {
-          width: size,
-          height: size,
-          borderRadius: radius,
-          backgroundImage: tileBg,
           "--r": `${rotate}deg`,
           transform: `rotate(${rotate}deg)`,
           animationDelay: delay,
         } as React.CSSProperties
       }
     >
-      <div className="relative" style={{ width: iconSize, height: iconSize }}>
-        <div className="absolute" style={{ inset: iconInset }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={icon} alt="" className="block size-full max-w-none" />
-        </div>
-      </div>
       <div
-        className="pointer-events-none absolute inset-0 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.35),inset_4px_8px_14px_0_rgba(42,47,168,0.35),inset_-3px_-5px_10px_0_rgba(255,255,255,0.6)]"
-        style={{ borderRadius: "inherit" }}
+        className="absolute -inset-3 opacity-55 blur-2xl"
+        style={{ borderRadius: radius * 1.4, backgroundImage: tileBg }}
       />
+      <div
+        className="relative flex items-center justify-center overflow-hidden border-[1.5px] border-white/45 shadow-[0_24px_50px_-10px_rgba(111,75,255,0.6),0_0_0_6px_rgba(255,255,255,0.04)]"
+        style={{ width: size, height: size, borderRadius: radius, backgroundImage: tileBg }}
+      >
+        <div className="absolute inset-x-[10%] top-[5%] h-[42%] rounded-[inherit] bg-gradient-to-b from-white/50 to-white/0" />
+        <div className="relative" style={{ width: iconSize, height: iconSize }}>
+          <div className="absolute" style={{ inset: iconInset }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={icon} alt="" className="block size-full max-w-none" />
+          </div>
+        </div>
+        <div
+          className="pointer-events-none absolute inset-0 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.35),inset_4px_8px_14px_0_rgba(42,47,168,0.35),inset_-3px_-5px_10px_0_rgba(255,255,255,0.6)]"
+          style={{ borderRadius: "inherit" }}
+        />
+      </div>
     </div>
   );
 }
@@ -107,6 +113,11 @@ export function Hero() {
             }}
           />
         </div>
+        <div className="absolute inset-x-0 top-0 h-[980px] bg-grid opacity-80" />
+        <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(50%_60%_at_50%_0%,rgba(255,255,255,0.16),transparent_70%)]" />
+        <div className="glow-blob top-[160px] left-1/2 size-[460px] -translate-x-1/2 opacity-30 sm:size-[720px]" />
+        <div className="glow-blob top-[720px] left-[8%] h-[360px] w-[520px] opacity-20 max-sm:hidden" />
+        <div className="glow-blob top-[760px] right-[6%] h-[320px] w-[480px] bg-[radial-gradient(circle,rgba(0,145,255,0.8),rgba(180,218,171,0.4)_50%,transparent_70%)] opacity-20 max-sm:hidden" />
       </div>
 
       {/* Floating platform tiles, positioned on the 1440 design canvas */}
@@ -176,16 +187,17 @@ export function Hero() {
 
       {/* Showcase marquee */}
       <div className="relative h-[370px] w-full overflow-hidden sm:h-[470px]">
-        <div className="animate-marquee absolute top-4 left-4 flex w-max sm:top-5 sm:left-[46px] hover:[animation-play-state:paused]">
+        <div aria-hidden className="glow-blob top-1/2 left-1/2 h-[220px] w-[85%] -translate-x-1/2 -translate-y-1/2 opacity-25" />
+        <div className="animate-marquee absolute top-4 left-4 flex w-max sm:top-5 sm:left-[46px] hover:[animation-play-state:paused]!">
           {[...reels, ...reels].map((reel, i) => (
-            <div key={`${reel.handle}-${i}`} className="pr-4 sm:pr-[42px]">
+            <div key={`${reel.handle}-${i}`} className="pr-4 sm:pr-[42px]" aria-hidden={i >= reels.length || undefined}>
               <ReelCard reel={reel} />
             </div>
           ))}
         </div>
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[rgba(10,10,10,0.18)]" />
-        <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-[rgba(10,10,10,0.96)] via-[rgba(10,10,10,0.6)] via-45% to-transparent sm:w-[120px] md:w-[340px]" />
-        <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-[rgba(10,10,10,0.96)] via-[rgba(10,10,10,0.6)] via-45% to-transparent sm:w-[120px] md:w-[340px]" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[rgba(10,10,11,0.12)]" />
+        <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-canvas via-[rgba(10,10,11,0.6)] via-45% to-transparent sm:w-[120px] md:w-[340px]" />
+        <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-canvas via-[rgba(10,10,11,0.6)] via-45% to-transparent sm:w-[120px] md:w-[340px]" />
       </div>
     </section>
   );

@@ -9,11 +9,11 @@ export function CommunityStats() {
     { value: "4.2K", label: "Answers" },
   ];
   return (
-    <div className="flex items-start justify-between rounded-[22px] border border-subtle bg-surface p-5 xl:h-[100px]">
+    <div className="card flex items-stretch justify-between p-5">
       {stats.map((s, i) => (
         <div
           key={s.label}
-          className={`flex min-w-0 flex-1 flex-col items-center gap-0.5 xl:w-[118px] xl:flex-none ${i > 0 ? "border-l border-subtle" : ""}`}
+          className={`flex min-w-0 flex-1 flex-col items-center gap-1.5 ${i > 0 ? "border-l border-white/[0.07]" : ""}`}
         >
           <div className="flex items-center gap-1.5">
             {s.dot && (
@@ -25,7 +25,7 @@ export function CommunityStats() {
                 className="animate-pulse-dot size-[7px]"
               />
             )}
-            <span className="font-display text-[30px] leading-none whitespace-nowrap text-white">
+            <span className="text-brand font-display text-[36px] leading-none whitespace-nowrap">
               {s.value}
             </span>
           </div>
@@ -38,6 +38,8 @@ export function CommunityStats() {
   );
 }
 
+const maxPosts = Math.max(...trendingTopics.map((t) => t.posts));
+
 /** Figma: Trending Topics (41:1311). Clicking a topic filters the threads. */
 export function TrendingTopics({
   active,
@@ -47,12 +49,14 @@ export function TrendingTopics({
   onSelect: (index: number, tag: string) => void;
 }) {
   return (
-    <div className="flex flex-col items-start gap-1.5 rounded-[22px] border border-subtle bg-surface p-[22px]">
+    <div className="card flex flex-col items-start gap-1.5 p-[22px]">
       <div className="flex w-full items-center justify-between pb-2 whitespace-nowrap">
-        <h3 className="font-display text-[22px] leading-none text-white">
+        <h3 className="font-display text-[24px] leading-none text-white">
           Trending topics
         </h3>
-        <span className="text-[12px] text-[#8e8e8e]">This week</span>
+        <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium text-[#8e8e8e]">
+          This week
+        </span>
       </div>
       <ul className="flex w-full flex-col gap-1.5">
         {trendingTopics.map((t, i) => {
@@ -63,23 +67,40 @@ export function TrendingTopics({
                 type="button"
                 aria-pressed={on}
                 onClick={() => onSelect(i, t.tag)}
-                className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors ${
+                className={`relative flex w-full items-center gap-3 overflow-hidden rounded-xl border px-3 py-2.5 text-left transition-[background-color,border-color] duration-200 ${
                   on
-                    ? "bg-[rgba(242,185,255,0.08)]"
-                    : "hover:bg-white/[0.04]"
+                    ? "border-[rgba(242,185,255,0.22)] bg-[linear-gradient(100deg,rgba(242,185,255,0.1),rgba(0,145,255,0.04))]"
+                    : "border-transparent hover:bg-white/[0.04]"
                 }`}
               >
+                {on && (
+                  <span
+                    aria-hidden
+                    className="bg-brand-gradient absolute inset-y-2 left-0 w-[3px] rounded-r-full"
+                  />
+                )}
                 <span
-                  className={`font-display text-[18px] whitespace-nowrap ${on ? "text-[#f2b9ff]" : "text-[#6b6b6b]"}`}
+                  className={`w-5 shrink-0 text-center font-display text-[22px] leading-none whitespace-nowrap ${on ? "text-brand" : "text-[#6b6b6b]"}`}
                 >
                   {i + 1}
                 </span>
-                <span className="flex min-w-0 flex-1 flex-col items-start gap-px whitespace-nowrap">
+                <span className="flex min-w-0 flex-1 flex-col items-start gap-1 whitespace-nowrap">
                   <span className="text-[14px] font-semibold text-white">
                     {t.tag}
                   </span>
-                  <span className="text-[12px] text-[#8e8e8e]">
-                    {t.posts} posts
+                  <span className="flex w-full items-center gap-2">
+                    <span className="text-[12px] text-[#8e8e8e]">
+                      {t.posts} posts
+                    </span>
+                    <span
+                      aria-hidden
+                      className="relative h-1 min-w-px flex-1 overflow-hidden rounded-full bg-white/[0.06]"
+                    >
+                      <span
+                        className={`absolute inset-y-0 left-0 rounded-full ${on ? "bg-brand-gradient" : "bg-white/20"}`}
+                        style={{ width: `${(t.posts / maxPosts) * 100}%` }}
+                      />
+                    </span>
                   </span>
                 </span>
                 <span className="flex shrink-0 items-center gap-[3px]">
@@ -106,31 +127,40 @@ export function TrendingTopics({
 /** Figma: Top Editors (41:1351). */
 export function TopEditors() {
   return (
-    <div className="flex flex-col items-start gap-3 rounded-[22px] border border-subtle bg-surface p-[22px]">
+    <div className="card flex flex-col items-start gap-3 p-[22px]">
       <div className="flex w-full items-center justify-between pb-1 whitespace-nowrap">
-        <h3 className="font-display text-[22px] leading-none text-white">
+        <h3 className="font-display text-[24px] leading-none text-white">
           Top editors this week
         </h3>
         <a
           href="#client-hub"
-          className="text-[12px] font-semibold text-[#f2b9ff] hover:underline"
+          className="group inline-flex items-center gap-1 text-[12px] font-semibold text-[#f2b9ff] hover:underline"
         >
           View all
+          <span
+            aria-hidden
+            className="transition-transform duration-200 motion-safe:group-hover:translate-x-0.5"
+          >
+            →
+          </span>
         </a>
       </div>
-      <ul className="flex w-full flex-col gap-3">
+      <ul className="flex w-full flex-col gap-1">
         {topEditors.map((e, i) => (
-          <li key={e.name} className="flex w-full items-center gap-3">
+          <li
+            key={e.name}
+            className="-mx-2 flex items-center gap-3 rounded-xl px-2 py-2 transition-colors duration-200 hover:bg-white/[0.04]"
+          >
             <span className="relative size-10 shrink-0">
               <img
                 src={e.avatar}
                 alt=""
                 width={40}
                 height={40}
-                className="absolute inset-0 size-10 max-w-none"
+                className="absolute inset-0 size-10 max-w-none rounded-full ring-2 ring-white/10"
               />
               <span
-                className={`absolute top-[26px] left-[26px] flex size-[18px] items-center justify-center rounded-full border-2 border-surface text-[10px] font-bold text-[#0a0a0a] ${e.badge}`}
+                className={`absolute top-[26px] left-[26px] flex size-[18px] items-center justify-center rounded-full border-2 border-[#121214] text-[10px] font-bold text-[#0a0a0a] shadow-[0_2px_8px_rgba(0,0,0,0.5)] ${e.badge}`}
               >
                 {i + 1}
               </span>
@@ -140,7 +170,7 @@ export function TopEditors() {
                 <span className="text-[14px] font-semibold whitespace-nowrap text-white">
                   {e.name}
                 </span>
-                <span className="rounded-full bg-brand-gradient px-2.5 py-1 text-[9px] font-bold text-white">
+                <span className="rounded-full bg-brand-gradient px-2.5 py-1 text-[9px] font-bold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.4)]">
                   Editor
                 </span>
               </span>
@@ -148,8 +178,13 @@ export function TopEditors() {
                 {e.role}
               </span>
             </span>
-            <span className="shrink-0 text-[12px] font-medium whitespace-nowrap text-muted">
-              {e.answers} answers
+            <span className="flex shrink-0 flex-col items-end">
+              <span className="text-brand font-display text-[20px] leading-none">
+                {e.answers}
+              </span>
+              <span className="text-[11px] whitespace-nowrap text-[#8e8e8e]">
+                answers
+              </span>
             </span>
           </li>
         ))}

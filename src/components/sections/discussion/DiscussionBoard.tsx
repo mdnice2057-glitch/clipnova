@@ -85,7 +85,7 @@ export function DiscussionBoard() {
   };
 
   return (
-    <div className="flex flex-col gap-4 xl:flex-row">
+    <div className="flex flex-col gap-5 xl:flex-row xl:gap-4">
       {/* Threads (41:1072) */}
       <div
         id="client-hub-threads"
@@ -104,7 +104,7 @@ export function DiscussionBoard() {
         </ul>
 
         {visible.length === 0 && !showPinned && (
-          <div className="rounded-2xl border border-subtle bg-surface px-6 py-10 text-center">
+          <div className="card rounded-[20px] px-6 py-10 text-center">
             <p className="text-[14px] font-semibold text-white">
               No questions match “{query}”
             </p>
@@ -121,7 +121,7 @@ export function DiscussionBoard() {
           </div>
         )}
         {visible.length === 0 && showPinned && tab !== "Latest" && (
-          <p className="rounded-2xl border border-subtle bg-surface px-6 py-6 text-center text-[14px] text-muted">
+          <p className="card rounded-[20px] px-6 py-6 text-center text-[14px] text-muted">
             {tab === "My orders"
               ? "No order threads yet — ask about your order in the composer."
               : "Nothing here yet."}
@@ -134,9 +134,9 @@ export function DiscussionBoard() {
           onClick={loadMore}
           disabled={loading || !poolLeft}
           aria-busy={loading}
-          className="flex items-center justify-center gap-2 rounded-2xl border border-dashed border-subtle py-3.5 transition-colors enabled:hover:border-white/25 enabled:hover:bg-white/[0.02] disabled:cursor-default"
+          className="group flex items-center justify-center gap-2 rounded-[20px] border border-dashed border-white/15 bg-white/[0.015] py-4 transition-[background-color,border-color] duration-200 enabled:hover:border-[rgba(242,185,255,0.45)] enabled:hover:bg-[rgba(242,185,255,0.04)] disabled:cursor-default"
         >
-          <span className="text-[14px] font-semibold whitespace-nowrap text-muted">
+          <span className="text-[14px] font-semibold whitespace-nowrap text-muted transition-colors group-enabled:group-hover:text-white">
             {loading
               ? "Loading questions…"
               : poolLeft
@@ -152,7 +152,7 @@ export function DiscussionBoard() {
                 alt=""
                 width={14}
                 height={14}
-                className="size-3.5"
+                className="size-3.5 transition-transform duration-200 motion-safe:group-hover:translate-y-0.5"
               />
             )
           )}

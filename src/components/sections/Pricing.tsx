@@ -62,16 +62,27 @@ function PricingCard({ plan }: { plan: Plan }) {
   const { featured } = plan;
   return (
     <article
-      className={`flex w-full max-w-[389px] flex-col items-start gap-6 rounded-[28px] border px-6 transition-[transform,border-color] duration-300 hover:-translate-y-1 sm:px-8 lg:min-w-0 lg:flex-1 ${
+      className={`card flex w-full max-w-[389px] flex-col items-start gap-6 rounded-[28px] px-6 sm:px-8 lg:min-w-0 lg:flex-1 ${
         featured
-          ? "border-brand-pink bg-[linear-gradient(180deg,rgba(228,110,255,0.1)_0%,#121214_45%,#121214_100%)] pt-10 pb-11 drop-shadow-[0_20px_30px_rgba(228,110,255,0.16)]"
-          : "border-subtle bg-surface pt-8 pb-9 hover:border-white/20"
+          ? "card-spin pt-10 pb-11 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_40px_90px_-30px_rgba(228,110,255,0.5),0_24px_60px_-30px_rgba(0,145,255,0.45)] transition-transform duration-300 motion-safe:hover:-translate-y-1 lg:z-10 lg:-my-6 lg:max-w-[410px] lg:flex-[1.08] lg:pt-12 lg:pb-14"
+          : "card-hover pt-8 pb-9"
       }`}
     >
+      {featured && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10 rounded-[inherit]"
+          style={{
+            backgroundImage:
+              "radial-gradient(110% 55% at 50% 0%, rgba(228,110,255,0.2) 0%, rgba(0,145,255,0.08) 45%, transparent 75%)",
+          }}
+        />
+      )}
+
       <div className="flex w-full items-center justify-between gap-3">
         <h3 className="font-display text-[27px] leading-[normal] text-white uppercase">{plan.name}</h3>
         {featured && (
-          <span className="bg-brand-gradient rounded-full px-3 py-1.5 text-xs leading-[normal] font-bold tracking-[0.48px] whitespace-nowrap text-white uppercase">
+          <span className="bg-brand-gradient rounded-full px-3 py-1.5 text-xs leading-[normal] font-bold tracking-[0.48px] whitespace-nowrap text-white uppercase shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5),0_8px_22px_-6px_rgba(228,110,255,0.6)]">
             Most popular
           </span>
         )}
@@ -79,8 +90,14 @@ function PricingCard({ plan }: { plan: Plan }) {
 
       <p className="w-full text-[15px] leading-[1.5] text-muted">{plan.description}</p>
 
-      <p className="flex flex-wrap items-baseline gap-x-1.5 whitespace-nowrap">
-        <span className="font-display text-[52px] leading-none text-white uppercase xl:text-[60px]">
+      <p className="flex flex-wrap items-baseline gap-x-2 whitespace-nowrap">
+        <span
+          className={`font-display leading-none uppercase ${
+            featured
+              ? "text-brand text-[64px] xl:text-[76px]"
+              : "text-[52px] text-white xl:text-[60px]"
+          }`}
+        >
           {plan.price}
         </span>
         <span className="text-base leading-[normal] text-muted">{plan.unit}</span>
@@ -96,15 +113,24 @@ function PricingCard({ plan }: { plan: Plan }) {
         </Button>
       )}
 
-      <div className="h-px w-full bg-subtle" aria-hidden />
+      <div
+        className={featured ? "glow-line w-full" : "h-px w-full bg-white/[0.08]"}
+        aria-hidden
+      />
 
       <ul className="flex flex-col gap-3.5">
         {plan.features.map((feature) => (
           <li key={feature} className="flex items-center gap-3">
-            <span className="flex size-[22px] shrink-0 items-center justify-center rounded-full bg-[rgba(242,185,255,0.14)]">
+            <span
+              className={`flex size-[22px] shrink-0 items-center justify-center rounded-full ${
+                featured
+                  ? "bg-brand-gradient shadow-[0_4px_12px_-3px_rgba(228,110,255,0.6)]"
+                  : "bg-[rgba(242,185,255,0.12)] shadow-[inset_0_0_0_1px_rgba(242,185,255,0.22)]"
+              }`}
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/assets/pricing/check.svg"
+                src={featured ? "/assets/how/icon-check.svg" : "/assets/pricing/check.svg"}
                 alt=""
                 width={12}
                 height={12}
@@ -122,7 +148,7 @@ function PricingCard({ plan }: { plan: Plan }) {
 /** Figma: Pricing (5:340) */
 export function Pricing() {
   return (
-    <section id="pricing" className="py-20 md:py-[120px]">
+    <section id="pricing" className="relative overflow-x-clip py-20 md:py-[120px]">
       <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-12 px-4 md:gap-14 md:px-6 xl:px-0">
         <SectionHeader
           eyebrow="Packages"
@@ -130,7 +156,11 @@ export function Pricing() {
           subtitle="No subscriptions. Pay per order, with free revisions until you’re happy with the final cut."
         />
 
-        <div className="flex w-full flex-col items-center gap-4 lg:flex-row lg:justify-center">
+        <div className="relative flex w-full flex-col items-center gap-5 lg:flex-row lg:items-stretch lg:justify-center lg:gap-5 lg:py-6">
+          <div
+            aria-hidden
+            className="glow-blob top-1/2 left-1/2 size-[360px] -translate-1/2 opacity-30 lg:size-[520px]"
+          />
           {plans.map((plan) => (
             <PricingCard key={plan.name} plan={plan} />
           ))}
