@@ -29,7 +29,7 @@ export function SectionHeader({
   );
 }
 
-/** Left-aligned variant used by Stats / Feed / Discussion heads. */
+/** Left-aligned variant used by Stats / Feed heads. */
 export function SectionTitle({
   eyebrow,
   title,

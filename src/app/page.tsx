@@ -1,4 +1,3 @@
-import { ClientDiscussion } from "@/components/sections/ClientDiscussion";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { Hero } from "@/components/sections/Hero";
@@ -23,7 +22,6 @@ export default function Home() {
         <HowItWorks />
         <Pricing />
         <Testimonials />
-        <ClientDiscussion />
         <OrderForm />
         <Contact />
       </main>
