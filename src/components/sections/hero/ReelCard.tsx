@@ -19,12 +19,12 @@ const actions = [
 /** Figma: Reel Card (35:996) — short-form preview with TikTok-style action rail. */
 export function ReelCard({ reel }: { reel: Reel }) {
   return (
-    <article className="group relative h-[420px] w-[236px] shrink-0 overflow-hidden rounded-[14px] border border-white/[0.08]">
+    <article className="group relative h-[338px] w-[190px] shrink-0 sm:h-[420px] sm:w-[236px] overflow-hidden rounded-[14px] border border-white/[0.08]">
       <Image
         src={reel.image}
         alt=""
         fill
-        sizes="236px"
+        sizes="(max-width: 639px) 190px, 236px"
         className="object-cover transition-transform duration-500 group-hover:scale-105"
       />
       <div className="absolute -inset-x-px -top-px h-[120px] bg-gradient-to-b from-black/35 to-transparent" />
@@ -59,7 +59,7 @@ export function ReelCard({ reel }: { reel: Reel }) {
             Follow
           </span>
         </div>
-        <p className="w-[176px] truncate text-[10.5px] text-white/90">{reel.caption}</p>
+        <p className="w-[132px] truncate sm:w-[176px] text-[10.5px] text-white/90">{reel.caption}</p>
       </div>
 
       <div className="absolute right-[13px] bottom-[15px] size-[22px] overflow-hidden rounded-[6px] border-[1.5px] border-white/70">

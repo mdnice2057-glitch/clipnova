@@ -1,37 +1,49 @@
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { StepList, type Step } from "./how/StepList";
 
-const STEPS: Step[] = [
+const STEPS: (Step & { image: string })[] = [
   {
     title: "Place your order",
     short: "Place order",
     description:
       "Pick a service, share your brief and references, and confirm your package.",
+    image: "/assets/how/phone-screen.jpg",
   },
   {
     title: "Upload footage",
     short: "Upload footage",
     description:
       "Send your raw clips, music and logos through a secure upload link — any format, any size.",
+    image: "/assets/hero/reel-3.png",
   },
   {
     title: "We edit, you review",
     short: "Review edit",
     description:
       "Your editor cuts the first draft. Leave timestamped notes and get revisions until it feels right.",
+    image: "/assets/how/toast-thumb.jpg",
   },
   {
     title: "Receive final files",
     short: "Receive files",
     description:
       "Download your final cut in every format and aspect ratio you need, ready to post anywhere.",
+    image: "/assets/services/wedding-film.jpg",
   },
 ];
 
 const BARS = [6, 12, 18, 10, 22, 14, 8, 16, 20, 9, 13, 6];
 
+// StepList sets data-step on the group/how wrapper; each screen fades in for its step.
+const SHOW_ON_STEP = [
+  "group-data-[step=0]/how:opacity-100",
+  "group-data-[step=1]/how:opacity-100",
+  "group-data-[step=2]/how:opacity-100",
+  "group-data-[step=3]/how:opacity-100",
+];
+
 /** Figma: Process Visual (16:543) — 684×560 composition, scaled down on small screens. */
-function ProcessVisual() {
+function ProcessVisual({ screens }: { screens: string[] }) {
   return (
     <div className="relative h-[280px] overflow-hidden rounded-[28px] border border-subtle bg-surface min-[480px]:h-[392px] sm:h-[476px] md:h-[560px]">
       <div className="absolute top-0 left-1/2 h-[560px] w-[684px] origin-top -translate-x-1/2 scale-50 min-[480px]:scale-70 sm:scale-85 md:scale-100">
@@ -56,12 +68,15 @@ function ProcessVisual() {
         {/* Phone Mockup (16:547) */}
         <div className="absolute top-[60px] left-[216px] h-[510px] w-[250px] overflow-hidden rounded-[46px] border-5 border-[#8a8a92] bg-[#0e0e10] shadow-[0_30px_60px_-10px_rgba(0,0,0,0.6)]">
           <div className="absolute top-[5px] left-[5px] h-[490px] w-[230px] overflow-hidden rounded-[38px]">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/how/phone-screen.jpg"
-              alt="Creator recording a video on her phone"
-              className="absolute inset-0 size-full object-cover"
-            />
+            {screens.map((src, i) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={src}
+                src={src}
+                alt=""
+                className={`absolute inset-0 size-full object-cover opacity-0 transition-opacity duration-500 ${SHOW_ON_STEP[i]}`}
+              />
+            ))}
             <div
               aria-hidden
               className="absolute inset-0"
@@ -167,7 +182,7 @@ export function HowItWorks() {
           subtitle="Place an order in minutes. We handle everything from the first cut to final delivery."
         />
         <StepList steps={STEPS}>
-          <ProcessVisual />
+          <ProcessVisual screens={STEPS.map((s) => s.image)} />
         </StepList>
       </div>
     </section>

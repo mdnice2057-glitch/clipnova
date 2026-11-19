@@ -32,10 +32,10 @@ const columns = [
 
 const legal = ["Privacy", "Terms", "Cookies"];
 
-/** Figma: Footer (7:590) — brand, link columns, legal row and giant wordmark. */
+/** Figma: Footer (7:590) — brand, link columns, and legal row. */
 export function Footer() {
   return (
-    <footer id="footer" className="overflow-hidden border-t border-subtle pt-14 leading-[normal] md:pt-[72px]">
+    <footer id="footer" className="overflow-hidden border-t border-subtle pt-14 pb-10 leading-[normal] md:pt-[72px] md:pb-12">
       <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-14 px-4 md:px-6 xl:px-0">
         {/* Top (7:591) */}
         <div className="flex w-full flex-col items-start justify-between gap-10 lg:flex-row">
@@ -90,14 +90,6 @@ export function Footer() {
           </ul>
         </div>
       </div>
-
-      {/* Wordmark (7:621) — 336px at 1440 (23.33vw), 7% warm white */}
-      <p
-        aria-hidden
-        className="font-display mt-14 text-center text-[clamp(96px,23.333vw,336px)] leading-[0.8] whitespace-nowrap text-[rgba(245,245,240,0.07)] uppercase select-none"
-      >
-        clipnova
-      </p>
     </footer>
   );
 }

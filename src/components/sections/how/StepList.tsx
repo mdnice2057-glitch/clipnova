@@ -126,7 +126,7 @@ export function StepList({
           );
         })}
       </ol>
-      <div className="relative min-w-0">
+      <div data-step={active} className="group/how relative min-w-0">
         {children}
         <div className="absolute top-3 left-3 origin-top-left scale-90 sm:top-[27px] sm:left-[27px] sm:scale-100">{chip}</div>
       </div>

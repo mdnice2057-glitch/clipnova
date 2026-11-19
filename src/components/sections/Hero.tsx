@@ -126,23 +126,32 @@ export function Hero() {
       <div aria-hidden className="h-[68px] shrink-0" />
 
       {/* Hero content */}
-      <div className="relative flex flex-col items-center gap-7 px-4 pt-16 pb-20 text-center md:pt-24">
-        <Tag>Now accepting new orders — first draft in 48 hours</Tag>
+      <div className="relative flex flex-col items-center gap-5 px-4 pt-10 pb-12 text-center sm:gap-7 sm:pt-16 sm:pb-20 md:pt-24">
+        <Tag>
+          <span className="sm:hidden">Accepting orders — first draft in 48h</span>
+          <span className="max-sm:hidden">Now accepting new orders — first draft in 48 hours</span>
+        </Tag>
 
-        <h1 className="text-chrome font-display text-[64px] leading-[0.98] uppercase drop-shadow-[0_8px_30px_rgba(0,0,0,0.35)] sm:text-[96px] lg:text-[143px]">
-          Every frame,
+        <h1 className="text-chrome font-display text-[length:min(64px,calc((100vw_-_2.5rem)/6.2))] leading-[0.98] uppercase drop-shadow-[0_8px_30px_rgba(0,0,0,0.35)] sm:text-[96px] lg:text-[143px]">
+          <span className="whitespace-nowrap">Every frame,</span>
           <br />
-          perfectly crafted
+          <span className="whitespace-nowrap">perfectly crafted</span>
         </h1>
 
-        <p className="max-w-[640px] text-lg leading-[1.55] text-muted md:text-xl">
+        <p className="max-w-[640px] text-[15px] leading-[1.55] text-muted sm:hidden">
+          Upload your raw footage — our pro editors deliver polished, ready-to-publish videos for
+          promos, weddings, vlogs and reels.
+        </p>
+        <p className="max-w-[640px] text-lg leading-[1.55] text-muted max-sm:hidden md:text-xl">
           Place an order, upload your raw footage, and our professional editors deliver a polished,
           ready-to-publish video — SaaS promos, wedding films, vlogs, reels and post production.
         </p>
 
-        <div className="flex flex-wrap items-start justify-center gap-3.5 pt-2">
-          <Button href="#order">Place an order</Button>
-          <Button variant="secondary" href="#work">
+        <div className="flex w-full max-w-[340px] flex-col gap-3 pt-1 sm:w-auto sm:max-w-none sm:flex-row sm:flex-wrap sm:items-start sm:justify-center sm:gap-3.5 sm:pt-2">
+          <Button href="#order" className="max-sm:w-full">
+            Place an order
+          </Button>
+          <Button variant="secondary" href="#work" className="max-sm:w-full">
             See our work
           </Button>
         </div>
@@ -156,7 +165,7 @@ export function Hero() {
               </div>
             ))}
           </div>
-          <div className="flex flex-col items-start gap-1">
+          <div className="flex flex-col items-center gap-1 sm:items-start">
             <Stars />
             <p className="text-sm font-medium text-muted">
               4.9/5 from 2,148 clients · 12,480 videos delivered
@@ -166,17 +175,17 @@ export function Hero() {
       </div>
 
       {/* Showcase marquee */}
-      <div className="relative h-[470px] w-full overflow-hidden">
-        <div className="animate-marquee absolute top-5 left-[46px] flex w-max hover:[animation-play-state:paused]">
+      <div className="relative h-[370px] w-full overflow-hidden sm:h-[470px]">
+        <div className="animate-marquee absolute top-4 left-4 flex w-max sm:top-5 sm:left-[46px] hover:[animation-play-state:paused]">
           {[...reels, ...reels].map((reel, i) => (
-            <div key={`${reel.handle}-${i}`} className="pr-[42px]">
+            <div key={`${reel.handle}-${i}`} className="pr-4 sm:pr-[42px]">
               <ReelCard reel={reel} />
             </div>
           ))}
         </div>
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-[rgba(10,10,10,0.18)]" />
-        <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-[120px] bg-gradient-to-r from-[rgba(10,10,10,0.96)] via-[rgba(10,10,10,0.6)] via-45% to-transparent md:w-[340px]" />
-        <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-[120px] bg-gradient-to-l from-[rgba(10,10,10,0.96)] via-[rgba(10,10,10,0.6)] via-45% to-transparent md:w-[340px]" />
+        <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-[rgba(10,10,10,0.96)] via-[rgba(10,10,10,0.6)] via-45% to-transparent sm:w-[120px] md:w-[340px]" />
+        <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-[rgba(10,10,10,0.96)] via-[rgba(10,10,10,0.6)] via-45% to-transparent sm:w-[120px] md:w-[340px]" />
       </div>
     </section>
   );

@@ -33,7 +33,7 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <Button variant="light" size="sm" href="#order" className="hidden sm:inline-flex">
+          <Button variant="light" size="sm" href="#order" className="max-sm:hidden">
             Order now
           </Button>
           <button
