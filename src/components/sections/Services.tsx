@@ -65,7 +65,7 @@ const services: Service[] = [
 ];
 
 const arrowGradient =
-  "linear-gradient(124.8deg, rgb(228,110,255) 3.6%, rgb(0,145,255) 41.73%, rgb(180,218,171) 75.54%)";
+  "linear-gradient(124.8deg, rgb(167,116,255) 3.6%, rgb(124,77,255) 41.73%, rgb(205,184,255) 75.54%)";
 
 type Variant = "feature" | "default";
 
@@ -92,7 +92,7 @@ function PlayBadge({ large }: { large?: boolean }) {
   return (
     <span
       aria-hidden="true"
-      className={`absolute top-4 right-4 z-[2] flex items-center justify-center rounded-full border border-white/30 bg-white/[0.14] shadow-[0_8px_30px_-6px_rgba(0,0,0,0.6)] backdrop-blur-[8px] transition-[transform,background-color] duration-300 group-hover:scale-110 group-hover:bg-white/25 motion-reduce:transition-none motion-reduce:group-hover:scale-100 sm:top-5 sm:right-5 ${
+      className={`absolute top-4 right-4 z-[2] flex items-center justify-center rounded-full border border-white/30 bg-white/[0.14] backdrop-blur-[8px] transition-[transform,background-color] duration-300 group-hover:scale-110 group-hover:bg-white/25 motion-reduce:transition-none motion-reduce:group-hover:scale-100 sm:top-5 sm:right-5 ${
         large ? "size-[64px] md:size-[72px]" : "size-[52px]"
       }`}
     >
@@ -139,7 +139,7 @@ function PriceRow({ service, large }: { service: Service; large?: boolean }) {
       <a
         href="#order"
         aria-label={`Order ${service.title}`}
-        className={`relative flex shrink-0 items-center justify-center rounded-full shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5),0_10px_28px_-8px_rgba(228,110,255,0.6)] transition-[transform,filter,box-shadow] duration-300 hover:scale-105 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink motion-reduce:transition-none ${
+        className={`relative flex shrink-0 items-center justify-center rounded-full shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5)] transition-[transform,filter,box-shadow] duration-300 hover:scale-105 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink motion-reduce:transition-none ${
           large ? "size-14" : "size-12"
         }`}
         style={{ backgroundImage: arrowGradient }}
@@ -187,7 +187,7 @@ function ServiceCard({
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(90%_60%_at_0%_100%,rgba(228,110,255,0.22),transparent_60%),radial-gradient(70%_50%_at_100%_100%,rgba(0,145,255,0.16),transparent_60%)] opacity-70 transition-opacity duration-500 group-hover:opacity-100"
+          className="absolute inset-0 bg-[radial-gradient(90%_60%_at_0%_100%,rgba(167,116,255,0.22),transparent_60%),radial-gradient(70%_50%_at_100%_100%,rgba(124,77,255,0.16),transparent_60%)] opacity-70 transition-opacity duration-500 group-hover:opacity-100"
         />
         <NumberBadge number={service.number} large />
         <PlayBadge large />
@@ -224,7 +224,7 @@ function ServiceCard({
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(135deg,rgba(228,110,255,0.25),rgba(0,145,255,0.18)_55%,transparent)] opacity-0 mix-blend-screen transition-opacity duration-500 group-hover:opacity-100"
+          className="absolute inset-0 bg-[linear-gradient(135deg,rgba(167,116,255,0.25),rgba(124,77,255,0.18)_55%,transparent)] opacity-0 mix-blend-screen transition-opacity duration-500 group-hover:opacity-100"
         />
         <NumberBadge number={service.number} />
         <PlayBadge />
@@ -253,10 +253,6 @@ export function Services() {
       id="services"
       className="relative overflow-x-clip pt-[72px] pb-20 md:pt-[100px] md:pb-[120px]"
     >
-      <div
-        aria-hidden="true"
-        className="glow-blob top-[38%] left-[8%] size-[420px] opacity-20 md:size-[640px]"
-      />
       <div className="relative mx-auto flex w-full max-w-[1200px] flex-col gap-10 px-4 md:gap-14 md:px-6 xl:px-0">
         <SectionHeader
           eyebrow="Services"

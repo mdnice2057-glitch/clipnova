@@ -14,7 +14,6 @@ export function ClientDiscussion() {
       className="relative overflow-x-clip pt-10 pb-20 leading-[normal] md:pb-[120px]"
     >
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-grid" />
-      <div aria-hidden className="glow-blob top-[420px] -right-40 size-[420px] md:size-[560px]" />
       <div className="relative mx-auto flex w-full max-w-[1200px] flex-col gap-8 px-4 md:gap-10 md:px-6 xl:px-0">
         {/* Discussion Head (28:853) */}
         <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">

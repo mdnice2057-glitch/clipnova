@@ -125,7 +125,7 @@ export function OrderCard() {
     return (
       <div className={`${card} items-center py-16 text-center sm:py-20`} role="status" aria-live="polite">
         {topLine}
-        <span className="bg-brand-gradient flex size-16 items-center justify-center rounded-full shadow-[0_0_0_8px_rgba(228,110,255,0.1),0_0_0_16px_rgba(228,110,255,0.05),0_14px_30px_-6px_rgba(228,110,255,0.55)]">
+        <span className="bg-brand-gradient flex size-16 items-center justify-center rounded-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/ui/chip-check.svg" alt="" width={14} height={14} className="size-7" />
         </span>
@@ -237,7 +237,7 @@ export function OrderCard() {
       <DropZone files={files} onChange={setFiles} />
 
       {/* Submit (24:725) */}
-      <div className="flex w-full flex-col items-stretch gap-4 rounded-[20px] border border-white/[0.08] bg-[radial-gradient(120%_140%_at_50%_0%,rgba(228,110,255,0.12),transparent_60%),rgba(255,255,255,0.02)] p-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] sm:p-5">
+      <div className="flex w-full flex-col items-stretch gap-4 rounded-[20px] border border-white/[0.08] bg-[radial-gradient(120%_140%_at_50%_0%,rgba(167,116,255,0.12),transparent_60%),rgba(255,255,255,0.02)] p-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] sm:p-5">
         <dl className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[14px]">
           <div className="flex min-w-0 items-center gap-2">
             <dt className="text-muted">Service</dt>

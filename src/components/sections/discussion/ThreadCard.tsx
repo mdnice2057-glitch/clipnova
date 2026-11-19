@@ -15,7 +15,7 @@ export function ThreadCard({ thread }: { thread: Thread }) {
       <div
         className={`flex w-[52px] shrink-0 flex-col items-center gap-0.5 rounded-[14px] border py-1.5 transition-[background-color,border-color,box-shadow] duration-300 ${
           vote === 1
-            ? "border-[rgba(242,185,255,0.35)] bg-[rgba(242,185,255,0.08)] shadow-[0_8px_24px_-10px_rgba(228,110,255,0.6)]"
+            ? "border-[rgba(214,194,255,0.35)] bg-[rgba(214,194,255,0.08)]"
             : "border-white/[0.07] bg-white/[0.03]"
         }`}
       >
@@ -24,7 +24,7 @@ export function ThreadCard({ thread }: { thread: Thread }) {
           aria-label="Upvote"
           aria-pressed={vote === 1}
           onClick={() => setVote(vote === 1 ? 0 : 1)}
-          className={`rounded-full transition-[opacity,transform] duration-200 hover:opacity-80 motion-safe:active:scale-90 ${vote === 1 ? "drop-shadow-[0_0_6px_rgba(228,110,255,0.9)]" : ""}`}
+          className="rounded-full transition-[opacity,transform] duration-200 hover:opacity-80 motion-safe:active:scale-90"
         >
           <img
             src={`${A}/icon-vote-up.svg`}
@@ -88,7 +88,7 @@ export function ThreadCard({ thread }: { thread: Thread }) {
         <h3 className="w-full text-[17px] leading-[1.35] font-semibold text-white sm:text-[18px]">
           <a
             href="#client-hub"
-            className="decoration-[#f2b9ff]/60 underline-offset-4 transition-colors hover:text-[#f8dcff] hover:underline"
+            className="decoration-[#d6c2ff]/60 underline-offset-4 transition-colors hover:text-[#f8dcff] hover:underline"
           >
             {thread.title}
           </a>
@@ -160,7 +160,7 @@ function StatusBadge({ status }: { status: Thread["status"] }) {
   }
   if (status === "hot") {
     return (
-      <span className="shrink-0 rounded-full border border-[rgba(242,185,255,0.35)] bg-[rgba(242,185,255,0.12)] py-1 shadow-[0_0_16px_-4px_rgba(228,110,255,0.5)] pr-2.5 pl-[9px] text-[12px] font-semibold whitespace-nowrap text-[#f2b9ff]">
+      <span className="shrink-0 rounded-full border border-[rgba(214,194,255,0.35)] bg-[rgba(214,194,255,0.12)] py-1 pr-2.5 pl-[9px] text-[12px] font-semibold whitespace-nowrap text-[#d6c2ff]">
         🔥 Hot
       </span>
     );

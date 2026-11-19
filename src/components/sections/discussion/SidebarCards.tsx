@@ -69,7 +69,7 @@ export function TrendingTopics({
                 onClick={() => onSelect(i, t.tag)}
                 className={`relative flex w-full items-center gap-3 overflow-hidden rounded-xl border px-3 py-2.5 text-left transition-[background-color,border-color] duration-200 ${
                   on
-                    ? "border-[rgba(242,185,255,0.22)] bg-[linear-gradient(100deg,rgba(242,185,255,0.1),rgba(0,145,255,0.04))]"
+                    ? "border-[rgba(214,194,255,0.22)] bg-[linear-gradient(100deg,rgba(214,194,255,0.1),rgba(124,77,255,0.04))]"
                     : "border-transparent hover:bg-white/[0.04]"
                 }`}
               >
@@ -134,7 +134,7 @@ export function TopEditors() {
         </h3>
         <a
           href="#client-hub"
-          className="group inline-flex items-center gap-1 text-[12px] font-semibold text-[#f2b9ff] hover:underline"
+          className="group inline-flex items-center gap-1 text-[12px] font-semibold text-[#d6c2ff] hover:underline"
         >
           View all
           <span
@@ -160,7 +160,7 @@ export function TopEditors() {
                 className="absolute inset-0 size-10 max-w-none rounded-full ring-2 ring-white/10"
               />
               <span
-                className={`absolute top-[26px] left-[26px] flex size-[18px] items-center justify-center rounded-full border-2 border-[#121214] text-[10px] font-bold text-[#0a0a0a] shadow-[0_2px_8px_rgba(0,0,0,0.5)] ${e.badge}`}
+                className={`absolute top-[26px] left-[26px] flex size-[18px] items-center justify-center rounded-full border-2 border-[#121214] text-[10px] font-bold text-[#0a0a0a] ${e.badge}`}
               >
                 {i + 1}
               </span>

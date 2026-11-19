@@ -37,10 +37,10 @@ export function Button({
 
   const variants: Record<Variant, string> = {
     primary:
-      "shine bg-brand-gradient text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.55),0_12px_32px_-8px_rgba(228,110,255,0.55),0_8px_24px_-10px_rgba(0,145,255,0.5)] hover:brightness-110 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.6),0_16px_40px_-8px_rgba(228,110,255,0.7),0_10px_30px_-10px_rgba(0,145,255,0.6)]",
+      "shine bg-brand-gradient text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.55)] hover:brightness-110 hover:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.6)]",
     secondary:
       "border border-white/12 bg-white/[0.04] text-white px-7 py-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-md hover:border-white/25 hover:bg-white/[0.08]",
-    light: "shine bg-white text-black shadow-[0_8px_24px_-10px_rgba(255,255,255,0.45)] hover:bg-white/90",
+    light: "shine bg-white text-black hover:bg-white/90",
   };
 
   const cls = `${base} ${variant === "secondary" ? "" : sizes[size]} ${variants[variant]} ${className}`;

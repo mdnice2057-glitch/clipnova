@@ -45,12 +45,12 @@ function StarPicker({
             width={22}
             height={22}
             className={`size-[22px] transition-[filter] duration-200 ${
-              n <= shown ? "drop-shadow-[0_0_6px_rgba(242,185,255,0.55)]" : ""
+              n <= shown ? "" : ""
             }`}
           />
         </button>
       ))}
-      <span aria-hidden className="ml-1.5 w-[64px] text-xs font-semibold text-[#f2b9ff]">
+      <span aria-hidden className="ml-1.5 w-[64px] text-xs font-semibold text-[#d6c2ff]">
         {shown ? ratingLabels[shown - 1] : ""}
       </span>
     </div>
@@ -118,7 +118,7 @@ export function FeedbackForm() {
         <button
           type="button"
           onClick={reset}
-          className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[#f2b9ff] underline-offset-4 hover:underline"
+          className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[#d6c2ff] underline-offset-4 hover:underline"
         >
           Write another review
           <span
@@ -155,7 +155,7 @@ export function FeedbackForm() {
         aria-invalid={!!error}
         aria-describedby={error ? "review-error" : undefined}
         placeholder="How was your order? Tell other clients about the quality, speed and communication…"
-        className="h-[104px] w-full resize-none rounded-[14px] border border-white/10 bg-white/[0.03] px-4 py-3.5 text-sm leading-[1.55] text-white shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)] outline-none transition-[border-color,background-color,box-shadow] duration-200 placeholder:text-white/35 hover:border-white/20 focus:border-brand-pink/70 focus:bg-white/[0.05] focus:shadow-[0_0_0_4px_rgba(228,110,255,0.12)] aria-[invalid=true]:border-[#ff8a8a]/60"
+        className="h-[104px] w-full resize-none rounded-[14px] border border-white/10 bg-white/[0.03] px-4 py-3.5 text-sm leading-[1.55] text-white outline-none transition-[border-color,background-color,box-shadow] duration-200 placeholder:text-white/35 hover:border-white/20 focus:border-brand-pink/70 focus:bg-white/[0.05] focus:shadow-[0_0_0_4px_rgba(167,116,255,0.12)] aria-[invalid=true]:border-[#ff8a8a]/60"
       />
       {error && (
         <p id="review-error" className="-mt-1 text-xs text-[#ff8a8a]">

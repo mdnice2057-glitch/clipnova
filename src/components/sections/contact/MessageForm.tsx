@@ -76,7 +76,7 @@ export function MessageForm() {
         className={`${card} scroll-mt-24 items-center justify-center py-16 text-center`}
       >
         {topLine}
-        <span className="bg-brand-gradient flex size-16 items-center justify-center rounded-full shadow-[0_0_0_8px_rgba(228,110,255,0.1),0_0_0_16px_rgba(228,110,255,0.05),0_14px_30px_-6px_rgba(228,110,255,0.55)]">
+        <span className="bg-brand-gradient flex size-16 items-center justify-center rounded-full">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/ui/chip-check.svg" alt="" width={14} height={14} className="size-7" />
         </span>

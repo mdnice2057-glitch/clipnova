@@ -63,9 +63,9 @@ export function OrderForm() {
             {guarantees.map((g) => (
               <li
                 key={g.label}
-                className="flex items-center gap-2 rounded-full border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.015))] py-1.5 pr-3.5 pl-1.5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_8px_20px_-12px_rgba(0,0,0,0.8)] backdrop-blur-md transition-colors duration-300 hover:border-brand-pink/40"
+                className="flex items-center gap-2 rounded-full border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.015))] py-1.5 pr-3.5 pl-1.5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-md transition-colors duration-300 hover:border-brand-pink/40"
               >
-                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(228,110,255,0.28),rgba(0,145,255,0.14))] ring-1 ring-brand-pink/30">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(167,116,255,0.28),rgba(124,77,255,0.14))] ring-1 ring-brand-pink/30">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={g.icon} alt="" width={16} height={16} className="size-3.5" />
                 </span>
@@ -79,10 +79,6 @@ export function OrderForm() {
 
         {/* Order Card (24:638) */}
         <div className="relative w-full min-w-0 xl:w-[744px] xl:shrink-0">
-          <div
-            aria-hidden
-            className="glow-blob top-[12%] left-1/2 h-[70%] w-[85%] -translate-x-1/2"
-          />
           <OrderCard />
         </div>
       </div>

@@ -55,10 +55,6 @@ export function Footer() {
         {/* CTA band */}
         <div className="card overflow-hidden rounded-[28px] px-6 py-12 text-center sm:px-10 md:py-16">
           <div aria-hidden className="bg-grid pointer-events-none absolute inset-0" />
-          <div
-            aria-hidden
-            className="glow-blob -top-48 left-1/2 size-[420px] -translate-x-1/2 md:size-[560px]"
-          />
           <div className="relative flex flex-col items-center gap-6">
             <h2 className="text-chrome font-display max-w-[760px] text-[40px] leading-[0.98] uppercase sm:text-[52px] md:text-[64px]">
               Ready to turn your footage into something great?

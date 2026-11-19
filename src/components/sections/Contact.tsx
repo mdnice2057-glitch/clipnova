@@ -99,7 +99,7 @@ export function Contact() {
                       {c.value}
                     </span>
                     <span className="text-[13px] text-muted">{c.note}</span>
-                    <span className="mt-auto flex items-center gap-1.5 pt-2 text-[14px] font-semibold text-[#f2b9ff]">
+                    <span className="mt-auto flex items-center gap-1.5 pt-2 text-[14px] font-semibold text-[#d6c2ff]">
                       {c.action}
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
@@ -118,7 +118,7 @@ export function Contact() {
             {/* Social (29:1029) */}
             <div className="card flex w-full flex-wrap items-center justify-between gap-3 rounded-[22px] py-4 pr-4 pl-6">
               <p className="flex items-center gap-2.5 text-[15px] font-semibold text-white">
-                <span aria-hidden className="bg-brand-gradient size-1.5 rounded-full shadow-[0_0_10px_2px_rgba(228,110,255,0.5)]" />
+                <span aria-hidden className="bg-brand-gradient size-1.5 rounded-full" />
                 Follow our latest work
               </p>
               <ul className="flex items-center gap-2">

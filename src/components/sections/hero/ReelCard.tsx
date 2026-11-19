@@ -29,14 +29,14 @@ export function ReelCard({ reel }: { reel: Reel }) {
       />
       <div className="absolute -inset-x-px -top-px h-[120px] bg-gradient-to-b from-black/45 to-transparent" />
       <div className="absolute -inset-x-px -bottom-px h-[220px] bg-gradient-to-b from-transparent to-black/85" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(228,110,255,0.28)] via-[rgba(0,145,255,0.08)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(167,116,255,0.28)] via-[rgba(124,77,255,0.08)] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
       <div aria-hidden className="absolute inset-x-3 top-3 h-[2px] overflow-hidden rounded-full bg-white/25">
         <div className="bg-brand-gradient h-full w-1/4 rounded-full transition-[width] duration-[2400ms] ease-linear group-hover:w-full motion-reduce:transition-none" />
       </div>
 
       <div aria-hidden className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <span className="flex size-14 scale-75 items-center justify-center rounded-full bg-white/15 opacity-0 shadow-[0_12px_40px_-6px_rgba(228,110,255,0.7)] ring-1 ring-white/40 backdrop-blur-md transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
+        <span className="flex size-14 scale-75 items-center justify-center rounded-full bg-white/15 opacity-0 ring-1 ring-white/40 backdrop-blur-md transition-all duration-300 group-hover:scale-100 group-hover:opacity-100">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/feed/icon-play.svg" alt="" width={26} height={26} className="size-[26px] translate-x-px" />
         </span>

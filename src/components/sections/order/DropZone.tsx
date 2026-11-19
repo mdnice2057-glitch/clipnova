@@ -86,8 +86,8 @@ export function DropZone({
         onDrop={onDrop}
         className={`group relative flex w-full cursor-pointer items-center gap-4 rounded-2xl px-4 py-5 transition-[background-color,box-shadow] duration-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-brand-pink sm:px-5 ${
           dragging
-            ? "bg-[rgba(228,110,255,0.1)] shadow-[0_0_40px_-10px_rgba(228,110,255,0.55)]"
-            : "bg-[radial-gradient(100%_140%_at_0%_50%,rgba(228,110,255,0.07),transparent_60%),rgba(255,255,255,0.015)] hover:bg-[rgba(228,110,255,0.06)]"
+            ? "bg-[rgba(167,116,255,0.1)]"
+            : "bg-[radial-gradient(100%_140%_at_0%_50%,rgba(167,116,255,0.07),transparent_60%),rgba(255,255,255,0.015)] hover:bg-[rgba(167,116,255,0.06)]"
         }`}
       >
         <svg
@@ -96,9 +96,9 @@ export function DropZone({
         >
           <defs>
             <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#e46eff" />
-              <stop offset="55%" stopColor="#0091ff" />
-              <stop offset="100%" stopColor="#b4daab" />
+              <stop offset="0%" stopColor="#a774ff" />
+              <stop offset="55%" stopColor="#7c4dff" />
+              <stop offset="100%" stopColor="#cdb8ff" />
             </linearGradient>
           </defs>
           <rect
@@ -131,7 +131,7 @@ export function DropZone({
             ) : (
               <>
                 Drag &amp; drop footage or{" "}
-                <span className="text-[#f2b9ff] underline decoration-[#f2b9ff]/40 underline-offset-4 transition-colors group-hover:decoration-[#f2b9ff]">
+                <span className="text-[#d6c2ff] underline decoration-[#d6c2ff]/40 underline-offset-4 transition-colors group-hover:decoration-[#d6c2ff]">
                   browse
                 </span>{" "}
                 files
@@ -174,7 +174,7 @@ export function DropZone({
               className="flex items-center justify-between gap-3 rounded-xl border border-white/[0.08] bg-white/[0.03] py-2 pr-2 pl-2 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]"
             >
               <span className="flex min-w-0 items-center gap-3">
-                <span className="flex h-8 min-w-11 shrink-0 items-center justify-center rounded-lg bg-[rgba(228,110,255,0.1)] px-1.5 ring-1 ring-brand-pink/25">
+                <span className="flex h-8 min-w-11 shrink-0 items-center justify-center rounded-lg bg-[rgba(167,116,255,0.1)] px-1.5 ring-1 ring-brand-pink/25">
                   <span className="text-brand font-display text-[15px] leading-none uppercase">
                     {extOf(f.name)}
                   </span>

@@ -7,9 +7,9 @@
   --color-elevated: #1c1c1c;
   --color-subtle: #2a2a2a;
   --color-muted: #b6b6b6;
-  --color-brand-pink: #e46eff;
-  --color-brand-blue: #0091ff;
-  --color-brand-mint: #b4daab;
+  --color-brand-pink: #a774ff;
+  --color-brand-blue: #7c4dff;
+  --color-brand-mint: #cdb8ff;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-bebas), "Bebas Neue", Impact, sans-serif;
@@ -39,17 +39,12 @@ body::before {
 }
 
 ::selection {
-  background: rgba(228, 110, 255, 0.35);
+  background: rgba(167, 116, 255, 0.35);
   color: #fff;
 }
 
 @utility bg-brand-gradient {
-  background-image: linear-gradient(
-    90deg,
-    #e46eff 0%,
-    #0091ff 53%,
-    #b4daab 100%
-  );
+  background-image: linear-gradient(90deg, #6a3cf0 0%, #8352fa 50%, #9a6cff 100%);
 }
 
 /* Silver gradient display text used by every big Bebas heading */
@@ -72,7 +67,7 @@ body::before {
 
 /* Brand gradient text for numbers, prices and accents */
 @utility text-brand {
-  background-image: linear-gradient(100deg, #f3a6ff 0%, #5fb6ff 50%, #c8ecbf 100%);
+  background-image: linear-gradient(100deg, #d6c2ff 0%, #a98cff 50%, #e6dcff 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -86,9 +81,7 @@ body::before {
   background:
     radial-gradient(120% 70% at 50% 0%, rgba(255, 255, 255, 0.055), transparent 60%),
     linear-gradient(180deg, #17171a 0%, #0f0f11 100%);
-  box-shadow:
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
-    0 24px 60px -28px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
 
   &::before,
   &::after {
@@ -109,7 +102,7 @@ body::before {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.04) 40%, rgba(255, 255, 255, 0.02));
   }
   &::after {
-    background: linear-gradient(135deg, #e46eff, #0091ff 55%, #b4daab);
+    background: linear-gradient(135deg, #a774ff, #7c4dff 55%, #cdb8ff);
     opacity: 0;
     transition: opacity 0.35s ease;
   }
@@ -138,7 +131,7 @@ body::before {
   &::after {
     opacity: 1;
     padding: 1.5px;
-    background: conic-gradient(from var(--angle), #e46eff, #0091ff, #b4daab, #e46eff);
+    background: conic-gradient(from var(--angle), #a774ff, #7c4dff, #cdb8ff, #a774ff);
     animation: border-spin 6s linear infinite;
   }
 }
@@ -153,21 +146,10 @@ body::before {
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 75%);
 }
 
-/* Soft brand glow blob; position/size it with utilities */
-@utility glow-blob {
-  pointer-events: none;
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(90px);
-  opacity: 0.35;
-  background: radial-gradient(circle, rgba(228, 110, 255, 0.9), rgba(0, 145, 255, 0.5) 50%, transparent 70%);
-}
-
-/* Glowing hairline used as a section divider */
+/* Gradient hairline used as a section divider */
 @utility glow-line {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(228, 110, 255, 0.6) 30%, rgba(0, 145, 255, 0.6) 70%, transparent);
-  box-shadow: 0 0 18px 1px rgba(160, 120, 255, 0.35);
+  background: linear-gradient(90deg, transparent, rgba(167, 116, 255, 0.6) 30%, rgba(124, 77, 255, 0.6) 70%, transparent);
 }
 
 /* Diagonal light sweep across buttons on hover */
@@ -196,9 +178,8 @@ body::before {
   border-radius: 14px;
   background:
     linear-gradient(#141416, #141416) padding-box,
-    linear-gradient(135deg, rgba(228, 110, 255, 0.7), rgba(0, 145, 255, 0.5), rgba(180, 218, 171, 0.6)) border-box;
+    linear-gradient(135deg, rgba(167, 116, 255, 0.7), rgba(124, 77, 255, 0.5), rgba(205, 184, 255, 0.6)) border-box;
   border: 1px solid transparent;
-  box-shadow: 0 8px 24px -10px rgba(228, 110, 255, 0.45);
 }
 
 @keyframes border-spin {
@@ -226,6 +207,22 @@ body::before {
   }
 }
 
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes fill-bar {
+  from {
+    width: 8%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 @keyframes pulse-dot {
   0%,
   100% {
@@ -240,6 +237,14 @@ body::before {
   animation: marquee 50s linear infinite;
 }
 
+.animate-fade-up {
+  animation: fade-up 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.animate-fill-bar {
+  animation: fill-bar 4.5s ease-out both;
+}
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
@@ -252,6 +257,8 @@ body::before {
   .card-spin::after,
   .animate-marquee,
   .animate-float,
+  .animate-fade-up,
+  .animate-fill-bar,
   .animate-pulse-dot {
     animation: none;
   }

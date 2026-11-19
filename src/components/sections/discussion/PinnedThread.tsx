@@ -51,18 +51,14 @@ export function PinnedThread() {
   };
 
   return (
-    <article className="card card-lit flex flex-col items-start gap-4 overflow-hidden px-4 py-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_30px_70px_-30px_rgba(228,110,255,0.35)] sm:px-7 sm:py-7">
+    <article className="card card-lit flex flex-col items-start gap-4 overflow-hidden px-4 py-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] sm:px-7 sm:py-7">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(136deg,rgba(228,110,255,0.14)_0%,rgba(0,145,255,0.04)_30%,transparent_55%)]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-28 -left-20 -z-10 size-[320px] rounded-full bg-[radial-gradient(circle,rgba(228,110,255,0.22),transparent_70%)] blur-2xl"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(136deg,rgba(167,116,255,0.14)_0%,rgba(124,77,255,0.04)_30%,transparent_55%)]"
       />
       {/* Pinned label */}
       <div className="flex w-full items-center gap-2">
-        <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-brand-gradient py-[5px] pr-3 pl-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_8px_20px_-6px_rgba(228,110,255,0.6)]">
+        <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-brand-gradient py-[5px] pr-3 pl-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]">
           <img
             src={`${A}/icon-pin.svg`}
             alt=""
@@ -118,7 +114,7 @@ export function PinnedThread() {
         <button
           type="button"
           aria-label="Play test_clip.mp4"
-          className="group relative h-[136px] w-full shrink-0 overflow-hidden rounded-2xl shadow-[0_16px_36px_-16px_rgba(0,0,0,0.8)] ring-1 ring-white/12 transition-shadow duration-300 hover:ring-[rgba(242,185,255,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink sm:w-[232px]"
+          className="group relative h-[136px] w-full shrink-0 overflow-hidden rounded-2xl ring-1 ring-white/12 transition-shadow duration-300 hover:ring-[rgba(214,194,255,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink sm:w-[232px]"
         >
           <img
             src={`${A}/attachment-thumb.jpg`}
@@ -126,7 +122,7 @@ export function PinnedThread() {
             className="absolute inset-0 size-full max-w-none object-cover transition-transform duration-700 motion-safe:group-hover:scale-105"
           />
           <span className="absolute inset-0 bg-gradient-to-b from-black/5 via-black/25 to-black/80" />
-          <span className="absolute top-1/2 left-1/2 flex size-11 -translate-x-1/2 -translate-y-[60%] items-center justify-center rounded-full border border-white/30 bg-white/15 shadow-[0_8px_24px_-6px_rgba(228,110,255,0.6)] backdrop-blur-md transition-[background-color,transform] duration-300 group-hover:bg-white/25 motion-safe:group-hover:scale-110">
+          <span className="absolute top-1/2 left-1/2 flex size-11 -translate-x-1/2 -translate-y-[60%] items-center justify-center rounded-full border border-white/30 bg-white/15 backdrop-blur-md transition-[background-color,transform] duration-300 group-hover:bg-white/25 motion-safe:group-hover:scale-110">
             <img
               src={`${A}/icon-play.svg`}
               alt=""
@@ -152,13 +148,13 @@ export function PinnedThread() {
             onClick={() => toggle(r.emoji)}
             className={`flex shrink-0 items-center gap-1.5 rounded-full border py-[5px] pr-3 pl-2.5 whitespace-nowrap transition-[background-color,border-color,transform] duration-200 motion-safe:active:scale-95 ${
               r.active
-                ? "border-[rgba(242,185,255,0.45)] bg-[rgba(242,185,255,0.14)] shadow-[0_0_16px_-6px_rgba(228,110,255,0.7)]"
+                ? "border-[rgba(214,194,255,0.45)] bg-[rgba(214,194,255,0.14)]"
                 : "border-white/10 bg-white/[0.04] hover:border-white/25 hover:bg-white/[0.07]"
             }`}
           >
             <span className="text-[13px] text-white">{r.emoji}</span>
             <span
-              className={`text-[12px] font-semibold ${r.active ? "text-[#f2b9ff]" : "text-muted"}`}
+              className={`text-[12px] font-semibold ${r.active ? "text-[#d6c2ff]" : "text-muted"}`}
             >
               {r.count}
             </span>
@@ -201,7 +197,7 @@ export function PinnedThread() {
       </div>
 
       {/* Editor reply */}
-      <div className="relative flex w-full items-start gap-3 overflow-hidden rounded-2xl border border-[rgba(242,185,255,0.22)] bg-[linear-gradient(100deg,rgba(242,185,255,0.09),rgba(0,145,255,0.04)_60%,rgba(255,255,255,0.01))] py-4 pr-[18px] pl-5">
+      <div className="relative flex w-full items-start gap-3 overflow-hidden rounded-2xl border border-[rgba(214,194,255,0.22)] bg-[linear-gradient(100deg,rgba(214,194,255,0.09),rgba(124,77,255,0.04)_60%,rgba(255,255,255,0.01))] py-4 pr-[18px] pl-5">
         <span aria-hidden className="bg-brand-gradient absolute inset-y-0 left-0 w-[3px]" />
         <span className="bg-brand-gradient shrink-0 rounded-full p-[1.5px]">
           <img
@@ -232,14 +228,14 @@ export function PinnedThread() {
               type="button"
               aria-pressed={editorLiked}
               onClick={() => setEditorLiked((v) => !v)}
-              className={`font-medium transition-colors ${editorLiked ? "text-[#f2b9ff]" : "text-muted hover:text-white"}`}
+              className={`font-medium transition-colors ${editorLiked ? "text-[#d6c2ff]" : "text-muted hover:text-white"}`}
             >
               👍 {18 + (editorLiked ? 1 : 0)}
             </button>
             <button
               type="button"
               onClick={() => inputRef.current?.focus()}
-              className="font-semibold text-[#f2b9ff] hover:underline"
+              className="font-semibold text-[#d6c2ff] hover:underline"
             >
               Reply
             </button>
@@ -280,7 +276,7 @@ export function PinnedThread() {
       {/* Reply input */}
       <form
         onSubmit={submit}
-        className="flex w-full items-center gap-2.5 rounded-full border border-white/10 bg-black/40 p-1.5 shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)] transition-[border-color,box-shadow] duration-200 hover:border-white/20 focus-within:border-brand-pink/70 focus-within:shadow-[0_0_0_4px_rgba(228,110,255,0.12)]"
+        className="flex w-full items-center gap-2.5 rounded-full border border-white/10 bg-black/40 p-1.5 transition-[border-color,box-shadow] duration-200 hover:border-white/20 focus-within:border-brand-pink/70 focus-within:shadow-[0_0_0_4px_rgba(167,116,255,0.12)]"
       >
         <img
           src={`${A}/avatar-me.png`}
@@ -305,7 +301,7 @@ export function PinnedThread() {
           type="submit"
           aria-label="Send reply"
           disabled={!draft.trim()}
-          className="flex size-[34px] shrink-0 items-center justify-center rounded-full bg-brand-gradient shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_6px_16px_-4px_rgba(228,110,255,0.6)] transition-[filter,transform,opacity] hover:brightness-110 active:scale-95 disabled:cursor-default disabled:opacity-60 disabled:shadow-none"
+          className="flex size-[34px] shrink-0 items-center justify-center rounded-full bg-brand-gradient shadow-[inset_0_1px_0_rgba(255,255,255,0.45)] transition-[filter,transform,opacity] hover:brightness-110 active:scale-95 disabled:cursor-default disabled:opacity-60 disabled:shadow-none"
         >
           <img
             src={`${A}/icon-send.svg`}

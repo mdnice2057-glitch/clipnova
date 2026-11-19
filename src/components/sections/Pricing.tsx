@@ -64,7 +64,7 @@ function PricingCard({ plan }: { plan: Plan }) {
     <article
       className={`card flex w-full max-w-[389px] flex-col items-start gap-6 rounded-[28px] px-6 sm:px-8 lg:min-w-0 lg:flex-1 ${
         featured
-          ? "card-spin pt-10 pb-11 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_40px_90px_-30px_rgba(228,110,255,0.5),0_24px_60px_-30px_rgba(0,145,255,0.45)] transition-transform duration-300 motion-safe:hover:-translate-y-1 lg:z-10 lg:-my-6 lg:max-w-[410px] lg:flex-[1.08] lg:pt-12 lg:pb-14"
+          ? "card-spin pt-10 pb-11 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition-transform duration-300 motion-safe:hover:-translate-y-1 lg:z-10 lg:-my-6 lg:max-w-[410px] lg:flex-[1.08] lg:pt-12 lg:pb-14"
           : "card-hover pt-8 pb-9"
       }`}
     >
@@ -74,7 +74,7 @@ function PricingCard({ plan }: { plan: Plan }) {
           className="pointer-events-none absolute inset-0 -z-10 rounded-[inherit]"
           style={{
             backgroundImage:
-              "radial-gradient(110% 55% at 50% 0%, rgba(228,110,255,0.2) 0%, rgba(0,145,255,0.08) 45%, transparent 75%)",
+              "radial-gradient(110% 55% at 50% 0%, rgba(167,116,255,0.2) 0%, rgba(124,77,255,0.08) 45%, transparent 75%)",
           }}
         />
       )}
@@ -82,7 +82,7 @@ function PricingCard({ plan }: { plan: Plan }) {
       <div className="flex w-full items-center justify-between gap-3">
         <h3 className="font-display text-[27px] leading-[normal] text-white uppercase">{plan.name}</h3>
         {featured && (
-          <span className="bg-brand-gradient rounded-full px-3 py-1.5 text-xs leading-[normal] font-bold tracking-[0.48px] whitespace-nowrap text-white uppercase shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5),0_8px_22px_-6px_rgba(228,110,255,0.6)]">
+          <span className="bg-brand-gradient rounded-full px-3 py-1.5 text-xs leading-[normal] font-bold tracking-[0.48px] whitespace-nowrap text-white uppercase shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5)]">
             Most popular
           </span>
         )}
@@ -124,8 +124,8 @@ function PricingCard({ plan }: { plan: Plan }) {
             <span
               className={`flex size-[22px] shrink-0 items-center justify-center rounded-full ${
                 featured
-                  ? "bg-brand-gradient shadow-[0_4px_12px_-3px_rgba(228,110,255,0.6)]"
-                  : "bg-[rgba(242,185,255,0.12)] shadow-[inset_0_0_0_1px_rgba(242,185,255,0.22)]"
+                  ? "bg-brand-gradient"
+                  : "bg-[rgba(214,194,255,0.12)] shadow-[inset_0_0_0_1px_rgba(214,194,255,0.22)]"
               }`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -157,10 +157,6 @@ export function Pricing() {
         />
 
         <div className="relative flex w-full flex-col items-center gap-5 lg:flex-row lg:items-stretch lg:justify-center lg:gap-5 lg:py-6">
-          <div
-            aria-hidden
-            className="glow-blob top-1/2 left-1/2 size-[360px] -translate-1/2 opacity-30 lg:size-[520px]"
-          />
           {plans.map((plan) => (
             <PricingCard key={plan.name} plan={plan} />
           ))}

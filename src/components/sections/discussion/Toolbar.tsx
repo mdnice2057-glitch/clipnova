@@ -48,7 +48,7 @@ export function Toolbar({
                 onClick={() => onTab(t)}
                 className={`shrink-0 rounded-full px-4 py-2 text-[13px] font-semibold whitespace-nowrap transition-[background-color,color,box-shadow] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink ${
                   active
-                    ? "bg-white text-[#0a0a0a] shadow-[inset_0_-1px_0_rgba(0,0,0,0.12),0_6px_18px_-6px_rgba(255,255,255,0.45)]"
+                    ? "bg-white text-[#0a0a0a] shadow-[inset_0_-1px_0_rgba(0,0,0,0.12)]"
                     : "text-muted hover:bg-white/[0.05] hover:text-white"
                 }`}
               >
@@ -59,7 +59,7 @@ export function Toolbar({
         </div>
       </div>
       <span className="hidden h-px min-w-px flex-1 sm:block" />
-      <label className="flex w-full cursor-text items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] py-[11px] pr-2 pl-4 shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)] transition-[border-color,background-color,box-shadow] duration-200 hover:border-white/20 focus-within:border-brand-pink/70 focus-within:bg-white/[0.05] focus-within:shadow-[0_0_0_4px_rgba(228,110,255,0.12)] sm:w-auto">
+      <label className="flex w-full cursor-text items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] py-[11px] pr-2 pl-4 transition-[border-color,background-color,box-shadow] duration-200 hover:border-white/20 focus-within:border-brand-pink/70 focus-within:bg-white/[0.05] focus-within:shadow-[0_0_0_4px_rgba(167,116,255,0.12)] sm:w-auto">
         <img
           src={`${A}/icon-search.svg`}
           alt=""

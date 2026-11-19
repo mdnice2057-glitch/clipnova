@@ -21,9 +21,9 @@ const sparkline = [8, 12, 10, 16, 14, 20, 18];
 /** Figma: Live Stat Card (25:630) */
 function LiveStatCard({ stat }: { stat: Stat }) {
   return (
-    <li className="flex flex-col items-start gap-[18px] rounded-[24px] border border-subtle bg-surface p-6 transition-colors duration-200 hover:border-[rgba(242,185,255,0.25)]">
+    <li className="flex flex-col items-start gap-[18px] rounded-[24px] border border-subtle bg-surface p-6 transition-colors duration-200 hover:border-[rgba(214,194,255,0.25)]">
       <div className="flex w-full items-center gap-3">
-        <div className="flex size-[42px] shrink-0 items-center justify-center rounded-[12px] border border-[rgba(242,185,255,0.25)] bg-[rgba(242,185,255,0.1)]">
+        <div className="flex size-[42px] shrink-0 items-center justify-center rounded-[12px] border border-[rgba(214,194,255,0.25)] bg-[rgba(214,194,255,0.1)]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={stat.icon} alt="" width={22} height={22} className="size-[22px]" />
         </div>
@@ -37,10 +37,10 @@ function LiveStatCard({ stat }: { stat: Stat }) {
       </p>
 
       <div className="flex w-full items-end justify-between gap-3">
-        <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-[rgba(242,185,255,0.1)] px-2.5 py-[5px]">
+        <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-[rgba(214,194,255,0.1)] px-2.5 py-[5px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/stats/trend-up.svg" alt="" width={11} height={11} className="size-[11px]" />
-          <span className="text-xs leading-[1.21] font-semibold whitespace-nowrap text-[#f2b9ff]">
+          <span className="text-xs leading-[1.21] font-semibold whitespace-nowrap text-[#d6c2ff]">
             {stat.trend}
           </span>
         </span>
@@ -52,7 +52,7 @@ function LiveStatCard({ stat }: { stat: Stat }) {
               style={{ height: h }}
             />
           ))}
-          <span className="h-[26px] w-[5px] rounded-[2px] bg-[linear-gradient(180deg,#e46eff_0%,#0091ff_53%,#b4daab_100%)]" />
+          <span className="h-[26px] w-[5px] rounded-[2px] bg-[linear-gradient(180deg,#a774ff_0%,#7c4dff_53%,#cdb8ff_100%)]" />
         </div>
       </div>
     </li>

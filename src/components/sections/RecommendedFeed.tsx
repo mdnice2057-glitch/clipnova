@@ -6,10 +6,6 @@ export function RecommendedFeed() {
   return (
     <section id="work" className="relative scroll-mt-24 overflow-x-clip pt-10 pb-20 md:pb-[120px]">
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-[720px] bg-grid opacity-70" />
-      <div
-        aria-hidden="true"
-        className="glow-blob top-[45%] right-[-160px] size-[380px] opacity-[0.18] md:size-[560px]"
-      />
       <div className="relative mx-auto flex w-full max-w-[1200px] flex-col items-center gap-7 px-4 md:px-6 xl:px-0">
         {/* Feed Head (26:727) */}
         <div className="flex w-full flex-col items-start justify-between gap-6 md:flex-row md:items-end">

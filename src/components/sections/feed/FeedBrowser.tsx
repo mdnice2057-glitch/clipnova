@@ -65,11 +65,11 @@ function TopPick({ item }: { item: FeedItem }) {
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(80%_55%_at_0%_100%,rgba(228,110,255,0.24),transparent_65%),radial-gradient(60%_45%_at_100%_100%,rgba(0,145,255,0.18),transparent_65%)] opacity-80 transition-opacity duration-500 group-hover:opacity-100"
+        className="absolute inset-0 bg-[radial-gradient(80%_55%_at_0%_100%,rgba(167,116,255,0.24),transparent_65%),radial-gradient(60%_45%_at_100%_100%,rgba(124,77,255,0.18),transparent_65%)] opacity-80 transition-opacity duration-500 group-hover:opacity-100"
       />
 
       {/* Top pick chip */}
-      <span className="bg-brand-gradient absolute top-4 left-4 z-[2] flex items-center gap-2 rounded-full py-[7px] pr-3.5 pl-3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5),0_8px_24px_-6px_rgba(228,110,255,0.6)] sm:top-6 sm:left-6">
+      <span className="bg-brand-gradient absolute top-4 left-4 z-[2] flex items-center gap-2 rounded-full py-[7px] pr-3.5 pl-3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5)] sm:top-6 sm:left-6">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/assets/feed/icon-top-pick.svg" alt="" width={13} height={13} />
         <span className="text-xs font-bold tracking-[0.48px] whitespace-nowrap text-white uppercase">
@@ -94,7 +94,7 @@ function TopPick({ item }: { item: FeedItem }) {
       <button
         type="button"
         aria-label={`Play preview: ${item.title}`}
-        className="absolute top-[104px] left-1/2 z-[2] hidden size-[76px] -translate-x-1/2 items-center justify-center rounded-full border border-white/25 bg-white/[0.14] shadow-[0_0_0_10px_rgba(255,255,255,0.06),0_16px_40px_-8px_rgba(0,0,0,0.7)] backdrop-blur-[10px] transition-[transform,background-color,box-shadow] duration-300 hover:scale-110 hover:bg-white/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-pink motion-reduce:transition-none motion-reduce:hover:scale-100 sm:flex"
+        className="absolute top-[104px] left-1/2 z-[2] hidden size-[76px] -translate-x-1/2 items-center justify-center rounded-full border border-white/25 bg-white/[0.14] shadow-[0_0_0_10px_rgba(255,255,255,0.06)] backdrop-blur-[10px] transition-[transform,background-color,box-shadow] duration-300 hover:scale-110 hover:bg-white/25 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-pink motion-reduce:transition-none motion-reduce:hover:scale-100 sm:flex"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/assets/feed/icon-play.svg" alt="" width={26} height={26} className="translate-x-px" />
@@ -163,7 +163,7 @@ function TopPick({ item }: { item: FeedItem }) {
               onClick={() => setSaved((s) => !s)}
               className={`flex size-11 shrink-0 items-center justify-center rounded-full border backdrop-blur-[8px] transition-[background-color,border-color,transform] duration-200 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink ${
                 saved
-                  ? "border-brand-pink bg-brand-pink/25 shadow-[0_0_20px_-4px_rgba(228,110,255,0.6)]"
+                  ? "border-brand-pink bg-brand-pink/25"
                   : "border-white/[0.14] bg-[rgba(10,10,10,0.4)] hover:border-white/30 hover:bg-white/10"
               }`}
             >
@@ -201,7 +201,7 @@ function FeedTile({ item }: { item: FeedItem }) {
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-[linear-gradient(160deg,rgba(228,110,255,0.22),rgba(0,145,255,0.14)_50%,transparent_80%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        className="absolute inset-0 bg-[linear-gradient(160deg,rgba(167,116,255,0.22),rgba(124,77,255,0.14)_50%,transparent_80%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
       />
       <span
         className={`absolute top-3 left-3 rounded-full px-2.5 py-[5px] text-[10px] font-bold tracking-[0.8px] whitespace-nowrap text-white ${glass}`}
@@ -236,7 +236,7 @@ function FeedTile({ item }: { item: FeedItem }) {
             <span className="text-brand font-display text-[24px] leading-none">
               {item.price}
             </span>
-            <span className="flex size-[30px] items-center justify-center rounded-full bg-white shadow-[0_6px_18px_-6px_rgba(255,255,255,0.5)] transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none">
+            <span className="flex size-[30px] items-center justify-center rounded-full bg-white transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/assets/feed/icon-go.svg"

@@ -21,10 +21,6 @@ const categoryRatings = [
 function ScoreCard() {
   return (
     <div className="card card-lit flex flex-col items-start justify-between gap-6 overflow-hidden p-6 md:p-8">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-24 -left-16 -z-10 size-[280px] rounded-full bg-[radial-gradient(circle,rgba(228,110,255,0.28),rgba(0,145,255,0.12)_45%,transparent_70%)] blur-2xl"
-      />
       <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] py-1.5 pr-3 pl-2 text-xs leading-[normal] font-semibold text-white/85">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -38,7 +34,7 @@ function ScoreCard() {
       </span>
       <div className="flex flex-col items-start gap-3">
         <p className="flex items-baseline gap-2 font-display whitespace-nowrap">
-          <span className="text-brand text-[112px] leading-[0.85] drop-shadow-[0_8px_30px_rgba(228,110,255,0.35)] md:text-[132px]">
+          <span className="text-brand text-[112px] leading-[0.85] md:text-[132px]">
             4.9
           </span>
           <span className="text-[32px] leading-none text-muted">/ 5</span>
@@ -72,9 +68,9 @@ function DistributionCard() {
                 className="size-3"
               />
             </span>
-            <span className="relative h-2.5 min-w-px flex-1 overflow-hidden rounded-full bg-white/[0.06] shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)]">
+            <span className="relative h-2.5 min-w-px flex-1 overflow-hidden rounded-full bg-white/[0.06]">
               <span
-                className="bg-brand-gradient absolute inset-y-0 left-0 rounded-full shadow-[0_0_12px_rgba(228,110,255,0.55)]"
+                className="bg-brand-gradient absolute inset-y-0 left-0 rounded-full"
                 style={{ width: `max(8px, ${row.pct}%)` }}
               />
             </span>
@@ -123,7 +119,6 @@ function RatingSummary() {
 export function Testimonials() {
   return (
     <section id="reviews" className="relative overflow-x-clip py-20 md:py-[120px]">
-      <div aria-hidden className="glow-blob top-[280px] left-1/2 size-[520px] -translate-x-1/2 md:size-[760px]" />
       <div className="relative mx-auto flex w-full max-w-[1200px] flex-col items-center gap-8 px-4 md:px-6 xl:px-0">
         <SectionHeader
           eyebrow="Client reviews"

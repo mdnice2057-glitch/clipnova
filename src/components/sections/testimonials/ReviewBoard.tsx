@@ -15,10 +15,6 @@ function TestimonialCard({ review, order }: { review: Review; order: number }) {
       style={{ order }}
       className="card card-hover group flex w-full flex-col items-start gap-5 overflow-hidden p-6 sm:p-7"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-20 -right-20 -z-10 size-48 rounded-full bg-[radial-gradient(circle,rgba(228,110,255,0.16),transparent_70%)] opacity-60 transition-opacity duration-500 group-hover:opacity-100"
-      />
       <div className="flex w-full items-start justify-between gap-3">
         <span
           aria-hidden
@@ -26,7 +22,7 @@ function TestimonialCard({ review, order }: { review: Review; order: number }) {
         >
           “
         </span>
-        <span className="rounded-full border border-[rgba(242,185,255,0.22)] bg-[rgba(242,185,255,0.08)] px-3 py-[5px] text-[12px] leading-[normal] font-semibold whitespace-nowrap text-[#f2b9ff]">
+        <span className="rounded-full border border-[rgba(214,194,255,0.22)] bg-[rgba(214,194,255,0.08)] px-3 py-[5px] text-[12px] leading-[normal] font-semibold whitespace-nowrap text-[#d6c2ff]">
           {review.metric}
         </span>
       </div>
@@ -35,7 +31,7 @@ function TestimonialCard({ review, order }: { review: Review; order: number }) {
       </blockquote>
       <Stars count={review.rating} size={15} gap={3} />
       <div className="flex w-full items-center gap-3 border-t border-white/[0.07] pt-5">
-        <span className="bg-brand-gradient shrink-0 rounded-full p-[1.5px] shadow-[0_6px_18px_-6px_rgba(228,110,255,0.6)]">
+        <span className="bg-brand-gradient shrink-0 rounded-full p-[1.5px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={review.avatar}
@@ -120,7 +116,7 @@ function SortMenu({
         <ul
           role="listbox"
           aria-label="Sort reviews"
-          className="absolute top-full right-0 z-20 mt-2 min-w-full rounded-2xl border border-white/10 bg-[#161618]/95 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_20px_40px_-12px_rgba(0,0,0,0.7)] backdrop-blur-xl"
+          className="absolute top-full right-0 z-20 mt-2 min-w-full rounded-2xl border border-white/10 bg-[#161618]/95 p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
         >
           {sortOptions.map((option) => (
             <li key={option}>
@@ -133,7 +129,7 @@ function SortMenu({
                   setOpen(false);
                 }}
                 className={`w-full rounded-xl px-3 py-2 text-left text-[13px] font-medium whitespace-nowrap transition-colors hover:bg-white/[0.06] ${
-                  option === value ? "bg-white/[0.04] text-[#f2b9ff]" : "text-muted hover:text-white"
+                  option === value ? "bg-white/[0.04] text-[#d6c2ff]" : "text-muted hover:text-white"
                 }`}
               >
                 {option}

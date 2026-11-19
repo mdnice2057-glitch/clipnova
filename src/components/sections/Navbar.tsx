@@ -19,7 +19,7 @@ export function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-6 z-50 mx-auto w-full max-w-[1200px] px-4 md:px-6 xl:px-0">
-      <nav className="relative flex h-[68px] items-center justify-between rounded-[20px] border border-white/[0.09] bg-[linear-gradient(180deg,rgba(28,28,32,0.62),rgba(10,10,11,0.72))] py-2.5 pr-2.5 pl-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_20px_50px_-24px_rgba(0,0,0,0.9)] backdrop-blur-xl backdrop-saturate-150">
+      <nav className="relative flex h-[68px] items-center justify-between rounded-[20px] border border-white/[0.09] bg-[linear-gradient(180deg,rgba(28,28,32,0.62),rgba(10,10,11,0.72))] py-2.5 pr-2.5 pl-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-xl backdrop-saturate-150">
         <span
           aria-hidden
           className="pointer-events-none absolute inset-x-10 -bottom-px h-px bg-linear-to-r from-transparent via-brand-pink/50 to-transparent"
@@ -67,12 +67,8 @@ export function Navbar() {
       {open && (
         <div
           id="mobile-menu"
-          className="relative mt-2 overflow-hidden rounded-[20px] border border-white/[0.09] bg-[linear-gradient(180deg,rgba(24,24,28,0.92),rgba(10,10,11,0.96))] p-2 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_30px_60px_-24px_rgba(0,0,0,0.9)] backdrop-blur-xl backdrop-saturate-150 motion-safe:transition-[opacity,translate] motion-safe:duration-300 motion-safe:starting:-translate-y-2 motion-safe:starting:opacity-0 lg:hidden"
+          className="relative mt-2 overflow-hidden rounded-[20px] border border-white/[0.09] bg-[linear-gradient(180deg,rgba(24,24,28,0.92),rgba(10,10,11,0.96))] p-2 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] backdrop-blur-xl backdrop-saturate-150 motion-safe:transition-[opacity,translate] motion-safe:duration-300 motion-safe:starting:-translate-y-2 motion-safe:starting:opacity-0 lg:hidden"
         >
-          <div
-            aria-hidden
-            className="glow-blob -top-24 -right-16 size-[220px]"
-          />
           <ul className="relative flex flex-col">
             {links.map((l) => (
               <li key={l.href}>

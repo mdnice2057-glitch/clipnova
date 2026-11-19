@@ -2,7 +2,8 @@ import { Button } from "@/components/ui/Button";
 import { Stars } from "@/components/ui/Stars";
 import { Tag } from "@/components/ui/Tag";
 import { Navbar } from "./Navbar";
-import { ReelCard, type Reel } from "./hero/ReelCard";
+import { type Reel } from "./hero/ReelCard";
+import { ReelCarousel } from "./hero/ReelCarousel";
 
 const reels: Reel[] = [
   { image: "/assets/hero/reel-0.png", avatar: "/assets/hero/avatar-0.png", handle: "nadia.arif", caption: "Our mehendi film — delivered in 6 days ✨", stats: ["12K", "640", "210", "3.1K"] },
@@ -17,7 +18,7 @@ const reels: Reel[] = [
 const clients = [0, 1, 2, 3, 4].map((i) => `/assets/hero/client-${i}.png`);
 
 const tileBg =
-  "linear-gradient(141.52deg, rgb(242,180,255) 14.286%, rgb(169,140,255) 37.143%, rgb(111,135,255) 62.857%, rgb(84,104,238) 85.714%)";
+  "linear-gradient(141.52deg, rgb(201,168,255) 14.286%, rgb(160,123,255) 37.143%, rgb(124,85,245) 62.857%, rgb(93,59,224) 85.714%)";
 
 /** Glossy app-icon tile floating around the hero headline (Figma: Float Tile / *). */
 function FloatTile({
@@ -51,11 +52,7 @@ function FloatTile({
       }
     >
       <div
-        className="absolute -inset-3 opacity-55 blur-2xl"
-        style={{ borderRadius: radius * 1.4, backgroundImage: tileBg }}
-      />
-      <div
-        className="relative flex items-center justify-center overflow-hidden border-[1.5px] border-white/45 shadow-[0_24px_50px_-10px_rgba(111,75,255,0.6),0_0_0_6px_rgba(255,255,255,0.04)]"
+        className="relative flex items-center justify-center overflow-hidden border-[1.5px] border-white/45 shadow-[0_0_0_6px_rgba(255,255,255,0.04)]"
         style={{ width: size, height: size, borderRadius: radius, backgroundImage: tileBg }}
       >
         <div className="absolute inset-x-[10%] top-[5%] h-[42%] rounded-[inherit] bg-gradient-to-b from-white/50 to-white/0" />
@@ -66,7 +63,7 @@ function FloatTile({
           </div>
         </div>
         <div
-          className="pointer-events-none absolute inset-0 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.35),inset_4px_8px_14px_0_rgba(42,47,168,0.35),inset_-3px_-5px_10px_0_rgba(255,255,255,0.6)]"
+          className="pointer-events-none absolute inset-0 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.35)]"
           style={{ borderRadius: "inherit" }}
         />
       </div>
@@ -115,21 +112,21 @@ export function Hero() {
         </div>
         <div className="absolute inset-x-0 top-0 h-[980px] bg-grid opacity-80" />
         <div className="absolute inset-x-0 top-0 h-[520px] bg-[radial-gradient(50%_60%_at_50%_0%,rgba(255,255,255,0.16),transparent_70%)]" />
-        <div className="glow-blob top-[160px] left-1/2 size-[460px] -translate-x-1/2 opacity-30 sm:size-[720px]" />
-        <div className="glow-blob top-[720px] left-[8%] h-[360px] w-[520px] opacity-20 max-sm:hidden" />
-        <div className="glow-blob top-[760px] right-[6%] h-[320px] w-[480px] bg-[radial-gradient(circle,rgba(0,145,255,0.8),rgba(180,218,171,0.4)_50%,transparent_70%)] opacity-20 max-sm:hidden" />
       </div>
 
       {/* Floating platform tiles, positioned on the 1440 design canvas */}
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 mx-auto hidden h-[600px] max-w-[1440px] lg:block">
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 mx-auto hidden h-[700px] max-w-[1440px] lg:block">
         <div className="absolute top-[239.47px] left-[76px] flex size-[139.955px] items-center justify-center">
-          <FloatTile size={118} radius={30.68} rotate={-12} icon="/assets/hero/icon-shorts.svg" iconSize={58} iconInset="0 0 -12.34% 0" className="relative" />
+          <FloatTile size={118} radius={30.68} rotate={-12} icon="/assets/hero/icon-youtube.svg" iconSize={62} iconInset="0" className="relative" />
         </div>
-        <div className="absolute top-[397.5px] left-[1185.33px] flex size-[128.638px] items-center justify-center max-xl:left-auto max-xl:right-[40px]">
-          <FloatTile size={104} radius={27.04} rotate={16} icon="/assets/hero/icon-tiktok.svg" iconSize={46} iconInset="-8.7% -10.83% -26.09% -10.83%" className="relative" delay="-2s" />
+        <div className="absolute top-[570px] left-[170px] flex size-[84px] items-center justify-center max-xl:left-[70px]">
+          <FloatTile size={72} radius={20} rotate={12} icon="/assets/hero/icon-facebook.svg" iconSize={34} iconInset="0" className="relative opacity-85 blur-[2.5px]" delay="-3s" />
         </div>
-        <div className="absolute top-[166px] left-[1147.5px] flex size-[83.409px] items-center justify-center max-xl:left-auto max-xl:right-[120px]">
-          <FloatTile size={72} radius={20} rotate={10} icon="/assets/hero/icon-insta.svg" iconSize={32} iconInset="-5.42% -17.92% -30.42% -17.92%" className="relative opacity-85 blur-[2.5px]" delay="-4s" />
+        <div className="absolute top-[397.5px] right-[40px] flex size-[128.638px] items-center justify-center min-[1440px]:right-[126px]">
+          <FloatTile size={104} radius={27.04} rotate={16} icon="/assets/hero/icon-instagram.svg" iconSize={52} iconInset="0" className="relative" delay="-2s" />
+        </div>
+        <div className="absolute top-[166px] right-[120px] flex size-[83.409px] items-center justify-center min-[1440px]:right-[209px]">
+          <FloatTile size={72} radius={20} rotate={10} icon="/assets/hero/icon-shorts.svg" iconSize={34} iconInset="0" className="relative opacity-85 blur-[2.5px]" delay="-4s" />
         </div>
       </div>
 
@@ -143,7 +140,7 @@ export function Hero() {
           <span className="max-sm:hidden">Now accepting new orders — first draft in 48 hours</span>
         </Tag>
 
-        <h1 className="text-chrome font-display text-[length:min(64px,calc((100vw_-_2.5rem)/6.2))] leading-[0.98] uppercase drop-shadow-[0_8px_30px_rgba(0,0,0,0.35)] sm:text-[96px] lg:text-[143px]">
+        <h1 className="text-chrome font-display text-[length:min(64px,calc((100vw_-_2.5rem)/6.2))] leading-[0.98] uppercase sm:text-[96px] lg:text-[143px]">
           <span className="whitespace-nowrap">Every frame,</span>
           <br />
           <span className="whitespace-nowrap">perfectly crafted</span>
@@ -185,19 +182,11 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Showcase marquee */}
-      <div className="relative h-[370px] w-full overflow-hidden sm:h-[470px]">
-        <div aria-hidden className="glow-blob top-1/2 left-1/2 h-[220px] w-[85%] -translate-x-1/2 -translate-y-1/2 opacity-25" />
-        <div className="animate-marquee absolute top-4 left-4 flex w-max sm:top-5 sm:left-[46px] hover:[animation-play-state:paused]!">
-          {[...reels, ...reels].map((reel, i) => (
-            <div key={`${reel.handle}-${i}`} className="pr-4 sm:pr-[42px]" aria-hidden={i >= reels.length || undefined}>
-              <ReelCard reel={reel} />
-            </div>
-          ))}
-        </div>
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[rgba(10,10,11,0.12)]" />
-        <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-canvas via-[rgba(10,10,11,0.6)] via-45% to-transparent sm:w-[120px] md:w-[340px]" />
-        <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-canvas via-[rgba(10,10,11,0.6)] via-45% to-transparent sm:w-[120px] md:w-[340px]" />
+      {/* Showcase: reels curved around the inside of a cylinder */}
+      <div className="relative -mt-14 h-[340px] w-full overflow-x-clip sm:-mt-24 sm:h-[480px]">
+        <ReelCarousel reels={reels} />
+        <div aria-hidden className="pointer-events-none absolute -inset-y-24 left-0 z-[2000] w-8 bg-gradient-to-r from-canvas to-transparent sm:w-[80px] md:w-[140px]" />
+        <div aria-hidden className="pointer-events-none absolute -inset-y-24 right-0 z-[2000] w-8 bg-gradient-to-l from-canvas to-transparent sm:w-[80px] md:w-[140px]" />
       </div>
     </section>
   );
