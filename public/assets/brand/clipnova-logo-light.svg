@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 106" fill="none">
+  <defs><linearGradient id="cn-fill" x1="10" y1="8" x2="98" y2="96" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ff6b6b"/><stop offset="1" stop-color="#ff2b2b"/></linearGradient></defs>
+  <rect x="10" y="12" width="88" height="80" rx="27" transform="rotate(-9 54 52)" fill="url(#cn-fill)"/>
+  <path d="M61.5 35.6A20 20 0 1 0 61.5 68.4" stroke="#fff" stroke-width="13" stroke-linecap="round"/>
+  <path d="M67 45.2 79.6 52 67 58.8Z" fill="#fff" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"/>
+  <circle cx="93" cy="91" r="10.5" fill="#ff8a8a"/>
+  <circle cx="111.5" cy="83" r="6.2" fill="#ff2b2b"/>
+  <circle cx="123" cy="74.5" r="3.4" fill="#d10f0f"/>
+  <text x="119" y="70" fill="#14111c" font-family="'Playfair Display', Georgia, 'Times New Roman', serif" font-size="58" font-weight="500" letter-spacing="-0.5">lipnova</text>
+</svg>
