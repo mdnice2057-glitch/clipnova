@@ -177,6 +177,14 @@ body::before {
   }
 }
 
+/* Horizontal scrollers (mobile carousels) without a visible scrollbar */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* Small icon tile with gradient hairline */
 @utility icon-tile {
   display: inline-flex;

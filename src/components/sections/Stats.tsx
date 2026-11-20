@@ -21,30 +21,30 @@ const sparkline = [8, 12, 10, 16, 14, 20, 18];
 /** Figma: Live Stat Card (25:630) */
 function LiveStatCard({ stat }: { stat: Stat }) {
   return (
-    <li className="flex flex-col items-start gap-[18px] rounded-[24px] border border-subtle bg-surface p-6 transition-colors duration-200 hover:border-[rgba(255,154,154,0.25)]">
-      <div className="flex w-full items-center gap-3">
-        <div className="flex size-[42px] shrink-0 items-center justify-center rounded-[12px] border border-[rgba(255,154,154,0.25)] bg-[rgba(255,154,154,0.1)]">
+    <li className="flex min-w-0 flex-col items-start gap-3.5 rounded-[20px] border border-subtle bg-surface p-4 transition-colors sm:gap-[18px] sm:rounded-[24px] sm:p-6 duration-200 hover:border-[rgba(255,154,154,0.25)]">
+      <div className="flex w-full flex-col items-start gap-2.5 sm:flex-row sm:items-center sm:gap-3">
+        <div className="flex size-9 shrink-0 sm:size-[42px] items-center justify-center rounded-[12px] border border-[rgba(255,154,154,0.25)] bg-[rgba(255,154,154,0.1)]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={stat.icon} alt="" width={22} height={22} className="size-[22px]" />
+          <img src={stat.icon} alt="" width={22} height={22} className="size-[18px] sm:size-[22px]" />
         </div>
-        <h3 className="text-[15px] leading-[1.21] font-medium whitespace-nowrap text-muted">
+        <h3 className="text-[13px] leading-[1.25] font-medium text-muted sm:text-[15px] sm:whitespace-nowrap">
           {stat.label}
         </h3>
       </div>
 
-      <p className="text-chrome font-display text-[52px] leading-none whitespace-nowrap">
+      <p className="text-chrome font-display text-[38px] leading-none whitespace-nowrap sm:text-[52px]">
         <CountUp value={stat.value} suffix={stat.suffix} />
       </p>
 
       <div className="flex w-full items-end justify-between gap-3">
-        <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-[rgba(255,154,154,0.1)] px-2.5 py-[5px]">
+        <span className="flex min-w-0 items-center gap-1.5 rounded-full bg-[rgba(255,154,154,0.1)] px-2 py-[5px] sm:shrink-0 sm:px-2.5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/stats/trend-up.svg" alt="" width={11} height={11} className="size-[11px]" />
-          <span className="text-xs leading-[1.21] font-semibold whitespace-nowrap text-[#ff9a9a]">
+          <span className="truncate text-[11px] leading-[1.21] font-semibold text-[#ff9a9a] sm:text-xs">
             {stat.trend}
           </span>
         </span>
-        <div className="flex shrink-0 items-end gap-[3px]" aria-hidden="true">
+        <div className="hidden shrink-0 items-end gap-[3px] sm:flex" aria-hidden="true">
           {sparkline.map((h, i) => (
             <span
               key={i}
@@ -81,7 +81,7 @@ export function Stats() {
           </div>
         </div>
 
-        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {stats.map((stat) => (
             <LiveStatCard key={stat.label} stat={stat} />
           ))}

@@ -12,13 +12,13 @@ export function RecommendedFeed() {
           <div className="flex flex-col items-start gap-3.5">
             <SectionTitle eyebrow="✦ Recommended" title="Picked for your next order" />
             <p className="max-w-[560px] text-base leading-[1.5] text-muted md:text-[17px]">
-              Work samples matched to your past orders — tap “Order similar” to
-              get the same style.
+              Work samples matched to your past orders. Like one? Tap “Order
+              similar” and we’ll edit yours in the same style.
             </p>
           </div>
 
           {/* Personal Chip (40:1045) */}
-          <div className="card flex shrink-0 items-center gap-3 rounded-full py-1.5 pr-2 pl-1.5">
+          <div className="card flex shrink-0 items-center gap-3 rounded-full py-1.5 pr-5 pl-1.5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/assets/feed/avatar-daniel.png"
@@ -27,18 +27,10 @@ export function RecommendedFeed() {
               height={36}
               className="size-9 rounded-full ring-2 ring-brand-pink/40 ring-offset-2 ring-offset-[#141416]"
             />
-            <div className="flex flex-col gap-px pr-1 whitespace-nowrap">
+            <div className="flex flex-col gap-px whitespace-nowrap">
               <span className="text-sm font-semibold text-white">Hi Daniel 👋</span>
               <span className="text-xs text-muted">Based on your 3 past orders</span>
             </div>
-            <button
-              type="button"
-              aria-label="Tune your recommendations"
-              className="flex size-[34px] items-center justify-center rounded-full border border-white/10 bg-white/[0.05] transition-[background-color,border-color] duration-200 hover:border-white/25 hover:bg-white/[0.1] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/feed/icon-personal.svg" alt="" width={15} height={15} />
-            </button>
           </div>
         </div>
 

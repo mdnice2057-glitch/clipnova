@@ -1,117 +1,29 @@
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Stars } from "@/components/ui/Stars";
-import { FeedbackForm } from "./testimonials/FeedbackForm";
-import { ReviewBoard } from "./testimonials/ReviewBoard";
+import { reviews, type Review } from "./testimonials/data";
 
-const distribution = [
-  { stars: 5, pct: 92, label: "92%" },
-  { stars: 4, pct: 6, label: "6%" },
-  { stars: 3, pct: 1, label: "1%" },
-  { stars: 2, pct: 0.5, label: "<1%" },
-  { stars: 1, pct: 0.5, label: "<1%" },
-];
-
-const categoryRatings = [
-  { label: "Quality", value: "4.9" },
-  { label: "Communication", value: "5.0" },
-  { label: "On-time", value: "4.8" },
-];
-
-/** Figma: Score (27:817) */
-function ScoreCard() {
+function ReviewCard({ review }: { review: Review }) {
   return (
-    <div className="card card-lit flex flex-col items-start justify-between gap-6 overflow-hidden p-6 md:p-8">
-      <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] py-1.5 pr-3 pl-2 text-xs leading-[normal] font-semibold text-white/85">
+    <figure className="card flex w-[85%] shrink-0 snap-start flex-col gap-5 p-6 sm:w-[60%] md:w-auto">
+      <Stars count={review.rating} size={14} gap={3} />
+      <blockquote className="flex-1 text-[15px] leading-[1.65] text-white/80">
+        {review.quote}
+      </blockquote>
+      <figcaption className="flex items-center gap-3">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/assets/reviews/shield-check.svg"
+          src={review.avatar}
           alt=""
-          width={14}
-          height={14}
-          className="size-3.5"
+          width={36}
+          height={36}
+          className="size-9 shrink-0 rounded-full object-cover"
         />
-        Verified rating
-      </span>
-      <div className="flex flex-col items-start gap-3">
-        <p className="flex items-baseline gap-2 font-display whitespace-nowrap">
-          <span className="text-brand text-[90px] leading-[0.85] md:text-[106px]">
-            4.9
-          </span>
-          <span className="text-[26px] leading-none text-muted">/ 5</span>
-        </p>
-        <Stars count={5} size={20} gap={4} />
-        <p className="text-sm leading-[normal] text-muted">Based on 2,148 verified reviews</p>
-      </div>
-    </div>
-  );
-}
-
-/** Figma: Distribution (27:834) */
-function DistributionCard() {
-  return (
-    <div className="card flex flex-col gap-6 p-6 md:p-8">
-      <p className="text-xs leading-[normal] font-semibold tracking-[0.14em] text-muted uppercase">
-        Rating breakdown
-      </p>
-      <ul className="flex flex-col gap-3.5" aria-label="Rating distribution">
-        {distribution.map((row) => (
-          <li key={row.stars} className="flex w-full items-center gap-3">
-            <span className="flex w-7 shrink-0 items-center gap-1 text-sm leading-[normal] font-semibold text-white">
-              {row.stars}
-              <span className="sr-only"> stars</span>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/assets/reviews/star-12.svg"
-                alt=""
-                width={12}
-                height={12}
-                className="size-3"
-              />
-            </span>
-            <span className="relative h-2.5 min-w-px flex-1 overflow-hidden rounded-full bg-white/[0.06]">
-              <span
-                className="bg-brand-gradient absolute inset-y-0 left-0 rounded-full"
-                style={{ width: `max(8px, ${row.pct}%)` }}
-              />
-            </span>
-            <span
-              className={`w-[38px] shrink-0 text-right text-[13px] leading-[normal] font-semibold ${
-                row.stars === 5 ? "text-white" : "text-muted"
-              }`}
-            >
-              {row.label}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <ul className="mt-auto flex flex-wrap gap-2">
-        {categoryRatings.map((c) => (
-          <li
-            key={c.label}
-            className="flex flex-auto flex-col items-start gap-1 rounded-2xl border border-white/[0.07] bg-white/[0.03] px-3 py-2.5"
-          >
-            <span className="text-brand font-display text-[21px] leading-none">{c.value}</span>
-            <span className="text-[11px] leading-[normal] whitespace-nowrap text-muted">
-              {c.label}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-/** Figma: Rating Summary (27:816) */
-function RatingSummary() {
-  return (
-    <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.05fr)_minmax(0,1.45fr)]">
-      <ScoreCard />
-      <DistributionCard />
-      {/* Feedback Form (27:886) */}
-      <div className="card flex min-w-0 p-6 md:col-span-2 md:p-8 xl:col-span-1">
-        <FeedbackForm />
-      </div>
-    </div>
+        <span className="flex min-w-0 flex-col">
+          <span className="text-sm font-semibold text-white">{review.name}</span>
+          <span className="truncate text-xs text-muted">{review.meta}</span>
+        </span>
+      </figcaption>
+    </figure>
   );
 }
 
@@ -119,15 +31,21 @@ function RatingSummary() {
 export function Testimonials() {
   return (
     <section id="reviews" className="relative overflow-x-clip py-20 md:py-[120px]">
-      <div className="relative mx-auto flex w-full max-w-[1200px] flex-col items-center gap-8 px-4 md:px-6 xl:px-0">
-        <SectionHeader
-          eyebrow="Client reviews"
-          title="Reviews & feedback"
-          subtitle="Real ratings from verified clients. Every review comes from a completed order."
-          className="mb-2 md:mb-4"
-        />
-        <RatingSummary />
-        <ReviewBoard />
+      <div className="relative mx-auto flex w-full max-w-[1200px] flex-col items-center gap-10 px-4 md:gap-12 md:px-6 xl:px-0">
+        <div className="flex flex-col items-center gap-6">
+          <SectionHeader eyebrow="Client reviews" title="Reviews & feedback" />
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-muted">
+            <span className="font-display text-[22px] leading-none text-white">4.9</span>
+            <Stars count={5} size={15} gap={3} />
+            <span>from 2,148 verified clients</span>
+          </div>
+        </div>
+
+        <div className="no-scrollbar -mx-4 flex w-[calc(100%+2rem)] snap-x snap-mandatory scroll-px-4 gap-4 overflow-x-auto px-4 md:mx-0 md:grid md:w-full md:grid-cols-2 md:overflow-visible md:px-0 lg:grid-cols-3 lg:gap-5">
+          {reviews.map((review) => (
+            <ReviewCard key={review.id} review={review} />
+          ))}
+        </div>
       </div>
     </section>
   );
