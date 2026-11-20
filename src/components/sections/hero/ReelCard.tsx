@@ -17,7 +17,7 @@ const actions = [
 ];
 
 /** Figma: Reel Card (35:996) — short-form preview with TikTok-style action rail. */
-export function ReelCard({ reel }: { reel: Reel }) {
+export function ReelCard({ reel, priority = false }: { reel: Reel; priority?: boolean }) {
   return (
     <article className="card card-hover group relative h-[338px] w-[190px] shrink-0 overflow-hidden rounded-[18px] sm:h-[420px] sm:w-[236px]">
       <Image
@@ -25,6 +25,7 @@ export function ReelCard({ reel }: { reel: Reel }) {
         alt=""
         fill
         sizes="(max-width: 639px) 190px, 236px"
+        priority={priority}
         className="object-cover transition-transform duration-700 group-hover:scale-105"
       />
       <div className="absolute -inset-x-px -top-px h-[120px] bg-gradient-to-b from-black/45 to-transparent" />

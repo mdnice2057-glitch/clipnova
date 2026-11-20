@@ -4,16 +4,46 @@ import { useEffect, useRef } from "react";
 import { ReelCard, type Reel } from "./ReelCard";
 
 const SPEED = 38; // px of arc per second
-const MAX_ANGLE = 1.25; // rad — cards past this angle are hidden
-const FADE = 0.18; // rad — fade-out band before MAX_ANGLE
 
-/** Card size + curvature for the current stage width. */
-function geometry(width: number) {
+/**
+ * Places every `[data-reel]` child of `stage` on the inside of a cylinder for the given
+ * arc `offset`. Self-contained (no outer references) so it can also be inlined as a
+ * pre-hydration script — otherwise the cards stay hidden until the JS bundle loads.
+ */
+function layoutReels(stage: HTMLElement, offset: number, width: number) {
+  const MAX_ANGLE = 1.25; // rad — cards past this angle are hidden
+  const FADE = 0.18; // rad — fade-out band before MAX_ANGLE
+
+  // Card size + curvature for the current stage width.
   const mobile = width < 640;
   const pitch = mobile ? 190 + 12 : 236 + 18;
   const radius = mobile ? Math.max(width * 0.95, 340) : Math.min(Math.max(width * 0.5, 520), 760);
-  return { pitch, radius, perspective: radius * 0.95, depth: radius * 0.45 };
+  const depth = radius * 0.45;
+
+  const els = stage.querySelectorAll<HTMLElement>("[data-reel]");
+  const loop = els.length * pitch;
+  stage.style.perspective = `${radius * 0.95}px`;
+
+  els.forEach((el, i) => {
+    let s = (((i * pitch - offset) % loop) + loop) % loop;
+    if (s > loop / 2) s -= loop;
+    const angle = s / radius;
+    const abs = Math.abs(angle);
+
+    if (abs > MAX_ANGLE) {
+      el.style.visibility = "hidden";
+      return;
+    }
+    const x = radius * Math.sin(angle);
+    const z = radius * (1 - Math.cos(angle)) - depth;
+    el.style.visibility = "visible";
+    el.style.opacity = String(Math.min(1, (MAX_ANGLE - abs) / FADE));
+    el.style.zIndex = String(Math.round(1000 + z));
+    el.style.transform = `translate3d(${x}px, 0, ${z}px) rotateY(${-angle}rad)`;
+  });
 }
+
+const preHydrationLayout = `(function(){var s=document.currentScript.previousElementSibling;(${layoutReels.toString()})(s,0,s.clientWidth)})()`;
 
 /**
  * Reels laid out on the inside of a cylinder: center cards recede, edge cards swing
@@ -21,7 +51,6 @@ function geometry(width: number) {
  */
 export function ReelCarousel({ reels }: { reels: Reel[] }) {
   const stageRef = useRef<HTMLDivElement>(null);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const items = [...reels, ...reels];
 
   useEffect(() => {
@@ -29,7 +58,7 @@ export function ReelCarousel({ reels }: { reels: Reel[] }) {
     if (!stage) return;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let geo = geometry(stage.clientWidth);
+    let width = stage.clientWidth;
     let offset = 0;
     let hovered = false;
     let visible = true;
@@ -37,30 +66,7 @@ export function ReelCarousel({ reels }: { reels: Reel[] }) {
     let last = performance.now();
     let raf = 0;
 
-    const layout = () => {
-      const { pitch, radius, perspective, depth } = geo;
-      const loop = items.length * pitch;
-      stage.style.perspective = `${perspective}px`;
-
-      itemRefs.current.forEach((el, i) => {
-        if (!el) return;
-        let s = (((i * pitch - offset) % loop) + loop) % loop;
-        if (s > loop / 2) s -= loop;
-        const angle = s / radius;
-        const abs = Math.abs(angle);
-
-        if (abs > MAX_ANGLE) {
-          el.style.visibility = "hidden";
-          return;
-        }
-        const x = radius * Math.sin(angle);
-        const z = radius * (1 - Math.cos(angle)) - depth;
-        el.style.visibility = "visible";
-        el.style.opacity = String(Math.min(1, (MAX_ANGLE - abs) / FADE));
-        el.style.zIndex = String(Math.round(1000 + z));
-        el.style.transform = `translate3d(${x}px, 0, ${z}px) rotateY(${-angle}rad)`;
-      });
-    };
+    const layout = () => layoutReels(stage, offset, width);
 
     const tick = (now: number) => {
       const dt = Math.min(now - last, 50) / 1000;
@@ -71,7 +77,7 @@ export function ReelCarousel({ reels }: { reels: Reel[] }) {
     };
 
     const resize = new ResizeObserver(() => {
-      geo = geometry(stage.clientWidth);
+      width = stage.clientWidth;
       layout();
     });
     resize.observe(stage);
@@ -115,26 +121,29 @@ export function ReelCarousel({ reels }: { reels: Reel[] }) {
     };
   }, [items.length]);
 
+  // Positions/visibility are written straight to the DOM (inline script, then the effect),
+  // so React owns no inline styles here; suppressHydrationWarning covers the script's writes.
   return (
-    <div
-      ref={stageRef}
-      onDragStart={(e) => e.preventDefault()}
-      className="absolute inset-0 cursor-grab touch-pan-y select-none active:cursor-grabbing"
-      style={{ perspective: "900px" }}
-    >
-      {items.map((reel, i) => (
-        <div
-          key={`${reel.handle}-${i}`}
-          ref={(el) => {
-            itemRefs.current[i] = el;
-          }}
-          aria-hidden={i >= reels.length || undefined}
-          className="absolute top-1/2 left-1/2 -mt-[169px] -ml-[95px] will-change-transform sm:-mt-[210px] sm:-ml-[118px]"
-          style={{ visibility: "hidden" }}
-        >
-          <ReelCard reel={reel} />
-        </div>
-      ))}
-    </div>
+    <>
+      <div
+        ref={stageRef}
+        suppressHydrationWarning
+        onDragStart={(e) => e.preventDefault()}
+        className="absolute inset-0 cursor-grab touch-pan-y select-none active:cursor-grabbing"
+      >
+        {items.map((reel, i) => (
+          <div
+            key={`${reel.handle}-${i}`}
+            data-reel=""
+            suppressHydrationWarning
+            aria-hidden={i >= reels.length || undefined}
+            className="invisible absolute top-1/2 left-1/2 -mt-[169px] -ml-[95px] will-change-transform sm:-mt-[210px] sm:-ml-[118px]"
+          >
+            <ReelCard reel={reel} priority={i < reels.length} />
+          </div>
+        ))}
+      </div>
+      <script suppressHydrationWarning dangerouslySetInnerHTML={{ __html: preHydrationLayout }} />
+    </>
   );
 }
