@@ -17,7 +17,7 @@ const plans: Plan[] = [
     description: "Reels, TikToks and Shorts up to 60 seconds.",
     price: "$49",
     unit: "/ video",
-    cta: "Order Basic",
+    cta: "Contact us",
     features: [
       "Up to 60-second video",
       "Captions & trending audio",
@@ -31,7 +31,7 @@ const plans: Plan[] = [
     description: "Vlogs, YouTube videos and SaaS explainers up to 10 minutes.",
     price: "$199",
     unit: "/ video",
-    cta: "Order Standard",
+    cta: "Contact us",
     featured: true,
     features: [
       "Up to 10-minute video",
@@ -46,7 +46,7 @@ const plans: Plan[] = [
     description: "Wedding films, SaaS launch films and full post production.",
     price: "From $499",
     unit: "/ project",
-    cta: "Get a custom quote",
+    cta: "Contact us",
     features: [
       "Wedding highlight + full film",
       "Cinematic 4K color grade",
@@ -104,11 +104,11 @@ function PricingCard({ plan }: { plan: Plan }) {
       </p>
 
       {featured ? (
-        <Button href="#order" variant="primary" className="w-full leading-[normal]">
+        <Button href="#contact" variant="primary" className="w-full leading-[normal]">
           {plan.cta}
         </Button>
       ) : (
-        <Button href="#order" variant="secondary" className="w-full leading-[normal]">
+        <Button href="#contact" variant="secondary" className="w-full leading-[normal]">
           {plan.cta}
         </Button>
       )}

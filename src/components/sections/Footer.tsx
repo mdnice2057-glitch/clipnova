@@ -63,9 +63,9 @@ export function Footer() {
               Get a fixed quote within 2 hours. No payment until you approve.
             </p>
             <div className="flex w-full flex-col items-stretch justify-center gap-3 pt-2 sm:w-auto sm:flex-row sm:items-center">
-              <Button href="#order">Place an order</Button>
-              <Button variant="secondary" href="#contact">
-                Talk to us
+              <Button href="#contact">Contact us</Button>
+              <Button variant="secondary" href="#work">
+                See our work
               </Button>
             </div>
           </div>

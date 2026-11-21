@@ -3,12 +3,13 @@ import { ProcessTimeline, type Step } from "./how/ProcessTimeline";
 
 const STEPS: Step[] = [
   {
-    title: "Place your order",
-    short: "Place order",
-    meta: "Takes ~2 minutes",
-    description: "Pick a service, share your brief and references, and confirm your package.",
-    points: ["Choose a service & length", "Add references and notes", "Pay securely, no calls"],
-    image: "/assets/feed/tile-vlog.jpg",
+    title: "Tell us about your project",
+    short: "Contact us",
+    meta: "Free consultation",
+    description: "Message us with your brief, references and the platforms you publish on. We suggest the right service.",
+    points: ["Share your brief & references", "Pick a service and video length", "Get a quote before you commit"],
+    image: "/assets/how/thumbs/step-1-brief.jpg",
+    video: "/assets/how/videos/step-1-brief.mp4",
     tint: "255,43,43",
   },
   {
@@ -17,7 +18,8 @@ const STEPS: Step[] = [
     meta: "Any format · any size",
     description: "Send your raw clips, music and logos through a secure upload link — any format, any size.",
     points: ["4K, RAW, phone footage — all fine", "Resumable uploads up to 200 GB", "Files stay private & encrypted"],
-    image: "/assets/services/cinematic-vlog.jpg",
+    image: "/assets/how/thumbs/step-2-upload.jpg",
+    video: "/assets/how/videos/step-2-upload.mp4",
     tint: "209,15,15",
   },
   {
@@ -26,7 +28,8 @@ const STEPS: Step[] = [
     meta: "First draft in 48h",
     description: "Your editor cuts the first draft. Leave timestamped notes and get revisions until it feels right.",
     points: ["Dedicated editor for your project", "Comment right on the frame", "Unlimited revisions"],
-    image: "/assets/feed/tile-color.jpg",
+    image: "/assets/how/thumbs/step-3-edit.jpg",
+    video: "/assets/how/videos/step-3-edit.mp4",
     tint: "205,205,205",
   },
   {
@@ -35,7 +38,8 @@ const STEPS: Step[] = [
     meta: "4K · every aspect ratio",
     description: "Download your final cut in every format and aspect ratio you need, ready to post anywhere.",
     points: ["9:16, 16:9 and 1:1 exports", "Captions & thumbnails on request", "Project files kept for 90 days"],
-    image: "/assets/services/wedding-film.jpg",
+    image: "/assets/how/thumbs/step-4-deliver.jpg",
+    video: "/assets/how/videos/step-4-deliver.mp4",
     tint: "255,255,255",
   },
 ];
@@ -46,9 +50,9 @@ export function HowItWorks() {
     <section id="how-it-works" className="relative scroll-mt-24 overflow-x-clip py-20 md:py-[120px]">
       <div className="relative mx-auto flex w-full max-w-[1200px] flex-col items-center gap-10 px-4 md:gap-14 md:px-6 xl:px-0">
         <SectionHeader
-          eyebrow="How to order"
-          title="How ordering works"
-          subtitle="Place an order in minutes. We handle everything from the first cut to final delivery."
+          eyebrow="How we work"
+          title="From first message to final cut"
+          subtitle="Tell us about your project and we take it from raw footage to a ready-to-publish video, with you reviewing every step."
         />
         <ProcessTimeline steps={STEPS} />
       </div>

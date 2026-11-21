@@ -1,46 +1,47 @@
+"use client";
+
 import Image from "next/image";
+import { useState, type ReactNode } from "react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { VideoDialog } from "./services/VideoDialog";
 
 type Service = {
   number: string;
   title: string;
   description: string;
   tags: [string, string, string];
-  priceLabel: string;
-  price: string;
   image: string;
+  /** Showreel played full-screen. Services without one show no play control. */
+  video?: string;
 };
 
 const services: Service[] = [
   {
     number: "01",
-    title: "SaaS Promotional Videos",
-    description:
-      "Launch films, explainers and ad creatives that make your product click in seconds — built to convert on landing pages and paid social.",
-    tags: ["Motion graphics", "Voiceover", "UI animation"],
-    priceLabel: "Starting at",
-    price: "$499",
-    image: "/assets/services/saas-promo.jpg",
-  },
-  {
-    number: "02",
-    title: "Wedding Film Editing",
-    description:
-      "Emotional highlight reels and full-length films — color graded, scored to music and delivered ready to share with family.",
-    tags: ["Highlight film", "Full ceremony", "Same-day teaser"],
-    priceLabel: "Starting at",
-    price: "$349",
-    image: "/assets/services/wedding-film.jpg",
-  },
-  {
-    number: "03",
     title: "Cinematic Vlog Editing",
     description:
       "Story-driven travel and lifestyle vlogs with cinematic pacing, sound and color.",
     tags: ["Storytelling", "Sound design", "B-roll"],
-    priceLabel: "Starting at",
-    price: "$199",
-    image: "/assets/services/cinematic-vlog.jpg",
+    image: "/assets/services/thumbs/cinematic-vlog.jpg",
+    video: "/assets/services/videos/cinematic-vlog.mp4",
+  },
+  {
+    number: "02",
+    title: "SaaS Promotional Videos",
+    description:
+      "Launch films, explainers and ad creatives that make your product click in seconds — built to convert on landing pages and paid social.",
+    tags: ["Motion graphics", "Voiceover", "UI animation"],
+    image: "/assets/services/thumbs/saas-promo.jpg",
+    video: "/assets/services/videos/saas-promo.mp4",
+  },
+  {
+    number: "03",
+    title: "Wedding Film Editing",
+    description:
+      "Emotional highlight reels and full-length films — color graded, scored to music and delivered ready to share with family.",
+    tags: ["Highlight film", "Full ceremony", "Same-day teaser"],
+    image: "/assets/services/thumbs/wedding-film.jpg",
+    video: "/assets/services/videos/wedding-film.mp4",
   },
   {
     number: "04",
@@ -48,9 +49,8 @@ const services: Service[] = [
     description:
       "Facebook, Instagram & TikTok Reels with strong hooks, captions and trending audio.",
     tags: ["Hooks", "Captions", "Trending audio"],
-    priceLabel: "Per reel from",
-    price: "$49",
-    image: "/assets/services/social-reels.jpg",
+    image: "/assets/services/thumbs/social-reels.jpg",
+    video: "/assets/services/videos/social-reels.mp4",
   },
   {
     number: "05",
@@ -58,62 +58,72 @@ const services: Service[] = [
     description:
       "Cutting, color grading, sound mixing and final 4K mastering — all after the shoot.",
     tags: ["Color grading", "Sound mix", "4K master"],
-    priceLabel: "Starting at",
-    price: "$149",
-    image: "/assets/services/post-production.jpg",
+    image: "/assets/services/thumbs/post-production.jpg",
+    video: "/assets/services/videos/post-production.mp4",
   },
 ];
 
-const arrowGradient =
-  "linear-gradient(124.8deg, rgb(255,110,110) 3.6%, rgb(255,43,43) 45%, rgb(184,10,10) 90%)";
+const focusRing =
+  "focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-pink";
 
-type Variant = "feature" | "default";
+/**
+ * Media frame of a card. With a showreel it is a button that opens the
+ * full-screen player; without one it is plain, so nothing looks clickable
+ * that isn't.
+ */
+function Media({
+  service,
+  onPlay,
+  className,
+  children,
+}: {
+  service: Service;
+  onPlay: (service: Service) => void;
+  className: string;
+  children: ReactNode;
+}) {
+  if (!service.video) return <div className={className}>{children}</div>;
 
-const glass = "border border-white/[0.16] bg-black/40 backdrop-blur-[8px]";
-
-function NumberBadge({ number, large }: { number: string; large?: boolean }) {
   return (
-    <span
-      className={`absolute top-4 left-4 z-[2] flex items-center gap-2 rounded-full py-1.5 pr-3.5 pl-2 sm:top-5 sm:left-5 ${glass}`}
+    <button
+      type="button"
+      onClick={() => onPlay(service)}
+      aria-label={`Play showreel: ${service.title}`}
+      className={`cursor-pointer ${focusRing} ${className}`}
     >
-      <span aria-hidden="true" className="bg-brand-gradient size-1.5 rounded-full" />
-      <span
-        className={`text-brand font-display leading-none tracking-[0.04em] ${
-          large ? "text-[16px]" : "text-[14px]"
-        }`}
-      >
-        {number}
-      </span>
-    </span>
+      {children}
+    </button>
   );
 }
 
-function PlayBadge({ large }: { large?: boolean }) {
+/** Plain white play button, the usual video-thumbnail treatment. */
+function PlayButton({ large }: { large?: boolean }) {
   return (
     <span
       aria-hidden="true"
-      className={`absolute top-4 right-4 z-[2] flex items-center justify-center rounded-full border border-white/30 bg-white/[0.14] backdrop-blur-[8px] transition-[transform,background-color] duration-300 group-hover:scale-110 group-hover:bg-white/25 motion-reduce:transition-none motion-reduce:group-hover:scale-100 sm:top-5 sm:right-5 ${
-        large ? "size-[64px] md:size-[72px]" : "size-[52px]"
+      className={`absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-black shadow-[0_8px_30px_rgba(0,0,0,0.45)] transition-transform duration-300 group-hover:scale-105 motion-reduce:transition-none ${
+        large ? "size-16 md:size-20" : "size-14"
       }`}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/assets/services/play.svg" alt="" width={20} height={20} className={large ? "size-6" : "size-5"} />
+      <svg
+        width={large ? 22 : 18}
+        height={large ? 22 : 18}
+        viewBox="0 0 16 16"
+        aria-hidden="true"
+        className="translate-x-px"
+      >
+        <path d="M3 1.8v12.4a.6.6 0 0 0 .9.5l9.8-6.2a.6.6 0 0 0 0-1L3.9 1.3A.6.6 0 0 0 3 1.8Z" fill="currentColor" />
+      </svg>
     </span>
   );
 }
 
-function Tags({ tags, onImage }: { tags: Service["tags"]; onImage?: boolean }) {
+function Tags({ tags }: { tags: Service["tags"] }) {
   return (
-    <ul className="flex w-full flex-wrap gap-2">
-      {tags.map((tag) => (
-        <li
-          key={tag}
-          className={`rounded-full px-3 py-1.5 text-[13px] leading-[1.21] font-medium whitespace-nowrap ${
-            onImage
-              ? "border border-white/[0.14] bg-white/[0.06] text-white/90 backdrop-blur-[8px]"
-              : "border border-white/[0.08] bg-white/[0.04] text-muted"
-          }`}
-        >
+    <ul className="flex flex-wrap gap-x-4 gap-y-2 text-[13px] text-muted">
+      {tags.map((tag, i) => (
+        <li key={tag} className="flex items-center gap-4">
+          {i > 0 && <span aria-hidden="true" className="size-1 rounded-full bg-white/20" />}
           {tag}
         </li>
       ))}
@@ -121,41 +131,26 @@ function Tags({ tags, onImage }: { tags: Service["tags"]; onImage?: boolean }) {
   );
 }
 
-function PriceRow({ service, large }: { service: Service; large?: boolean }) {
+/** Footer row: no pricing, just a plain route to the contact form. */
+function ContactLink({ service }: { service: Service }) {
   return (
-    <div className="mt-auto flex w-full items-end justify-between gap-4 border-t border-white/[0.08] pt-5">
-      <p className="flex flex-col gap-1 leading-none whitespace-nowrap">
-        <span className="text-xs font-medium tracking-[0.06em] text-muted uppercase">
-          {service.priceLabel}
-        </span>
-        <span
-          className={`text-brand font-display leading-none ${
-            large ? "text-[32px] md:text-[38px]" : "text-[27px]"
-          }`}
-        >
-          {service.price}
-        </span>
-      </p>
-      <a
-        href="#order"
-        aria-label={`Order ${service.title}`}
-        className={`relative flex shrink-0 items-center justify-center rounded-full shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5)] transition-[transform,filter,box-shadow] duration-300 hover:scale-105 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-pink motion-reduce:transition-none ${
-          large ? "size-14" : "size-12"
-        }`}
-        style={{ backgroundImage: arrowGradient }}
+    <a
+      href="#contact"
+      aria-label={`Contact us about ${service.title}`}
+      className={`group/link mt-auto inline-flex items-center gap-2 self-start rounded text-[15px] font-semibold text-white transition-colors duration-200 hover:text-brand-pink ${focusRing}`}
+    >
+      Ask about this service
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        aria-hidden="true"
+        className="transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 motion-reduce:transition-none"
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/assets/services/arrow-up-right.svg"
-          alt=""
-          width={18}
-          height={18}
-          className={`transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none ${
-            large ? "size-5" : "size-[18px]"
-          }`}
-        />
-      </a>
-    </div>
+        <path d="M4 12L12 4M6 4h6v6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </a>
   );
 }
 
@@ -163,44 +158,55 @@ function PriceRow({ service, large }: { service: Service; large?: boolean }) {
 function ServiceCard({
   service,
   variant,
+  onPlay,
   className = "",
 }: {
   service: Service;
   variant: Variant;
+  onPlay: (service: Service) => void;
   className?: string;
 }) {
+  const image = (
+    <>
+      <Image
+        src={service.image}
+        alt=""
+        fill
+        sizes={variant === "feature" ? "(min-width: 1024px) 60vw, 100vw" : "(min-width: 1024px) 290px, (min-width: 640px) 50vw, 100vw"}
+        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+      />
+      {service.video && <PlayButton large={variant === "feature"} />}
+    </>
+  );
+
   if (variant === "feature") {
     return (
       <li
-        className={`group card card-hover flex min-h-[540px] flex-col justify-end overflow-hidden rounded-[28px] sm:min-h-[520px] lg:min-h-[560px] ${className}`}
+        className={`group flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-surface lg:flex-row ${className}`}
       >
-        <Image
-          src={service.image}
-          alt={service.title}
-          fill
-          sizes="(min-width: 1024px) 790px, 100vw"
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0)_28%,rgba(0,0,0,0.55)_52%,rgba(0,0,0,0.94)_78%,#000000_100%)]"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(90%_60%_at_0%_100%,rgba(255,43,43,0.22),transparent_60%),radial-gradient(70%_50%_at_100%_100%,rgba(209,15,15,0.16),transparent_60%)] opacity-70 transition-opacity duration-500 group-hover:opacity-100"
-        />
-        <NumberBadge number={service.number} large />
-        <PlayBadge large />
+        <Media
+          service={service}
+          onPlay={onPlay}
+          className="relative block aspect-video w-full shrink-0 overflow-hidden bg-elevated lg:aspect-auto lg:min-h-[420px] lg:flex-[1.4]"
+        >
+          {image}
+          <span className="absolute top-4 left-4 rounded-md bg-black/60 px-2 py-1 font-mono text-[12px] text-white/80 backdrop-blur-sm">
+            {service.number}
+          </span>
+        </Media>
 
-        <div className="relative z-[1] flex flex-col items-start gap-4 p-6 pt-[220px] sm:p-8 sm:pt-[200px] md:p-10">
-          <h3 className="w-full max-w-[560px] font-display text-[32px] leading-[0.95] text-white sm:text-[42px] lg:text-[48px]">
+        <div className="flex flex-1 flex-col items-start gap-5 p-6 sm:p-8 lg:p-10">
+          <span className="text-xs font-semibold tracking-[0.14em] text-brand-pink uppercase">
+            Featured showreel
+          </span>
+          <h3 className="font-display text-[30px] leading-[1.02] text-white sm:text-[38px]">
             {service.title}
           </h3>
-          <p className="w-full max-w-[520px] text-base leading-[1.55] text-white/75 md:text-[17px]">
-            {service.description}
-          </p>
-          <Tags tags={service.tags} onImage />
-          <PriceRow service={service} large />
+          <p className="text-[16px] leading-[1.6] text-muted">{service.description}</p>
+          <Tags tags={service.tags} />
+          <div className="mt-auto pt-2">
+            <ContactLink service={service} />
+          </div>
         </div>
       </li>
     );
@@ -208,45 +214,37 @@ function ServiceCard({
 
   return (
     <li
-      className={`group card card-hover flex flex-col overflow-hidden rounded-[28px] ${className}`}
+      className={`group flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-surface ${className}`}
     >
-      <div className="relative h-[220px] w-full shrink-0 overflow-hidden md:h-[230px]">
-        <Image
-          src={service.image}
-          alt={service.title}
-          fill
-          sizes="(min-width: 1024px) 389px, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.35)_0%,rgba(0,0,0,0)_40%,rgba(15,15,17,0.85)_88%,#121214_100%)]"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,43,43,0.25),rgba(209,15,15,0.18)_55%,transparent)] opacity-0 mix-blend-screen transition-opacity duration-500 group-hover:opacity-100"
-        />
-        <NumberBadge number={service.number} />
-        <PlayBadge />
-      </div>
+      <Media
+        service={service}
+        onPlay={onPlay}
+        className="relative block aspect-video w-full overflow-hidden bg-elevated"
+      >
+        {image}
+        <span className="absolute top-3 left-3 rounded-md bg-black/60 px-2 py-1 font-mono text-[12px] text-white/80 backdrop-blur-sm">
+          {service.number}
+        </span>
+      </Media>
 
-      <div className="relative z-[1] flex flex-1 flex-col items-start gap-3.5 px-6 pt-5 pb-6 md:px-7 md:pb-7">
-        <h3 className="w-full font-display text-[26px] leading-[1.02] text-white md:text-[27px]">
-          {service.title}
-        </h3>
-        <p className="w-full text-[15px] leading-[1.55] text-muted md:text-base">
-          {service.description}
-        </p>
+      <div className="flex flex-1 flex-col items-start gap-3.5 p-5 md:p-6">
+        <h3 className="font-display text-[24px] leading-[1.05] text-white">{service.title}</h3>
+        <p className="text-[15px] leading-[1.55] text-muted">{service.description}</p>
         <Tags tags={service.tags} />
-        <PriceRow service={service} />
+        <div className="mt-auto pt-2">
+          <ContactLink service={service} />
+        </div>
       </div>
     </li>
   );
 }
 
+type Variant = "feature" | "default";
+
 /** Figma: Services (4:244) */
 export function Services() {
   const [feature, ...rest] = services;
+  const [playing, setPlaying] = useState<Service | null>(null);
 
   return (
     <section
@@ -257,15 +255,33 @@ export function Services() {
         <SectionHeader
           eyebrow="Services"
           title="What we edit"
-          subtitle="Five services, one dedicated editing team. Order a single video or a full campaign — we deliver ready-to-publish files."
+          subtitle="Five services, one dedicated editing team. Play a showreel to watch it full screen, then get in touch about your project."
         />
-        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3">
-          <ServiceCard service={feature} variant="feature" className="sm:col-span-2" />
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-4">
+          <ServiceCard
+            service={feature}
+            variant="feature"
+            onPlay={setPlaying}
+            className="sm:col-span-2 lg:col-span-4"
+          />
           {rest.map((service) => (
-            <ServiceCard key={service.number} service={service} variant="default" />
+            <ServiceCard
+              key={service.number}
+              service={service}
+              variant="default"
+              onPlay={setPlaying}
+            />
           ))}
         </ul>
       </div>
+
+      <VideoDialog
+        open={playing !== null}
+        onClose={() => setPlaying(null)}
+        src={playing?.video ?? ""}
+        poster={playing?.image ?? ""}
+        title={playing?.title ?? ""}
+      />
     </section>
   );
 }

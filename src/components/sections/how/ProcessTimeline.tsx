@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 
@@ -10,7 +9,10 @@ export type Step = {
   meta: string;
   description: string;
   points: string[];
+  /** Poster and timeline-tile frame. */
   image: string;
+  /** Real clip played in the program monitor while the step is active. */
+  video: string;
   /** Clip colour on the timeline (r, g, b). */
   tint: string;
 };
@@ -40,7 +42,7 @@ function MonitorOverlay({ step }: { step: number }) {
   if (step === 0)
     return (
       <div className={`${glass} w-[230px]`}>
-        <p className="text-[10px] font-semibold tracking-[0.12em] text-white/50 uppercase">New order</p>
+        <p className="text-[10px] font-semibold tracking-[0.12em] text-white/50 uppercase">New project</p>
         <dl className="mt-2.5 flex flex-col gap-1.5 text-[12px]">
           {[
             ["Service", "Travel vlog"],
@@ -54,7 +56,7 @@ function MonitorOverlay({ step }: { step: number }) {
           ))}
         </dl>
         <div className="bg-brand-gradient mt-3 rounded-full py-1.5 text-center text-[11px] font-bold text-white">
-          Confirm order
+          Contact us
         </div>
       </div>
     );
@@ -136,6 +138,7 @@ export function ProcessTimeline({ steps }: { steps: Step[] }) {
   const [playing, setPlaying] = useState(true);
   const [inView, setInView] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const headRef = useRef<HTMLDivElement>(null);
   const tcRef = useRef<HTMLSpanElement>(null);
   const animRef = useRef<Animation | null>(null);
@@ -194,19 +197,41 @@ export function ProcessTimeline({ steps }: { steps: Step[] }) {
     return () => cancelAnimationFrame(raf);
   }, [active]);
 
+  // Each step starts its clip from the top.
+  useEffect(() => {
+    const v = videoRefs.current[active];
+    if (v) v.currentTime = 0;
+  }, [active]);
+
+  // Only the active clip plays, and only while the section is on screen.
+  useEffect(() => {
+    const reduced = window.matchMedia(REDUCED_MOTION).matches;
+    videoRefs.current.forEach((v, i) => {
+      if (!v) return;
+      if (i === active && running && !reduced) v.play().catch(() => {});
+      else v.pause();
+    });
+  }, [active, running]);
+
   return (
     <div ref={rootRef} className="flex w-full flex-col gap-4">
       <div className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
         {/* Program monitor */}
         <div className="card relative aspect-[4/3] overflow-hidden rounded-[28px] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[440px]">
           {steps.map((s, i) => (
-            <Image
-              key={s.image}
-              src={s.image}
-              alt=""
-              fill
-              sizes="(min-width: 1024px) 700px, 100vw"
-              className={`object-cover transition-[opacity,transform] duration-700 ${
+            <video
+              key={s.video}
+              ref={(el) => {
+                videoRefs.current[i] = el;
+              }}
+              src={s.video}
+              poster={s.image}
+              muted
+              loop
+              playsInline
+              preload={i === active ? "auto" : "none"}
+              aria-hidden
+              className={`absolute inset-0 size-full object-cover transition-[opacity,transform] duration-700 ${
                 i === active ? "scale-100 opacity-100" : "scale-105 opacity-0"
               }`}
             />
@@ -302,10 +327,10 @@ export function ProcessTimeline({ steps }: { steps: Step[] }) {
 
           <div className="relative mt-6 flex items-center justify-between gap-4 border-t border-white/[0.07] pt-5 max-sm:flex-col max-sm:items-stretch">
             <p className="text-[13px] leading-[1.45] text-muted">
-              <span className="font-semibold text-white">No calls needed.</span> Order in minutes.
+              <span className="font-semibold text-white">No calls needed.</span> Send a message in minutes.
             </p>
-            <Button href="#order" size="sm">
-              Start your order
+            <Button href="#contact" size="sm">
+              Contact us
             </Button>
           </div>
         </div>
@@ -331,7 +356,7 @@ export function ProcessTimeline({ steps }: { steps: Step[] }) {
                 </svg>
               )}
             </button>
-            <span className="text-[13px] font-semibold text-white">Your order</span>
+            <span className="text-[13px] font-semibold text-white">Your project</span>
             <span className="text-[12px] text-white/40 max-sm:hidden">· 4 steps · first draft in 48h</span>
           </div>
           <span className="font-mono text-[11px] text-white/45">{timecode(n * STEP_MS).slice(3)}</span>

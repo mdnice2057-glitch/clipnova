@@ -138,8 +138,8 @@ export function Hero() {
       {/* Hero content */}
       <div className="relative flex flex-col items-center gap-5 px-4 pt-10 pb-12 text-center sm:gap-7 sm:pt-16 sm:pb-20 md:pt-24">
         <Tag>
-          <span className="sm:hidden">Accepting orders — first draft in 48h</span>
-          <span className="max-sm:hidden">Now accepting new orders — first draft in 48 hours</span>
+          <span className="sm:hidden">Taking new projects — reply within 24h</span>
+          <span className="max-sm:hidden">Now taking new projects — we reply within 24 hours</span>
         </Tag>
 
         <h1 className="text-chrome font-display text-[length:min(52px,calc((100vw_-_2.5rem)/7.4))] leading-[0.98] sm:text-[77px] lg:text-[114px]">
@@ -149,17 +149,17 @@ export function Hero() {
         </h1>
 
         <p className="max-w-[640px] text-[15px] leading-[1.55] text-muted sm:hidden">
-          Upload your raw footage — our pro editors deliver polished, ready-to-publish videos for
-          promos, weddings, vlogs and reels.
+          Tell us about your project — our pro editors turn your footage into polished,
+          ready-to-publish videos for promos, weddings, vlogs and reels.
         </p>
         <p className="max-w-[640px] text-lg leading-[1.55] text-muted max-sm:hidden md:text-xl">
-          Place an order, upload your raw footage, and our professional editors deliver a polished,
-          ready-to-publish video — SaaS promos, wedding films, vlogs, reels and post production.
+          Get in touch, share your project and our professional editors take it from raw footage to a
+          polished, ready-to-publish video — SaaS promos, wedding films, vlogs, reels and post production.
         </p>
 
         <div className="flex w-full max-w-[340px] flex-col gap-3 pt-1 sm:w-auto sm:max-w-none sm:flex-row sm:flex-wrap sm:items-start sm:justify-center sm:gap-3.5 sm:pt-2">
-          <Button href="#order" className="max-sm:w-full">
-            Place an order
+          <Button href="#contact" className="max-sm:w-full">
+            Contact us
           </Button>
           <Button variant="secondary" href="#work" className="max-sm:w-full">
             See our work

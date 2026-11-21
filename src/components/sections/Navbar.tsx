@@ -39,8 +39,8 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <Button variant="light" size="sm" href="#order" className="max-sm:hidden">
-            Order now
+          <Button variant="light" size="sm" href="#contact" className="max-sm:hidden">
+            Contact
           </Button>
           <button
             type="button"
@@ -90,8 +90,8 @@ export function Navbar() {
             ))}
           </ul>
           <div className="relative px-2 pb-2 sm:hidden" onClick={() => setOpen(false)}>
-            <Button href="#order" className="mt-2 w-full sm:hidden">
-              Order now
+            <Button href="#contact" className="mt-2 w-full sm:hidden">
+              Contact
             </Button>
           </div>
         </div>
